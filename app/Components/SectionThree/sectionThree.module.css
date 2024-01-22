@@ -66,8 +66,8 @@
 
 .line {
     position: absolute;
-    top: 500px;
-    width: 1000px;
+    top: 52%;
+    width: 80%;
     border: 2px solid black;
     transform: rotate(90deg)
 }
