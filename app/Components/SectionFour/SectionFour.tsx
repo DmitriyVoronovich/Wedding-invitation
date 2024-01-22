@@ -22,7 +22,7 @@ export default function SectionFour() {
                     <div>
                         <div className={s.contact_container}>
                             <span className={s.contact_name}>Павел:</span>
-                            <span className={s.contact_number}>(Viber) +375 29 149 93 59</span>
+                            <span className={s.contact_number}>+375 29 149 93 59</span>
                             <a href={'https://www.instagram.com/'}>
                                 <Image src={inst} alt={'instagram'} className={s.contact_inst_link}/>
                             </a>
@@ -32,7 +32,7 @@ export default function SectionFour() {
                         </div>
                         <div className={s.contact_container}>
                             <span className={s.contact_name}>Алина:</span>
-                            <span className={s.contact_number}>(Viber) +375 29 887 38 17</span>
+                            <span className={s.contact_number}>+375 29 887 38 17</span>
                             <a href={'https://www.instagram.com/'}>
                                 <Image src={inst} alt={'instagram'} className={s.contact_inst_link}/>
                             </a>
