@@ -1,46 +1,76 @@
-import SectionRight from "@/app/Components/SectionThree/sectionRight/SectionRight";
-import SectionLeft from "@/app/Components/SectionThree/sectionLeft/SectionLeft";
 import s from './sectionThree.module.css';
-import wed from '../../Accets/wedding.png';
-import res from '../../Accets/reception.png';
-import cer from '../../Accets/ceremony.png';
-import ban from '../../Accets/banquet.png';
-import sec from '../../Accets/secondday.png';
+import Image from "next/image";
+import heardSmall from '../../Accets/heard_small.png';
+import castel from '../../Accets/Catholic_castel.png';
+import banq from '../../Accets/banquet.png';
+import buff from '../../Accets/buffet.png';
+import second from '../../Accets/second_day.png';
+import svg from '../../Accets/svgHeart.png'
 
 export default function SectionThree() {
+
+    const data = [
+        {
+            id: 1,
+            name: 'ВЕНЧАНИЕ',
+            place: 'Костел св. Терезы',
+            time: '15:00',
+            image: castel,
+            class: s.left
+        },
+        {
+            id: 2,
+            name: 'ФУРШЕТ',
+            place: 'Усадьба Долина Заречная',
+            time: '16:00',
+            image: buff,
+            class: s.right
+        },
+        {
+            id: 3,
+            name: 'БАНКЕТ',
+            place: 'Усадьба Долина Заречная',
+            time: '16:30',
+            image: banq,
+            class: s.left
+        },
+        {
+            id: 4,
+            name: '2 - Й ДЕНЬ',
+            place: 'Усадьба Долина Заречная',
+            time: '10:00',
+            image: second,
+            class: s.right
+        }
+    ]
+
     return (
         <section className={s.section_container}>
-            <h2 className={s.section_title}>ПРОГРАММА МЕРОПРИЯТИЯ</h2>
-            <SectionRight title={'ВЕНЧАНИЕ'}
-                          secondTitle={'WEDDING'}
-                          time={'13:30 - 14:30'}
-                          place={'Костел св. Терезы '}
-                          address={'ул. Советская 1, Щучин'}
-                          img={wed}/>
-            <SectionLeft title={'ФУРШЕТ'}
-                         secondTitle={'RECEPTION'}
-                         time={'15:00 - 15:30 '}
-                         place={'Усадьба Долина Заречная'}
-                         address={'д. Долина Заречная 2'}
-                         img={res}/>
-            <SectionRight title={'ЦЕРЕМОНИЯ'}
-                          secondTitle={'CEREMONY'}
-                          time={'15:30 - 16:00 '}
-                          place={'Усадьба Долина Заречная'}
-                          address={'д. Долина Заречная 2'}
-                          img={cer}/>
-            <SectionLeft title={'БАНКЕТ'}
-                         secondTitle={'BANQUET'}
-                         time={'16:00 - 23:00 '}
-                         place={'Усадьба Долина Заречная'}
-                         address={'д. Долина Заречная 2'}
-                         img={ban}/>
-            <SectionRight title={'2 - Й ДЕНЬ'}
-                          secondTitle={'SECOND DAY'}
-                          time={'11:00 - 20:00 '}
-                          place={'Усадьба Долина Заречная'}
-                          address={'д. Долина Заречная 2'}
-                          img={sec}/>
+            <h2 className={s.section_title}>СВАДЕБНЫЙ ДЕНЬ </h2>
+            <span className={s.second_title}>СВАДЕБНЫЙ ДЕНЬ </span>
+            <Image src={heardSmall} alt={'heard small'} className={s.small_heard}/>
+            <div className={s.container}>
+                <div className={s.start_point}></div>
+                <div className={s.line}></div>
+                <div className={s.end_point}></div>
+                {data.map((item) => {
+
+                    return (
+                        <div className={`${s.wrapper} ${item.class}`} key={item.id}>
+                            <div className={`${s.text_container} ${item.class}`}
+                                 style={{paddingLeft: '0', paddingRight: '0'}}>
+                                <span className={s.time}>{item.time}</span>
+                                <div className={s.text_wrapper}>
+                                    <h5 className={s.name}>{item.name}</h5>
+                                    <span className={s.place}>{item.place}</span>
+                                </div>
+                            </div>
+                            <Image src={item.image} alt={item.name} className={s.img}/>
+                        </div>
+                    )
+                })}
+                <Image src={svg} alt={'Heard'} className={s.section_svg}/>
+            </div>
         </section>
     )
 }

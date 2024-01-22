@@ -9,7 +9,7 @@ export default function SectionFour() {
     return (
         <section className={s.section_container}>
             <h2 className={s.section_title}>КОНТАКТЫ</h2>
-            <span className={s.section_second_title}>CONTACTS</span>
+            <span className={s.section_second_title}>КОНТАКТЫ</span>
             <div className={s.section_wrapper}>
                 <div className={s.img_container}>
                     <Image src={img} alt={'img'} className={s.one_img}/>
