@@ -69,6 +69,20 @@
     margin: 0;
 }
 
+@media screen and (min-width: 1540px) {
+    .one_title {
+        font-size: calc((60vw - 360px) / (1440 - 360) * (86 - 26) + 26px);
+    }
+
+    .one_description {
+        font-size: calc((60vw - 360px) / (1440 - 360) * (40 - 18) + 18px);
+    }
+
+    .one_text {
+        font-size: calc((60vw - 360px) / (1440 - 360) * (40 - 18) + 18px);
+    }
+}
+
 @media screen and (max-width: 768px) {
     .section_one {
         padding: 20px 20px;
