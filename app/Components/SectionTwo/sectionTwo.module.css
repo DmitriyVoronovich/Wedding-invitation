@@ -101,12 +101,17 @@
 @media screen and (max-width: 768px) {
 
     .section_container {
+        align-items: center;
         margin: 67px auto 0;
+    }
+
+    .section_title {
+        text-align: center;
     }
 
     .second_title {
         width: 100%;
-        left: -50px;
+        left: 0;
         top: -20px;
     }
 
@@ -133,7 +138,7 @@
     .section_svg {
         width: 70%;
         height: 70%;
-        top: -30px;
+        top: 0;
         left: 250px;
         z-index: 0;
     }

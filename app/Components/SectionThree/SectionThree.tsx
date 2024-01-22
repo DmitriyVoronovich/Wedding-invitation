@@ -13,10 +13,11 @@ export default function SectionThree() {
         {
             id: 1,
             name: 'ВЕНЧАНИЕ',
-            place: 'Костел св. Терезы',
+            place: 'Костел Святой Терезы',
             time: '15:00',
             image: castel,
-            class: s.left
+            class: s.left,
+            class2: ''
         },
         {
             id: 2,
@@ -24,7 +25,8 @@ export default function SectionThree() {
             place: 'Усадьба Долина Заречная',
             time: '16:00',
             image: buff,
-            class: s.right
+            class: s.right,
+            class2: s.right_icon
         },
         {
             id: 3,
@@ -32,7 +34,8 @@ export default function SectionThree() {
             place: 'Усадьба Долина Заречная',
             time: '16:30',
             image: banq,
-            class: s.left
+            class: s.left,
+            class2: ''
         },
         {
             id: 4,
@@ -40,7 +43,8 @@ export default function SectionThree() {
             place: 'Усадьба Долина Заречная',
             time: '10:00',
             image: second,
-            class: s.right
+            class: s.right,
+            class2: s.right_icon
         }
     ]
 
@@ -54,17 +58,17 @@ export default function SectionThree() {
                 <div className={s.line}></div>
                 <div className={s.end_point}></div>
                 {data.map((item) => {
+
                     return (
                         <div className={`${s.wrapper} ${item.class}`} key={item.id}>
-                            <div className={`${s.text_container} ${item.class}`}
-                                 style={{paddingLeft: '0', paddingRight: '0'}}>
+                            <div className={`${s.text_container} ${item.class}`}>
                                 <span className={s.time}>{item.time}</span>
                                 <div className={s.text_wrapper}>
                                     <h5 className={s.name}>{item.name}</h5>
                                     <span className={s.place}>{item.place}</span>
                                 </div>
                             </div>
-                            <Image src={item.image} alt={item.name} className={s.img}/>
+                            <Image src={item.image} alt={item.name} className={`${s.img} ${item.class2}`}/>
                         </div>
                     )
                 })}
