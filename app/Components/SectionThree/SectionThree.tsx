@@ -54,7 +54,6 @@ export default function SectionThree() {
                 <div className={s.line}></div>
                 <div className={s.end_point}></div>
                 {data.map((item) => {
-
                     return (
                         <div className={`${s.wrapper} ${item.class}`} key={item.id}>
                             <div className={`${s.text_container} ${item.class}`}

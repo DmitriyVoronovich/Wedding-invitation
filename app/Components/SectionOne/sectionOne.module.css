@@ -71,15 +71,15 @@
 
 @media screen and (min-width: 1540px) {
     .one_title {
-        font-size: calc((60vw - 360px) / (1440 - 360) * (86 - 26) + 26px);
+        font-size: 86px;
     }
 
     .one_description {
-        font-size: calc((60vw - 360px) / (1440 - 360) * (40 - 18) + 18px);
+        font-size: 40px;
     }
 
     .one_text {
-        font-size: calc((60vw - 360px) / (1440 - 360) * (40 - 18) + 18px);
+        font-size: 40px;
     }
 }
 
