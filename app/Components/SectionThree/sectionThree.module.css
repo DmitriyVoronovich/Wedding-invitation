@@ -62,15 +62,14 @@
     border-radius: 50%;
     background-color: black;
     position: absolute;
-    bottom: -50px;
+    bottom: -5px;
 }
 
 .line {
     position: absolute;
-    top: 52%;
-    width: 125vh;
+    left: 50%;
+    height: 100%;
     border: 1px solid black;
-    transform: rotate(90deg)
 }
 
 .left {
@@ -202,14 +201,6 @@
         margin: 20px 0 20px;
     }
 
-    .line {
-        position: absolute;
-        top: 53%;
-        width: 99vh;
-        border: 1px solid black;
-        transform: rotate(90deg)
-    }
-
     .right_icon {
         padding-left: 5%;
     }
@@ -273,12 +264,6 @@
     .end_point {
         width: 12px;
         height: 12px;
-        bottom: -50px;
-    }
-
-    .line {
-        top: 54%;
-        width: 80vh;
     }
 
     .right_icon {
