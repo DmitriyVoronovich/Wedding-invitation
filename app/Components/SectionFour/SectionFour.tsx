@@ -7,7 +7,7 @@ import tel from '../../Accets/tel.png';
 
 export default function SectionFour() {
     return (
-        <section className={s.section_container}>
+        <section className={s.section_container} id={'Contacts'}>
             <h2 className={s.section_title}>КОНТАКТЫ</h2>
             <span className={s.section_second_title}>КОНТАКТЫ</span>
             <div className={s.section_wrapper}>

@@ -49,7 +49,7 @@ export default function SectionThree() {
     ]
 
     return (
-        <section className={s.section_container}>
+        <section className={s.section_container} id={'Schedule'}>
             <h2 className={s.section_title}>СВАДЕБНЫЙ ДЕНЬ </h2>
             <span className={s.second_title}>СВАДЕБНЫЙ ДЕНЬ </span>
             <Image src={heardSmall} alt={'heard small'} className={s.small_heard}/>

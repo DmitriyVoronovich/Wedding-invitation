@@ -5,7 +5,7 @@ import svg from "@/app/Accets/svg.png";
 
 export default function SectionOne() {
     return (
-            <section className={s.section_one}>
+            <section className={s.section_one} id={'Main'}>
                 <div className={s.img_container}>
                     <Image src={img} alt={'img'} className={s.one_img}/>
                 </div>

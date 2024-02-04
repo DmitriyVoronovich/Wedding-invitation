@@ -4,7 +4,7 @@ import svg from '../../Accets/svgHeart.png'
 
 export default function SectionTwo() {
     return (
-        <section className={s.section_container}>
+        <section className={s.section_container} id={'Invitation'}>
             <h2 className={s.section_title}>МЫ ЖЕНИМСЯ</h2>
             <span className={s.second_title}>МЫ ЖЕНИМСЯ</span>
             <div className={s.text_container}>
