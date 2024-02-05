@@ -24,7 +24,7 @@
     position: absolute;
     left: 90px;
     top: -20px;
-    width: 100%;
+    width: 80%;
     color: rgba(219, 175, 150, 0.25);
     font-family: EB Garamond, serif;
     font-size: calc((100vw - 360px) / (1440 - 360) * (110 - 30) + 30px);
@@ -62,15 +62,14 @@
     border-radius: 50%;
     background-color: black;
     position: absolute;
-    bottom: -50px;
+    bottom: -5px;
 }
 
 .line {
     position: absolute;
-    top: 52%;
-    width: 125vh;
+    left: 50%;
+    height: 100%;
     border: 1px solid black;
-    transform: rotate(90deg)
 }
 
 .left {
@@ -83,7 +82,7 @@
 }
 
 .right_icon {
-    padding-left: 37.5%;
+    padding-left: 17.5%;
 }
 
 .wrapper {
@@ -144,13 +143,13 @@
 
 .img {
     grid-area: b;
-    margin: 0 81px;
+    margin: 0 30%;
 }
 
 .section_svg {
     position: absolute;
     top: -90px;
-    left: -150px;
+    left: -100px;
     z-index: 0;
 }
 
@@ -185,6 +184,26 @@
     }
 }
 
+@media screen and (max-width: 1200px) {
+    .right_icon {
+        padding-left: 0;
+    }
+
+    .img {
+        margin-right: 20%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .right_icon {
+        padding-left: 7.5%;
+    }
+
+    .img {
+        margin-right: 20%;
+    }
+}
+
 @media screen and (max-width: 768px) {
 
     .section_container {
@@ -200,14 +219,6 @@
 
     .small_heard {
         margin: 20px 0 20px;
-    }
-
-    .line {
-        position: absolute;
-        top: 53%;
-        width: 99vh;
-        border: 1px solid black;
-        transform: rotate(90deg)
     }
 
     .right_icon {
@@ -273,12 +284,6 @@
     .end_point {
         width: 12px;
         height: 12px;
-        bottom: -50px;
-    }
-
-    .line {
-        top: 54%;
-        width: 80vh;
     }
 
     .right_icon {

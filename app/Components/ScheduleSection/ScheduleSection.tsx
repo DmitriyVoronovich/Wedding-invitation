@@ -1,55 +1,13 @@
-import s from './sectionThree.module.css';
+import s from './ScheduleSection.module.css';
 import Image from "next/image";
 import heardSmall from '../../Accets/heard_small.png';
-import castel from '../../Accets/Catholic_castel.png';
-import banq from '../../Accets/banquet.png';
-import buff from '../../Accets/buffet.png';
-import second from '../../Accets/second_day.png';
 import svg from '../../Accets/svgHeart.png'
+import {EVENTS_LIST, MENU_ITEM} from "@/app/Constant/constant";
 
-export default function SectionThree() {
-
-    const data = [
-        {
-            id: 1,
-            name: 'ВЕНЧАНИЕ',
-            place: 'Костел Святой Терезы',
-            time: '15:00',
-            image: castel,
-            class: s.left,
-            class2: ''
-        },
-        {
-            id: 2,
-            name: 'ФУРШЕТ',
-            place: 'Усадьба Долина Заречная',
-            time: '16:00',
-            image: buff,
-            class: s.right,
-            class2: s.right_icon
-        },
-        {
-            id: 3,
-            name: 'БАНКЕТ',
-            place: 'Усадьба Долина Заречная',
-            time: '16:30',
-            image: banq,
-            class: s.left,
-            class2: ''
-        },
-        {
-            id: 4,
-            name: '2 - Й ДЕНЬ',
-            place: 'Усадьба Долина Заречная',
-            time: '10:00',
-            image: second,
-            class: s.right,
-            class2: s.right_icon
-        }
-    ]
+export default function ScheduleSection() {
 
     return (
-        <section className={s.section_container}>
+        <section className={s.section_container} id={MENU_ITEM.SCHEDULE.id}>
             <h2 className={s.section_title}>СВАДЕБНЫЙ ДЕНЬ </h2>
             <span className={s.second_title}>СВАДЕБНЫЙ ДЕНЬ </span>
             <Image src={heardSmall} alt={'heard small'} className={s.small_heard}/>
@@ -57,7 +15,7 @@ export default function SectionThree() {
                 <div className={s.start_point}></div>
                 <div className={s.line}></div>
                 <div className={s.end_point}></div>
-                {data.map((item) => {
+                {EVENTS_LIST.map((item) => {
 
                     return (
                         <div className={`${s.wrapper} ${item.class}`} key={item.id}>
