@@ -21,6 +21,10 @@
     left: 0;
 }
 
+.active {
+    color: #454545;
+}
+
 .menuIcon {
     display: none;
     flex-direction: column;
@@ -53,11 +57,19 @@
     color: #DBAF96;
     text-decoration: none;
     cursor: pointer;
+    font-family: EB Garamond, serif;
+    font-size: calc((100vw - 360px) / (1440 - 360) * (26 - 18) + 18px);
 }
 
 .menu li {
     margin-right: 20px;
 
+}
+
+@media screen and (min-width: 1540px) {
+    .link {
+        font-size: 26px;
+    }
 }
 
 @media (max-width: 768px) {

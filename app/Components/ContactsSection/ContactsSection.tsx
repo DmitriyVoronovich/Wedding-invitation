@@ -1,13 +1,14 @@
 import Image from "next/image";
-import s from './sectionFour.module.css'
+import s from './ContactsSection.module.css'
 import img from "@/app/Accets/image1.png";
 import svg from '../../Accets/heard.png';
 import inst from '../../Accets/in.png';
 import tel from '../../Accets/tel.png';
+import {MENU_ITEM} from "@/app/Constant/constant";
 
-export default function SectionFour() {
+export default function ContactsSection() {
     return (
-        <section className={s.section_container} id={'Contacts'}>
+        <section className={s.section_container} id={MENU_ITEM.CONTACTS.id}>
             <h2 className={s.section_title}>КОНТАКТЫ</h2>
             <span className={s.section_second_title}>КОНТАКТЫ</span>
             <div className={s.section_wrapper}>

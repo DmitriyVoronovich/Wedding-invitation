@@ -1,11 +1,12 @@
-import s from "./sectionOne.module.css";
+import s from "./MainSection.module.css";
 import Image from "next/image";
 import img from "@/app/Accets/image1.png";
 import svg from "@/app/Accets/svg.png";
+import {MENU_ITEM} from "@/app/Constant/constant";
 
-export default function SectionOne() {
+export default function MainSection() {
     return (
-            <section className={s.section_one} id={'Main'}>
+            <section className={s.section_one} id={MENU_ITEM.MAIN.id}>
                 <div className={s.img_container}>
                     <Image src={img} alt={'img'} className={s.one_img}/>
                 </div>
