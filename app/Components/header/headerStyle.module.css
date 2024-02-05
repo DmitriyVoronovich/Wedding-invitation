@@ -1,15 +1,24 @@
 /* NavBar.module.css */
 .navbar {
-    width: 98%;
+    width: 100%;
     display: flex;
     align-items: center;
     background-color: white;
     color: #DBAF96;
     border-bottom: 1px solid #DBAF96;
     position: fixed;
-    top: 0;
+
     z-index: 99999;
     opacity: 0.95;
+}
+
+.scrolled {
+    top: -100%;
+}
+
+.showMenu {
+    top: 0;
+    left: 0;
 }
 
 .menuIcon {
@@ -28,7 +37,7 @@
 }
 
 .menu {
-    width: 900%;
+    width: 90%;
     display: flex;
 }
 

@@ -1,6 +1,6 @@
 'use client'
 
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './headerStyle.module.css';
 import { Link as ScrollLink } from 'react-scroll'
 
@@ -8,28 +8,46 @@ const data = [
     {
         title: "Главное",
         href: 'Main',
-        offset: -30
+        offsetDesk: -30,
+        offsetMob: -30
     },
     {
         title: "Приглашение",
         href: 'Invitation',
-        offset: -100
+        offsetDesk: -110,
+        offsetMob: -60
 
     },
     {
         title: "Расписание",
         href: 'Schedule',
-        offset: -90
+        offsetDesk: -100,
+        offsetMob: -65
     },
     {
         title: "Контакты",
         href: 'Contacts',
-        offset: -70
+        offsetDesk: -80,
+        offsetMob: -55
     }
 ]
 
 export default function HeaderMenu() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [showMenu, setShowMenu] = useState(false);
+    const [width, setWidth] = React.useState(0);
+
+    useEffect(() => {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                setShowMenu(true)
+            } else {
+                setShowMenu(false)
+            }
+        })
+    }, [])
+
+    const breakpoint = 768;
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -39,29 +57,33 @@ export default function HeaderMenu() {
         setIsMenuOpen(false);
     };
 
-    return (
-        <nav className={styles.navbar}>
+    React.useEffect(() => {
+        const handleWindowResize = () => setWidth(window.innerWidth)
+        window.addEventListener('resize', handleWindowResize);
 
+        return () => window.removeEventListener('resize', handleWindowResize);
+    }, []);
+
+    return (
+        <nav className={`${styles.navbar} ${showMenu ? styles.showMenu : styles.scrolled }`}>
             <div className={`${styles.menu} ${isMenuOpen ? styles.showMenu : ''}`}>
                 <ul>
-                    {data.map(item => {
-                        return (
-                            <li key={item.title} >
-                                <ScrollLink
-                                    className={styles.link}
-                                    activeClass="active"
-                                    to={item.href}
-                                    spy={true}
-                                    smooth={true}
-                                    offset={item.offset}
-                                    duration={500}
-                                    onClick={closeMenu}
-                                >
-                                    {item.title}
-                                </ScrollLink>
-                            </li>
-                        )
-                    })}
+                    {data.map(item => (
+                        <li key={item.title}>
+                            <ScrollLink
+                                className={styles.link}
+                                activeClass="active"
+                                to={item.href}
+                                spy={true}
+                                smooth={true}
+                                offset={width <= breakpoint ? item.offsetMob : item.offsetDesk}
+                                duration={500}
+                                onClick={closeMenu}
+                            >
+                                {item.title}
+                            </ScrollLink>
+                        </li>
+                    ))}
                 </ul>
             </div>
             <div className={styles.menuIcon} onClick={toggleMenu}>
@@ -71,5 +93,4 @@ export default function HeaderMenu() {
             </div>
         </nav>
     );
-};
-
+}
