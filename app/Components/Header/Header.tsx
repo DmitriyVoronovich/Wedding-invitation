@@ -27,7 +27,7 @@ export default function HeaderMenu() {
         <nav className={`${styles.navbar} ${showMenu ? styles.showMenu : styles.scrolled }`}>
             <div className={`${styles.menu} ${isMenuOpen && styles.showMenu}`}>
                 <ul>
-                    {MENU_LIST.map(item => (
+                    {Object.values(MENU_LIST).map(item => (
                         <li key={item.title}>
                             <ScrollLink
                                 className={styles.link}
@@ -35,7 +35,7 @@ export default function HeaderMenu() {
                                 to={item.href}
                                 spy={true}
                                 smooth={true}
-                                offset={width <= MOBILE_MENU_BREAKPOINT ? item.offsetMob : item.offsetDesk}
+                                offset={width <= MOBILE_MENU_BREAKPOINT ? item.offsetMob :  item.offsetDesk}
                                 duration={500}
                                 onClick={closeMenu}
                             >
