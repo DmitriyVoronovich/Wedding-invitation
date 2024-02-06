@@ -1,16 +1,16 @@
 import Image from "next/image";
 import s from './ContactsSection.module.css'
 import img from "@/app/Accets/image1.png";
-import svg from '../../Accets/heard.png';
-import inst from '../../Accets/in.png';
-import tel from '../../Accets/tel.png';
-import {MENU_ITEM} from "@/app/Constant/constant";
+import svg from '../../Accets/svgSection/heard_small.svg';
+import inst from '../../Accets/svgSection/inst.svg';
+import tel from '../../Accets/svgSection/tel.svg';
+import {MENU_LIST} from "@/app/Constant/constant";
 
 export default function ContactsSection() {
     return (
-        <section className={s.section_container} id={MENU_ITEM.CONTACTS.id}>
-            <h2 className={s.section_title}>КОНТАКТЫ</h2>
-            <span className={s.section_second_title}>КОНТАКТЫ</span>
+        <section className={s.section_container} id={MENU_LIST.contacts.href}>
+            <h2 className={s.section_title}>{MENU_LIST.contacts.secondTitle}</h2>
+            <span className={s.section_second_title}>{MENU_LIST.contacts.secondTitle}</span>
             <div className={s.section_wrapper}>
                 <div className={s.img_container}>
                     <Image src={img} alt={'img'} className={s.one_img}/>

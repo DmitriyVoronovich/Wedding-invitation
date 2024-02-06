@@ -1,57 +1,41 @@
-import castel from "@/app/Accets/Catholic_castel.png";
+import castel from "@/app/Accets/svgSchedule/Catholic_castel.svg";
 import s from "@/app/Components/ScheduleSection/ScheduleSection.module.css";
-import buff from "@/app/Accets/buffet.png";
-import banq from "@/app/Accets/banquet.png";
-import second from "@/app/Accets/second_day.png";
+import buff from "@/app/Accets/svgSchedule/buffet.svg";
+import banq from "@/app/Accets/svgSchedule/banquet.svg";
+import second from "@/app/Accets/svgSchedule/second_day.svg";
 
 export const MOBILE_MENU_BREAKPOINT = 768;
 
-export const MENU_ITEM = {
-    MAIN: {
-        id: 'main',
-        title: 'Главная'
-    },
-    INVITATION: {
-        id: 'invitation',
-        title: 'Приглашение'
-    },
-    SCHEDULE: {
-        id: 'schedule',
-        title: 'Расписание'
-    },
-    CONTACTS: {
-        id: 'contacts',
-        title: 'Контакты'
-    }
-};
-
-export const MENU_LIST = [
-    {
+export const MENU_LIST = {
+    main: {
         title: "Главное",
         href: 'main',
         offsetDesk: -30,
         offsetMob: -30
     },
-    {
+    invitation: {
         title: "Приглашение",
+        secondTitle: 'МЫ ЖЕНИМСЯ',
         href: 'invitation',
-        offsetDesk: -110,
+        offsetDesk: -125,
         offsetMob: -60
 
     },
-    {
+    schedule: {
         title: "Расписание",
+        secondTitle: 'СВАДЕБНЫЙ ДЕНЬ',
         href: 'schedule',
-        offsetDesk: -100,
+        offsetDesk: -115,
         offsetMob: -65
     },
-    {
+    contacts: {
         title: "Контакты",
+        secondTitle: 'КОНТАКТЫ',
         href: 'contacts',
-        offsetDesk: -80,
+        offsetDesk: -95,
         offsetMob: -55
     }
-];
+};
 
 export const EVENTS_LIST = [
     {
