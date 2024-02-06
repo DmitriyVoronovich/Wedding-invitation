@@ -1,13 +1,13 @@
 import s from './InvitationSection.module.css'
 import Image from "next/image";
-import svg from '../../Accets/svgHeart.png'
-import {MENU_ITEM} from "@/app/Constant/constant";
+import svg from '../../Accets/svgSection/brilint.svg'
+import {MENU_LIST} from "@/app/Constant/constant";
 
 export default function InvitationSection() {
     return (
-        <section className={s.section_container} id={MENU_ITEM.INVITATION.id}>
-            <h2 className={s.section_title}>МЫ ЖЕНИМСЯ</h2>
-            <span className={s.second_title}>МЫ ЖЕНИМСЯ</span>
+        <section className={s.section_container} id={MENU_LIST.invitation.href}>
+            <h2 className={s.section_title}>{MENU_LIST.invitation.secondTitle}</h2>
+            <span className={s.second_title}>{MENU_LIST.invitation.secondTitle}</span>
             <div className={s.text_container}>
                 <p>Дорогие <b>Виталий</b> и <b>Дарья</b>!</p>
                 <p>С большой радостью мы приглашаем вас присоединиться к нам в наш особенный день
