@@ -1,0 +1,184 @@
+// global variables
+// Size
+$mobile-width: 767px;
+$tablet-width: 1000px;
+
+/* Responsive Breakpoints */
+$phone-min: 320px;
+$phone-max: 767px;
+$tablet-portrait-min: 768px;
+$tablet-portrait-max: 979px;
+$tablet-landscape-min: 980px;
+$tablet-landscape-max: 1299px;
+$laptop-min: 1300px;
+$laptop-max: 1599px;
+$desktop-min: 1600px;
+$desktop-max: 1920px;
+$desktop4k-min: 1921px;
+$desktop4k-max: 3840px;
+
+/* Grid2 desktop */
+$narrowDesktop: 1240px;
+
+
+// min width limitation
+// 768..
+@mixin tablet-and-wider() {
+  @media only screen and (min-width: $tablet-portrait-min) {
+    @content;
+  }
+
+}
+
+// 980..
+@mixin tablet-landscape-and-wider() {
+  @media only screen and (min-width: $tablet-landscape-min) {
+    @content;
+  }
+}
+
+// 1240..
+@mixin narrow-desktop-and-wider() {
+  @media only screen and (min-width: $narrowDesktop) {
+    @content;
+  }
+}
+
+// 1300..
+@mixin laptop-and-wider() {
+  @media only screen and (min-width: $laptop-min) {
+    @content;
+  }
+}
+
+// 1600..
+@mixin desktop-and-wider() {
+  @media only screen and (min-width: $desktop-min) {
+    @content;
+  }
+}
+
+// 1921..
+@mixin desktop4k-and-wider() {
+  @media only screen and (min-width: $desktop4k-min) {
+    @content;
+  }
+}
+
+// specific devices
+// ..767 landscape
+@mixin phone-landscape() {
+  @media only screen and (max-width: $phone-max) and (orientation: landscape) {
+    @content;
+  }
+}
+
+// ..767
+@mixin phone() {
+  @media only screen and (max-width: $phone-max) {
+    @content;
+  }
+}
+
+// 768..979
+@mixin tablet-portrait() {
+  @media only screen and (min-width: $tablet-portrait-min) and (max-width: $tablet-portrait-max) {
+    @content;
+  }
+}
+
+// 980..1299
+@mixin tablet-landscape() {
+  @media only screen and (min-width: $tablet-landscape-min) and (max-width: $tablet-landscape-max) {
+    @content;
+  }
+}
+
+// 768..1299
+@mixin tablet() {
+  @media only screen and (min-width: $tablet-portrait-min) and (max-width: $tablet-landscape-max) {
+    @content;
+  }
+}
+
+// 1300..1599
+@mixin laptop() {
+  @media only screen and (min-width: $laptop-min) and (max-width: $laptop-max) {
+    @content;
+  }
+}
+
+// 1600..1920
+@mixin desktop() {
+  @media only screen and (min-width: $desktop-min) and (max-width: $desktop-max) {
+    @content;
+  }
+}
+
+// retina devices
+// ..767 retina
+@mixin phone-retina() {
+  @media only screen and (max-width: $phone-max) and (-webkit-min-device-pixel-ratio: 2) {
+    @content;
+  }
+}
+
+// 768..979 retina
+@mixin tablet-portrait-retina() {
+  @media only screen and (min-width: $tablet-portrait-min) and (max-width: $tablet-portrait-max) and (-webkit-min-device-pixel-ratio: 2) {
+    @content;
+  }
+}
+
+// 980..1299 retina
+@mixin tablet-landscape-retina() {
+  @media only screen and (min-width: $tablet-landscape-min) and (max-width: $tablet-landscape-max) and (-webkit-min-device-pixel-ratio: 2) {
+    @content;
+  }
+
+}
+
+// 1300..1599 retina
+@mixin laptop-retina() {
+  @media only screen and (min-width: $laptop-min) and (max-width: $laptop-max) and (-webkit-min-device-pixel-ratio: 2) {
+    @content;
+  }
+}
+
+// 1600..1920 retina
+@mixin desktop-retina() {
+  @media only screen and (min-width: $desktop-min) and (max-width: $desktop-max) and (-webkit-min-device-pixel-ratio: 2) {
+    @content;
+  }
+
+}
+
+// combined devices
+// ..979
+@mixin phone-and-tablet-portrait() {
+  @media only screen and (max-width: $tablet-portrait-max) {
+    @content;
+  }
+
+}
+
+// ..1299
+@mixin phone-and-tablet() {
+  @media only screen and (max-width: $tablet-landscape-max) {
+    @content;
+  }
+}
+
+// ..1299 device
+@mixin phone-and-tablet-device() {
+  @media only screen and (max-device-width: $tablet-landscape-max) {
+    @content;
+  }
+}
+
+// 768..1599
+@mixin tablet-and-laptop() {
+  @media only screen and (min-width: $tablet-portrait-min) and (max-width: $laptop-max) {
+    @content;
+  }
+}
