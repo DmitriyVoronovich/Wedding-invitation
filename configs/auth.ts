@@ -1,13 +1,8 @@
-import type {AuthOptions, User} from "next-auth";
-import GoggleProvider from 'next-auth/providers/google'
+import type {AuthOptions} from "next-auth";
 import Credentials from 'next-auth/providers/credentials'
 
 export const authConfig: AuthOptions = {
     providers: [
-        GoggleProvider({
-            clientId: '',
-            clientSecret: ''
-        }),
         Credentials({
             credentials: {
                 email: {label: 'email', type: 'email', required: true},
@@ -16,13 +11,21 @@ export const authConfig: AuthOptions = {
             async authorize(credentials) {
                 if (!credentials?.email || !credentials.password) return null
 
+                const res = await fetch('http://localhost:5050/api/auth/login/admin', {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        "email": credentials.email,
+                        "password": credentials.password
+                    })
+                })
 
-                const user = [{email: 'dmitriy.vr20@gmail.com', password: '44Hx5dSQ'}]
-                const currentUser = user.find(user => user.email === credentials.email)
+                const resJson = await res.json()
 
-                if (currentUser && currentUser.password === credentials.password) {
-                    const {password, ...userWithoutPass} = currentUser;
-                    return userWithoutPass as User;
+                if (resJson?.data?.accessToken) {
+                    return resJson;
                 }
                 return null
             }
