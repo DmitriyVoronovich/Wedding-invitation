@@ -1,6 +1,5 @@
-import React from 'react';
-import { Space, Table, Tag } from 'antd';
-import type { TableProps } from 'antd';
+import {Space, Table, TableProps, Tag} from "antd/lib";
+import React from "react";
 
 interface DataType {
     key: string;
