@@ -1,6 +1,7 @@
-import {Col, Menu, MenuProps, Row} from 'antd';
+import {Col, Menu, MenuProps, Row} from "antd";
+import styles from "./index.module.scss";
 import {ScheduleOutlined, TeamOutlined, UserOutlined} from "@ant-design/icons";
-import styles from './panel.module.scss';
+import React from "react";
 
 const items: MenuProps['items'] = [
     {
@@ -20,15 +21,14 @@ const items: MenuProps['items'] = [
     },
 ]
 
-export default function Panel() {
-
+export function PanelMenu({children}: React.PropsWithChildren) {
     return (
         <Row className={styles.panelGlobal} gutter={[8, 8]}>
             <Col span={4}>
                 <Menu className={styles.panelMenu} items={items}/>
             </Col>
-            <Col span={18}>
-                {/*<GuestTable />*/}
+            <Col span={19}>
+                {children}
             </Col>
         </Row>
     )

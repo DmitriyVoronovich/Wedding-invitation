@@ -7,7 +7,6 @@ import Link from "next/link";
 import styles from './login.module.scss';
 import {signIn} from "next-auth/react";
 import React from "react";
-import {NotificationPlacement} from "antd/es/notification/interface";
 import {useRouter} from "next/navigation";
 
 const schema = yup.object().shape({
@@ -15,10 +14,10 @@ const schema = yup.object().shape({
     password: yup.string().required(),
 });
 
-export default function FormLogin({api, setContext}: any) {
+export default function AdminLogin() {
     const router = useRouter();
     const {
-        register, control, handleSubmit, formState: {errors}
+        control, handleSubmit, formState: {errors}
     }
         = useForm({
         resolver: yupResolver(schema)
@@ -26,25 +25,17 @@ export default function FormLogin({api, setContext}: any) {
 
     const onSubmit = async ({email, password}: any) => {
         try {
-            const authData = await signIn('credentials', {
+            await signIn('credentials', {
                 redirect: false,
                 email: email,
                 password: password
             });
 
-            router.push('/admin');
+            router.push('/admin/panel');
         } catch (e: any) {
-            openNotification({message: 'Error notification!', description: e.message});
+            console.log("error")
         }
     }
-
-    const openNotification = ({message, description}: any) => {
-        api.error({
-            message,
-            description,
-            placement: "topRight" as NotificationPlacement
-        });
-    };
 
 
     return (
@@ -58,10 +49,12 @@ export default function FormLogin({api, setContext}: any) {
                     )}/>
                 </Form.Item>
 
-                <Form.Item name='password' validateStatus={errors.password && 'error'}
+                <Form.Item name='password'
+                           validateStatus={errors.password && 'error'}
                            help={errors.password && 'Password is required.'}>
                     <Controller name={'password'} control={control} render={({field}) => (
-                        <Input prefix={<LockOutlined/>} type='password'
+                        <Input prefix={<LockOutlined/>}
+                               type='password'
                                placeholder='Password' {...field} />
                     )}/>
                 </Form.Item>

@@ -6,7 +6,7 @@ export async function getServerSideProps(context: any) {
     const isAdmin = (session?.user as AuthUser)?.role === 'admin'
     return {
         redirect: {
-            destination:  isAdmin ? '/admin/panel' : '/admin/antLogin',  // redirect destination path
+            destination:  isAdmin ? '/admin/guests' : '/admin/login',  // redirect destination path
             permanent: false,
         },
     }
