@@ -1,5 +1,5 @@
 import castel from "@/app/Accets/svgSchedule/Catholic_castel.svg";
-import s from "@/app/Components/ScheduleSection/ScheduleSection.module.css";
+import s from "@/app/components/ScheduleSection/ScheduleSection.module.css";
 import buff from "@/app/Accets/svgSchedule/buffet.svg";
 import banq from "@/app/Accets/svgSchedule/banquet.svg";
 import second from "@/app/Accets/svgSchedule/second_day.svg";

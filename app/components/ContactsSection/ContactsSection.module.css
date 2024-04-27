@@ -7,7 +7,7 @@
 .section_title {
     color: #454545;
     text-align: start;
-    font-family: EB Garamond, serif;
+    font-family: "EB Garamond", serif;
     font-size: calc((100vw - 360px) / (1440 - 360) * (60 - 20) + 20px);
     font-style: normal;
     font-weight: 400;
@@ -18,8 +18,8 @@
 }
 
 .section_second_title {
-    color: rgba(219, 175, 150, 0.25);
-    font-family: EB Garamond, serif;
+    color: rgb(219 175 150 / 25%);
+    font-family: "EB Garamond", serif;
     font-size: calc((100vw - 360px) / (1440 - 360) * (110 - 30) + 30px);
     font-style: normal;
     font-weight: 400;
@@ -33,7 +33,7 @@
 .section_wrapper {
     display: flex;
     justify-content: space-around;
-    margin: 64px 0 0 0;
+    margin: 64px 0 0;
     gap: 71px;
 }
 
@@ -61,7 +61,7 @@
 
 .section_text {
     color: #454545;
-    font-family: EB Garamond, serif;
+    font-family: "EB Garamond", serif;
     font-size: calc((100vw - 360px) / (1440 - 360) * (30 - 18) + 18px);
     font-style: normal;
     font-weight: 500;
@@ -73,7 +73,7 @@
 .section_description {
     text-align: center;
     color: #454545;
-    font-family: Montserrat, serif;
+    font-family: "Playfair Display", serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
@@ -93,7 +93,7 @@
 
 .contact_name {
     color: #454545;
-    font-family: EB Garamond, serif;
+    font-family: "EB Garamond", serif;
     font-size: calc((100vw - 360px) / (1440 - 360) * (30 - 18) + 18px);
     font-style: normal;
     font-weight: 500;
@@ -102,7 +102,7 @@
 
 .contact_number {
     color: #454545;
-    font-family: EB Garamond, serif;
+    font-family: "EB Garamond", serif;
     font-size: calc((100vw - 360px) / (1440 - 360) * (30 - 18) + 18px);
     font-style: normal;
     font-weight: 500;
@@ -110,14 +110,14 @@
 }
 
 .contact_inst_link {
-    margin: 13px 0 0 0;
+    margin: 13px 0 0;
 }
 
 .contact_tel_link {
-    margin: 13px 0 0 0;
+    margin: 13px 0 0;
 }
 
-@media screen and (min-width: 1540px) {
+@media screen and (width >= 1540px) {
     .section_title {
         font-size: 60px;
     }
@@ -139,10 +139,10 @@
     }
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (width <= 1000px) {
     .section_wrapper {
         display: flex;
-        margin: 24px 0 0 0;
+        margin: 24px 0 0;
         gap: 10px;
         justify-content: start;
     }
@@ -154,7 +154,7 @@
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (width <= 768px) {
     .section_container {
         padding: 10px 20px;
         margin-top: 120px;
@@ -173,7 +173,7 @@
 
     .section_wrapper {
         display: flex;
-        margin: 24px 0 0 0;
+        margin: 24px 0 0;
         gap: 10px;
         justify-content: start;
     }
@@ -207,8 +207,7 @@
     }
 }
 
-@media screen and (max-width: 576px) {
-
+@media screen and (width <= 576px) {
     .section_second_title {
         left: 30px;
         top: -10px;
@@ -217,7 +216,7 @@
     .section_wrapper {
         display: flex;
         flex-direction: column;
-        margin: 24px 0 0 0;
+        margin: 24px 0 0;
         gap: 10px;
     }
 
@@ -243,10 +242,9 @@
     }
 }
 
-@media screen and (max-width: 450px) {
-
+@media screen and (width <= 450px) {
     .section_container {
-        padding: 10px 10px;
+        padding: 10px;
         margin-top: 70px;
         position: relative;
     }
@@ -259,7 +257,7 @@
     .section_wrapper {
         display: flex;
         flex-direction: column;
-        margin: 14px 0 0 0;
+        margin: 14px 0 0;
         gap: 10px;
     }
 
@@ -302,10 +300,10 @@
     }
 
     .contact_inst_link {
-        margin: 3px 0 0 0;
+        margin: 3px 0 0;
     }
 
     .contact_tel_link {
-        margin: 3px 0 0 0;
+        margin: 3px 0 0;
     }
 }

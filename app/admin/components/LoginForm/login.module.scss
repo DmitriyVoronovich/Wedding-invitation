@@ -1,0 +1,17 @@
+@import "app/constant/variables.scss";
+
+.headerLoginPage {
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+.loginForm {
+  padding: 30px;
+  border: 2px solid $color1;
+  border-radius: 6px;
+  box-sizing: border-box;
+
+  @media screen and (max-width: 576px) {
+    padding: 50px 10px;
+  }
+}

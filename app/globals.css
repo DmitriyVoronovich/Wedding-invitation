@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@500&family=Nanum+Myeongjo&family=Nova+Script&family=Poppins:wght@500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&family=Inter:wght@400;700&family=Montserrat:wght@500&family=Nanum+Myeongjo&family=Nova+Script&family=Poppins:wght@500;700&display=swap');
+
 .my-font{
     font-family: Montserrat, serif;
 }
 
 .my-font2 {
-    font-family: EB Garamond, serif;
+    font-family: "EB Garamond", serif;
 }

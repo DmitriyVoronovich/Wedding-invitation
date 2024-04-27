@@ -4,7 +4,7 @@ import img from "@/app/Accets/image1.png";
 import svg from '../../Accets/svgSection/heard_small.svg';
 import inst from '../../Accets/svgSection/inst.svg';
 import tel from '../../Accets/svgSection/tel.svg';
-import {MENU_LIST} from "@/app/Constant/constant";
+import {MENU_LIST} from "@/app/constant/constant";
 
 export default function ContactsSection() {
     return (

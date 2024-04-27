@@ -2,7 +2,7 @@ import s from './ScheduleSection.module.css';
 import Image from "next/image";
 import heardSmall from '../../Accets/svgSection/brilint_small.svg';
 import svg from '../../Accets/svgSection/brilint.svg'
-import {EVENTS_LIST, MENU_LIST} from "@/app/Constant/constant";
+import {EVENTS_LIST, MENU_LIST} from "@/app/constant/constant";
 
 export default function ScheduleSection() {
 

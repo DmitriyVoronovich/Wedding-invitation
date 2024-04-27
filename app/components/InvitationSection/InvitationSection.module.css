@@ -10,7 +10,7 @@
 .section_title {
     color: #454545;
     text-align: start;
-    font-family: EB Garamond, serif;
+    font-family: "EB Garamond", serif;
     font-size: calc((100vw - 360px) / (1440 - 360) * (60 - 20) + 20px);
     font-style: normal;
     font-weight: 400;
@@ -24,8 +24,8 @@
     width: 930px;
     right: -50px;
     top: -30px;
-    color: rgba(219, 175, 150, 0.25);
-    font-family: EB Garamond, serif;
+    color: rgb(219 175 150 / 25%);
+    font-family: "EB Garamond", serif;
     font-size: calc((100vw - 360px) / (1440 - 360) * (110 - 30) + 30px);
     font-style: normal;
     font-weight: 400;
@@ -41,7 +41,7 @@
     gap: 20px;
     color: #454545;
     text-align: justify;
-    font-family: Montserrat, serif;
+    font-family: "Playfair Display", serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
@@ -57,7 +57,7 @@
     width: 564px;
     color: #DBAF96;
     text-align: center;
-    font-family: EB Garamond, serif;
+    font-family: "EB Garamond", serif;
     font-size: 60px;
     font-style: normal;
     font-weight: 400;
@@ -65,18 +65,18 @@
     border-top: 2px solid #DBAF96;
     border-bottom: 2px solid #DBAF96;
     padding: 35px 0;
-    margin: 31px 0 0 0;
+    margin: 31px 0 0;
 }
 
 .section_text {
     color: #454545;
     text-align: justify;
-    font-family: Montserrat, serif;
+    font-family: "Playfair Display", serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
     line-height: 25px;
-    margin: 35px 0 0 0;
+    margin: 35px 0 0;
 }
 
 .section_svg {
@@ -86,20 +86,21 @@
     z-index: 0;
 }
 
-@media screen and (min-width: 1540px) {
+@media screen and (width >= 1540px) {
     .section_title {
         font-size: 60px;
     }
+
     .second_title {
         font-size: 110px;
     }
+
     .section_date {
         font-size: 60px;
     }
 }
 
-@media screen and (max-width: 768px) {
-
+@media screen and (width <= 768px) {
     .section_container {
         align-items: center;
         margin: 67px auto 0;
@@ -127,12 +128,12 @@
         font-size: calc((100vw - 360px) / (1440 - 360) * (60 - 30) + 30px);
         line-height: 25px;
         padding: 25px 0;
-        margin: 21px 0 0 0;
+        margin: 21px 0 0;
     }
 
     .section_text {
         line-height: 25px;
-        margin: 25px 0 0 0;
+        margin: 25px 0 0;
     }
 
     .section_svg {
@@ -144,7 +145,7 @@
     }
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (width <= 576px) {
     .section_container {
         max-width: 95%;
         margin: 127px auto 0;
@@ -166,14 +167,14 @@
         border-top: 2px solid #DBAF96;
         border-bottom: 2px solid #DBAF96;
         padding: 25px 0;
-        margin: 31px 0 0 0;
+        margin: 31px 0 0;
     }
 
     .section_text {
         font-size: 16px;
         font-style: normal;
         line-height: 25px;
-        margin: 31px 0 0 0;
+        margin: 31px 0 0;
     }
 
     .section_svg {
@@ -184,8 +185,7 @@
     }
 }
 
-@media screen and (max-width: 450px) {
-
+@media screen and (width <= 450px) {
     .section_container {
         max-width: 95%;
         margin: 67px auto 0;

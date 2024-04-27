@@ -1,15 +1,21 @@
-import type {AuthOptions} from "next-auth";
-import Credentials from 'next-auth/providers/credentials'
+import type {AuthOptions, User} from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials"
+
+export interface AuthUser extends User {
+    accessToken: string;
+    role: string;
+    expirationTime: string;
+}
 
 export const authConfig: AuthOptions = {
     providers: [
-        Credentials({
+        CredentialsProvider({
             credentials: {
-                email: {label: 'email', type: 'email', required: true},
-                password: {label: 'password', type: 'password', required: true}
+                email: {label: "Email", type: "text"},
+                password: {label: "Password", type: "password"}
             },
-            async authorize(credentials) {
-                if (!credentials?.email || !credentials.password) return null
+            authorize: async (credentials: any) => {
+                if (!credentials?.email || !credentials?.password) return null
 
                 const res = await fetch('http://localhost:5050/api/auth/login/admin', {
                     method: "POST",
@@ -24,14 +30,27 @@ export const authConfig: AuthOptions = {
 
                 const resJson = await res.json()
 
-                if (resJson?.data?.accessToken) {
-                    return resJson;
-                }
-                return null
+                return resJson?.data || resJson.error;
             }
         }),
     ],
-    pages: {
-        signIn: '/login'
-    }
+    session: {
+        strategy: "jwt",
+    },
+    callbacks: {
+        async jwt({ token, user, account, profile, isNewUser }) {
+            if (user) {
+                const authUser = user as AuthUser;
+                token.accessToken = authUser.accessToken
+                token.user = authUser
+                token.expires = authUser.expirationTime
+            }
+            return token
+        },
+        async session({session, token}) {
+            session.user = token.user || undefined
+            session.expires = new Date(token.expires as string).toISOString()
+            return session
+        }
+    },
 }

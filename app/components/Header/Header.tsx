@@ -3,7 +3,7 @@
 import React, {useEffect, useState} from 'react';
 import styles from './headerStyle.module.css';
 import { Link as ScrollLink } from 'react-scroll'
-import {MENU_LIST, MOBILE_MENU_BREAKPOINT} from "@/app/Constant/constant";
+import {MENU_LIST, MOBILE_MENU_BREAKPOINT} from "@/app/constant/constant";
 
 export default function HeaderMenu() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);

@@ -11,7 +11,7 @@
 .section_title {
     color: #454545;
     text-align: start;
-    font-family: EB Garamond, serif;
+    font-family: "EB Garamond", serif;
     font-size: calc((100vw - 360px) / (1440 - 360) * (60 - 20) + 20px);
     font-style: normal;
     font-weight: 400;
@@ -25,8 +25,8 @@
     left: 90px;
     top: -20px;
     width: 80%;
-    color: rgba(219, 175, 150, 0.25);
-    font-family: EB Garamond, serif;
+    color: rgb(219 175 150 / 25%);
+    font-family: "EB Garamond", serif;
     font-size: calc((100vw - 360px) / (1440 - 360) * (110 - 30) + 30px);
     font-style: normal;
     font-weight: 400;
@@ -102,7 +102,7 @@
 .time {
     color: #454545;
     text-align: center;
-    font-family: Montserrat, serif;
+    font-family: "Playfair Display", serif;
     font-size: calc((100vw - 360px) / (1440 - 360) * (40 - 18) + 18px);
     font-style: normal;
     font-weight: 500;
@@ -120,7 +120,7 @@
 .name {
    width: 100%;
     text-align: center;
-    font-family: Montserrat, serif;
+    font-family: "Playfair Display", serif;
     font-size: calc((100vw - 360px) / (1440 - 360) * (40 - 18) + 18px);
     font-style: normal;
     font-weight: 500;
@@ -134,7 +134,7 @@
     padding-top: 10px;
     color: #000;
     text-align: center;
-    font-family: Montserrat, serif;
+    font-family: "Playfair Display", serif;
     font-size: calc((100vw - 360px) / (1440 - 360) * (20 - 16) + 16px);
     font-style: normal;
     font-weight: 500;
@@ -153,7 +153,7 @@
     z-index: 0;
 }
 
-@media screen and (min-width: 1540px) {
+@media screen and (width >= 1540px) {
     .line {
         top: 52%;
         max-width: 840px;
@@ -184,7 +184,7 @@
     }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (width <= 1200px) {
     .right_icon {
         padding-left: 0;
     }
@@ -194,7 +194,7 @@
     }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (width >= 1200px) {
     .right_icon {
         padding-left: 7.5%;
     }
@@ -204,8 +204,7 @@
     }
 }
 
-@media screen and (max-width: 768px) {
-
+@media screen and (width <= 768px) {
     .section_container {
         max-width: 100%;
         padding: 0 20px;
@@ -218,7 +217,7 @@
     }
 
     .small_heard {
-        margin: 20px 0 20px;
+        margin: 20px 0;
     }
 
     .right_icon {
@@ -261,7 +260,7 @@
     }
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (width <= 576px) {
     .section_container {
         margin: 60px 0 0;
     }
@@ -313,7 +312,7 @@
         padding-top: 10px;
         color: #000;
         text-align: center;
-        font-family: Montserrat, serif;
+        font-family: "Playfair Display", serif;
         font-size: calc((100vw - 360px) / (1440 - 360) * (20 - 16) + 16px);
         font-style: normal;
         font-weight: 500;
@@ -335,7 +334,7 @@
     }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (width <= 450px) {
     .section_container {
         padding: 0 10px;
         margin: 60px 0 0;
@@ -386,7 +385,7 @@
     .name {
         width: 100%;
         text-align: center;
-        font-family: Montserrat, serif;
+        font-family: "Playfair Display", serif;
         font-size: calc((100vw - 360px) / (1440 - 360) * (40 - 18) + 18px);
         font-style: normal;
         font-weight: 500;
@@ -402,7 +401,7 @@
 
     .img {
         grid-area: b;
-        margin: 0 0;
+        margin: 0;
     }
 
     .section_svg {
