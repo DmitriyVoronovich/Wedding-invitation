@@ -1,0 +1,38 @@
+.section_container {
+  width: 100%;
+  margin-top: 100px;
+  padding-bottom: 100px;
+}
+
+.container {
+  max-width: 1440px;
+  width: 100%;
+  padding: 0 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section_title {
+  color: #0a0a0a;
+  font-weight: 500;
+  font-size: 100px;
+  padding: 0;
+  margin: 0;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.description_button {
+  margin-top: 80px;
+  width: 100%;
+  max-width: 200px;
+  height: 80px;
+  background-color: #FFFFFF;
+  border-radius: 50px;
+  border: 1px solid #0a0a0a;
+  color:#0a0a0a;
+  font-family: "Average Sans", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 130%;
+}
