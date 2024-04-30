@@ -1,6 +1,7 @@
 import {Col, Menu, MenuProps, Row} from 'antd';
 import {ScheduleOutlined, TeamOutlined, UserOutlined} from "@ant-design/icons";
 import styles from './panel.module.scss';
+import {GuestTable} from '@/app/components/admin/panel/guests/guestTable'
 
 const items: MenuProps['items'] = [
     {
@@ -28,7 +29,7 @@ export default function Panel() {
                 <Menu className={styles.panelMenu} items={items}/>
             </Col>
             <Col span={18}>
-                {/*<GuestTable />*/}
+                <GuestTable />
             </Col>
         </Row>
     )

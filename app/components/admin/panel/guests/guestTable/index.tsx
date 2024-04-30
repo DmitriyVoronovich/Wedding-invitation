@@ -1,6 +1,6 @@
 import React from 'react';
-import { Space, Table, Tag } from 'antd';
-import type { TableProps } from 'antd';
+import { Space, Table, Tag } from 'antd/lib';
+import type { TableProps } from 'antd/lib';
 
 interface DataType {
     key: string;
@@ -83,6 +83,4 @@ const data: DataType[] = [
     },
 ];
 
-const GuestTable = () => <Table columns={columns} dataSource={data} />;
-
-export default GuestTable;
+export const GuestTable = () => <Table columns={columns} dataSource={data} />;
