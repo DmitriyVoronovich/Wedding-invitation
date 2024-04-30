@@ -1,7 +1,7 @@
 import {Col, Menu, MenuProps, Row} from 'antd';
 import {ScheduleOutlined, TeamOutlined, UserOutlined} from "@ant-design/icons";
 import styles from './panel.module.scss';
-import GuestTable from "@/app/components/admin/panel/guests/guestTable";
+import {GuestTable} from '@/app/components/admin/panel/guests/guestTable'
 
 const items: MenuProps['items'] = [
     {
