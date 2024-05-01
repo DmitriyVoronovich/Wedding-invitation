@@ -7,8 +7,10 @@ import {ScheduleSectionComponent} from "@/app/components/second/content/schedule
 import InviteComponent from "@/app/components/second/content/invite-component";
 import {SectionOneComponent} from "@/app/components/second/content/section-one";
 import {SectionTwoComponent} from "@/app/components/second/content/section_two";
-import {FooterComponent} from "@/app/components/second/content/footer-component";
+import {FooterComponent} from "app/components/second/footer/footer-component";
 import './style.css'
+import Head from "next/head";
+import '../../app/globals.css'
 
 const {Header, Footer, Content} = Layout;
 
@@ -16,7 +18,7 @@ const {Header, Footer, Content} = Layout;
 const PageLayout = ({children}: any) => {
     return (
         <html lang="en">
-        <head>
+        <Head>
             <title>Приглашение</title>
             <link rel="preconnect" href="https://fonts.googleapis.com"/>
             <link rel="preconnect" href="https://fonts.gstatic.com"/>
@@ -28,7 +30,7 @@ const PageLayout = ({children}: any) => {
                     margin: 0;
                 }
             `}</style>
-        </head>
+        </Head>
         <body>{children}</body>
         </html>
     )
@@ -37,26 +39,22 @@ const PageLayout = ({children}: any) => {
 export default function Home() {
     return (
         <>
-            <PageLayout>
-                <Layout className={s.layout_style}>
-                    <Header className={s.header_style}><HeaderComponent/></Header>
-                    <Content className={s.content_style}>
-                        <MainSectionComponent/>
-                        <InviteComponent/>
-                        <SectionOneComponent/>
-                        <ScheduleSectionComponent/>
-                        <SectionTwoComponent/>
-                    </Content>
-                    <Footer className={s.footer_style}><FooterComponent/></Footer>
-                </Layout>
-            </PageLayout>
+            <style jsx global>{`
+                body {
+                    margin: 0;
+                }
+            `}</style>
+            <Layout className={s.layout_style}>
+                <Header className={s.header_style}><HeaderComponent/></Header>
+                <Content className={s.content_style}>
+                    <MainSectionComponent/>
+                    <InviteComponent/>
+                    <SectionOneComponent/>
+                    <ScheduleSectionComponent/>
+                    <SectionTwoComponent/>
+                </Content>
+                <Footer className={s.footer_style}><FooterComponent/></Footer>
+            </Layout>
         </>
-        // <main className={s.main}>
-        //     <HeaderMenu/>
-        //     <MainSection/>
-        //     <InvitationSection/>
-        //     <ScheduleSection/>
-        //     <ContactsSection/>
-        // </main>
     )
 }

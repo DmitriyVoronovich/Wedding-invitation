@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import s from './main-section.module.scss';
 import image from '../../../../Accets/second/main_image.jpg'
 import Image from "next/image";
+import Link from "next/link";
 
 export const MainSectionComponent = () => {
 
@@ -28,7 +29,9 @@ export const MainSectionComponent = () => {
                     <div className={s.description_wrapper}>
                         <p className={s.section_description}>Суббота, 27 Июля, 2024<br/> Усадьба Долина Заречная, Щучин
                         </p>
+                        <Link href="/schedule">
                         <button className={s.description_button}>Расписание</button>
+                        </Link>
                     </div>
                     <div className={s.image_wrapper}>
                         <Image src={image} alt={'foto'} className={s.image}/>
