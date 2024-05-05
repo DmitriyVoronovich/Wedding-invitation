@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from "next/image";
-import fon from '../../../../Accets/second/fon.jpg';
+import fon from '../../../../Accets/images/CHEM9353_resized.jpeg';
 import s from './schedule-header.module.scss'
 
 export const ScheduleHeaderComponent = () => {

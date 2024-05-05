@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from "next/image";
 import s from './schedule-component.module.scss';
-import fon from '../../../../Accets/second/schedule_fon.jpg'
+import fon from '../../../../Accets/images/CHEM9032_resized.jpg'
 import {EVENTS_LIST} from "@/app/constant/constant";
 
 export const ScheduleSectionComponent = () => {
