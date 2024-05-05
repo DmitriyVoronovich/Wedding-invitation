@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import s from './main-section.module.scss';
-import image from '../../../../Accets/second/main_image.jpg'
+import image from '../../../../Accets/images/CHEM7630_resized.jpeg'
 import Image from "next/image";
 import Link from "next/link";
 
@@ -27,10 +27,12 @@ export const MainSectionComponent = () => {
                 <h2 className={s.section_text}>Алина & Павел</h2>
                 <div className={s.section_wrapper}>
                     <div className={s.description_wrapper}>
+                        {/*<p className={s.section_description}>Friday, Oct. 20, 2035<br/> The Old Chapel, San Francisco*/}
+                        {/*</p>*/}
                         <p className={s.section_description}>Суббота, 27 Июля, 2024<br/> Усадьба Долина Заречная, Щучин
                         </p>
                         <Link href="/schedule">
-                        <button className={s.description_button}>Расписание</button>
+                            <button className={s.description_button}>Расписание</button>
                         </Link>
                     </div>
                     <div className={s.image_wrapper}>

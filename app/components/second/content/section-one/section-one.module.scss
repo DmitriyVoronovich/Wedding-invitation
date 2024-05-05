@@ -22,19 +22,21 @@
   width: 425px;
   height: 425px;
   object-fit: cover;
-  object-position: top;
+  object-position: 50% 33%;
 }
 
 .image_two {
   width: 425px;
   height: 425px;
   object-fit: cover;
+   object-position: 50% 94%;
 }
 
 .image_three {
   width: 425px;
   height: 425px;
   object-fit: cover;
+  object-position: 50% 42%;
 }
 
 .phrase_wrapper {
@@ -61,5 +63,5 @@
   font-size: 18px;
   padding: 0;
   margin: 50px 0 0 0;
-  font-family: "Average Sans", sans-serif;
+ font-family: 'Avenir Light', sans-serif;
 }
