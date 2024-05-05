@@ -1,7 +1,7 @@
 import s from "./MainSection.module.css";
 import Image from "next/image";
-import img from "@/app/Accets/image1.png";
-import svg from "@/app/Accets/svgSection/branch.svg";
+import img from "@/app/Accets/first/image1.png";
+import svg from "@/app/Accets/first/svgSection/branch.svg";
 import {MENU_LIST} from "@/app/constant/constant";
 
 export default function MainSection() {

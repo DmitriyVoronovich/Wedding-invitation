@@ -1,9 +1,9 @@
 import Image from "next/image";
 import s from './ContactsSection.module.css'
-import img from "@/app/Accets/image1.png";
-import svg from '../../Accets/svgSection/heard_small.svg';
-import inst from '../../Accets/svgSection/inst.svg';
-import tel from '../../Accets/svgSection/tel.svg';
+import img from "@/app/Accets/first/image1.png";
+import svg from '@/app/Accets/first/svgSection/heard_small.svg';
+import inst from '@/app/Accets/first/svgSection/inst.svg';
+import tel from '@/app/Accets/first/svgSection/tel.svg';
 import {MENU_LIST} from "@/app/constant/constant";
 
 export default function ContactsSection() {

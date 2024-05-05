@@ -1,0 +1,40 @@
+.header_container {
+  width: 100%;
+  background-color: #cedacc;
+  padding: 30px 0;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 80px;
+  max-width: 1440px;
+  width: 100%;
+}
+
+.header_logo {
+  color: #0a0a0a;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 130%;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic ;
+}
+
+.header_menu_wrapper {
+  color: #0a0a0a;
+  text-decoration: none;
+  text-transform: uppercase;
+  display: flex;
+  gap: 50px;
+}
+
+.menu_link {
+  color: #0a0a0a;
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 130%;
+  font-family: "Average Sans", sans-serif;
+}
