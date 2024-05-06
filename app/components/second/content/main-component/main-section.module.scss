@@ -1,6 +1,10 @@
 .section_container {
   width: 100%;
   margin-top: 50px;
+
+  @media screen and (max-width: 366px) {
+    margin-top:40px;
+  }
 }
 
 .container {
@@ -9,6 +13,11 @@
   padding: 0 80px;
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
+
+  @media screen and (max-width: 366px) {
+    padding: 0 ;
+  }
 }
 
 .section_title {
@@ -19,6 +28,11 @@
   padding: 0;
   margin: 0;
   font-family: 'Cormorant Garamond', serif;
+
+  @media screen and (max-width: 366px) {
+    font-size: 23px;
+    padding: 0 20px;
+  }
 }
 
 .section_text {
@@ -29,12 +43,23 @@
   padding: 0;
   margin: 0;
   font-family: 'Cormorant Garamond', serif;
+
+  @media screen and (max-width: 366px) {
+    font-size: 40px;
+    line-height: 100%;
+    padding: 0 20px;
+  }
 }
 
 .section_wrapper {
   display: flex;
   justify-content: space-between;
   position: relative;
+
+  @media screen and (max-width: 366px) {
+    flex-direction: column;
+    padding: 0 20px;
+  }
 }
 
 .description_wrapper {
@@ -50,6 +75,11 @@
   padding: 0;
   margin: 0;
   font-family: 'Avenir Light', sans-serif;
+
+  @media screen and (max-width: 366px) {
+    font-size: 15px;
+    margin-top: 19px;
+  }
 }
 
 .description_button {
@@ -65,18 +95,26 @@
   font-weight: 300;
   font-size: 20px;
   line-height: 130%;
+
+  @media screen and (max-width: 366px) {
+    margin-top: 28px;
+    width: 94px;
+    height: 44px;
+    font-size: 14px;
+  }
 }
 
 .image_wrapper {
   top: 0;
   right: 0;
   position: absolute;
+
+  @media screen and (max-width: 366px) {
+    top: 160px;
+  }
 }
 
 .image {
-  //position: fixed;
-  //left: 10%;
-  //transition: left 1s linear;
   width: 100%;
   max-width: 763px;
   height: 100%;

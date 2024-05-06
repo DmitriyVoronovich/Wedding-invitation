@@ -9,7 +9,6 @@ import {SectionOneComponent} from "@/app/components/second/content/section-one";
 import {SectionTwoComponent} from "@/app/components/second/content/section_two";
 import {FooterComponent} from "app/components/second/footer/footer-component";
 import './style.css'
-import Head from "next/head";
 import '../../app/globals.css'
 
 const {Header, Footer, Content} = Layout;

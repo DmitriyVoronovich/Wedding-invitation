@@ -10,9 +10,15 @@ export const SectionOneComponent = () => {
         <section className={s.section_container}>
             <div className={s.container}>
                 <div className={s.image_wrapper}>
-                    <Image src={fon1} alt={'image one'} className={s.image_one}/>
-                    <Image src={fon2} alt={'image two'} className={s.image_two}/>
-                    <Image src={fon3} alt={'image three'} className={s.image_three}/>
+                    <div className={s.s}>
+                        <Image src={fon1} alt={'image one'} className={s.image_one}/>
+                    </div>
+                    <div className={s.s}>
+                        <Image src={fon2} alt={'image two'} className={s.image_two}/>
+                    </div>
+                    <div className={s.s}>
+                        <Image src={fon3} alt={'image three'} className={s.image_three}/>
+                    </div>
                 </div>
                 <div className={s.phrase_wrapper}>
                     <p className={s.phrase_text}>

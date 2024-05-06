@@ -2,6 +2,10 @@
   width: 100%;
   background-color: #ffffff;
   padding: 30px 0;
+
+  @media screen and (max-width: 366px) {
+    padding: 20px 0;
+  }
 }
 
 .container {
@@ -11,6 +15,11 @@
   padding: 0 80px;
   max-width: 1440px;
   width: 100%;
+  margin: 0 auto;
+
+  @media screen and (max-width: 366px) {
+    padding: 0 20px;
+  }
 }
 
 .header_logo {
@@ -20,6 +29,10 @@
   line-height: 130%;
   font-family: 'Cormorant Garamond', serif;
   font-style: italic ;
+
+  @media screen and (max-width: 366px) {
+    font-size: 22px;
+  }
 }
 
 .header_menu_wrapper {
@@ -37,4 +50,18 @@
   font-size: 16px;
   line-height: 130%;
  font-family: 'Avenir Light', sans-serif;
+}
+
+.burger_menu {
+  display: flex;
+  flex-direction: column;
+  color: #0a0a0a;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.burger_item {
+  display: block;
+  width: 22px;
+  border: 1px solid #0a0a0a;
 }

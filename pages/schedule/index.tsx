@@ -13,6 +13,7 @@ const {Header, Footer, Content} = Layout;
 
 
 export default function Main() {
+
     return (
         <>
             <style jsx global>{`

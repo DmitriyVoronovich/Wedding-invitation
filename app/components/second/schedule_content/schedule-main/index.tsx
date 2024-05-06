@@ -18,8 +18,8 @@ export const ScheduleMainComponent = () => {
                 <div className={s.section_wrapper}>
                     <h5 className={s.section_title}>Время & Место</h5>
                     <p className={s.section_description}>
-                        27 Июля, 2024, 16:00<br/>
-                        Щучин, Усадьба Долина Заречная
+                        27 Июля, 2024, 15:00<br/>
+                        Щучин, Костел Святой Терезы
                     </p>
                     <h5 className={s.section_title}>О мероприятии</h5>
                     <p className={s.section_description}>I’m an event description.

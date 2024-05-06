@@ -3,12 +3,21 @@
   padding-top: 50px;
   width: 100%;
   padding-bottom: 50px;
+
+  @media screen and (max-width: 366px) {
+    padding-top: 30px;
+  }
 }
 
 .container {
   max-width: 1440px;
   width: 100%;
   padding: 0 80px;
+  margin: 0 auto;
+
+  @media screen and (max-width: 366px) {
+    padding: 0;
+  }
 }
 
 .section_title {
@@ -18,25 +27,44 @@
   padding: 0;
   margin: 0;
   font-family: 'Cormorant Garamond', serif;
+
+  @media screen and (max-width: 366px) {
+    padding: 0 20px;
+    font-size: 30px;
+  }
 }
 
 .section_wrapper {
   display: flex;
   gap: 160px;
   margin-top: 80px;
+
+  @media screen and (max-width: 366px) {
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 30px;
+  }
 }
 
 .section_foto {
   width: 400px;
   height: 551px;
   object-fit: cover;
+
+  @media screen and (max-width: 366px) {
+    width: 365px;
+    height: 365px;
+    object-position: 50% 80%;
+  }
 }
 
 .list {
   padding: 0;
   margin: 0;
 
-
+  @media screen and (max-width: 366px) {
+    padding: 0 20px;
+  }
 }
 
 .list_item {
@@ -47,6 +75,11 @@
   &:nth-child(1) {
     margin-top: 15px;
   }
+
+  @media screen and (max-width: 366px) {
+    flex-direction: column;
+    gap: 0;
+  }
 }
 
 .item_number {
@@ -56,6 +89,10 @@
   padding: 0;
   margin: 0;
   font-family: 'Cormorant Garamond', serif;
+
+  @media screen and (max-width: 366px) {
+    font-size: 23px;
+  }
 }
 
 .item_event_wrapper {
@@ -71,6 +108,10 @@
   padding: 0;
   margin: 0;
   font-family: 'Cormorant Garamond', serif;
+
+  @media screen and (max-width: 366px) {
+    font-size: 23px;
+  }
 }
 
 .event_description {
@@ -79,5 +120,9 @@
   font-size: 18px;
   padding: 0;
   margin: 0;
- font-family: 'Avenir Light', sans-serif;
+  font-family: 'Avenir Light', sans-serif;
+
+  @media screen and (max-width: 366px) {
+    font-size: 15px;
+  }
 }

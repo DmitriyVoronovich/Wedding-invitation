@@ -39,20 +39,23 @@ export const MENU_LIST = {
 
 export const MENU_HEADER_LIST = [
     {
+        id: 1,
         title: "Главное",
         href: 'invite',
         offsetDesk: -30,
         offsetMob: -30
     },
     {
+        id: 2,
         title: "Приглашение",
         secondTitle: 'МЫ ЖЕНИМСЯ',
-        href: 'invitation',
+        href: 'schedule',
         offsetDesk: -125,
         offsetMob: -60
 
     },
     {
+        id: 3,
         title: "Расписание",
         secondTitle: 'СВАДЕБНЫЙ ДЕНЬ',
         href: 'schedule',
@@ -60,6 +63,7 @@ export const MENU_HEADER_LIST = [
         offsetMob: -65
     },
     {
+        id: 4,
         title: "Контакты",
         secondTitle: 'КОНТАКТЫ',
         href: 'contacts',
