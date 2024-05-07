@@ -39,20 +39,23 @@ export const MENU_LIST = {
 
 export const MENU_HEADER_LIST = [
     {
+        id: 1,
         title: "Главное",
-        href: 'main',
+        href: 'invite',
         offsetDesk: -30,
         offsetMob: -30
     },
     {
+        id: 2,
         title: "Приглашение",
         secondTitle: 'МЫ ЖЕНИМСЯ',
-        href: 'invitation',
+        href: 'schedule',
         offsetDesk: -125,
         offsetMob: -60
 
     },
     {
+        id: 3,
         title: "Расписание",
         secondTitle: 'СВАДЕБНЫЙ ДЕНЬ',
         href: 'schedule',
@@ -60,6 +63,7 @@ export const MENU_HEADER_LIST = [
         offsetMob: -65
     },
     {
+        id: 4,
         title: "Контакты",
         secondTitle: 'КОНТАКТЫ',
         href: 'contacts',
@@ -104,5 +108,36 @@ export const EVENTS_LIST = [
         image: second,
         class: s.right,
         class2: s.right_icon
+    }
+];
+
+export const SCHEDULE_LIST = [
+    {
+        id: 1,
+        name: 'Венчание',
+        place: 'Костел Святой Терезы',
+        time: '15:00 - 16:00',
+        interval: '1 час',
+    },
+    {
+        id: 2,
+        name: 'Фуршет',
+        place: 'Усадьба Долина Заречная',
+        time: '16:00 - 16:30',
+        interval: '30 минут',
+    },
+    {
+        id: 3,
+        name: 'Банкет',
+        place: 'Усадьба Долина Заречная',
+        time: '16:30 - 00:00',
+        interval: '7 часов 30 минут',
+    },
+    {
+        id: 4,
+        name: '2-й день свадьбы',
+        place: 'Усадьба Долина Заречная',
+        time: '10:00 - 20:00',
+        interval: '10 часов',
     }
 ];

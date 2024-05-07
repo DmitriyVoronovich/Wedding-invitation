@@ -1,0 +1,121 @@
+.section_container {
+  padding-top: 80px;
+  width: 100%;
+
+  @media screen and (max-width: 450px) {
+    padding-top: 0;
+  }
+}
+
+.container {
+  max-width: 1440px;
+  width: 100%;
+  padding: 0 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+
+  @media screen and (max-width: 450px) {
+    padding: 0;
+    flex-direction: column;
+  }
+}
+
+.section_wrapper {
+  max-width: 979px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (max-width: 450px) {
+    padding: 0;
+    flex-direction: column-reverse;
+  }
+}
+
+.content_wrapper {
+  width: 100%;
+
+  @media screen and (max-width: 450px) {
+    margin-top: 20px;
+  }
+}
+
+.section_first_text {
+  color: #0a0a0a;
+  font-weight: 700;
+  font-size: 22px;
+  padding: 0;
+  margin: 0 0 0 68px;
+  font-family: 'Cormorant Garamond', serif;
+
+  @media screen and (max-width: 450px) {
+    font-size: 14px;
+    margin: 0 0 0 20px;
+  }
+}
+
+.section_title {
+  color: #0a0a0a;
+  font-weight: 700;
+  font-size: 70px;
+  padding: 0;
+  margin: 10px 0 0 68px;
+  font-family: 'Cormorant Garamond', serif;
+
+  @media screen and (max-width: 450px) {
+    font-size: 28px;
+    margin: 0 0 0 20px;
+  }
+}
+
+.section_second_text {
+  color: #0a0a0a;
+  font-weight: 400;
+  font-size: 18px;
+  padding: 0;
+  margin: 30px 0 0 68px;
+  font-family: 'Avenir Light', sans-serif;
+
+  @media screen and (max-width: 450px) {
+    font-size: 14px;
+    margin: 16px 0 0 20px;
+  }
+}
+
+.description_button {
+  margin: 40px 0 0 68px;
+  width: 160px;
+  height: 48px;
+  background-color: #FFFFFF;
+  border-radius: 50px;
+  border: 1px solid #0a0a0a;
+  color: #0a0a0a;
+  font-family: 'Avenir Light', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 130%;
+  cursor: pointer;
+
+  @media screen and (max-width: 450px) {
+    font-size: 16px;
+    width: 100%;
+    max-width: 315px;
+    margin: 16px 20px 0 20px;
+    height: 44px;
+  }
+}
+
+.image {
+  margin-top: 60px;
+  width: 100%;
+  max-height: 552px;
+  height: 100%;
+  object-fit: cover;
+  object-position: 10% 20%;
+
+  @media screen and (max-width: 450px) {
+    margin-top: 0;
+  }
+}
