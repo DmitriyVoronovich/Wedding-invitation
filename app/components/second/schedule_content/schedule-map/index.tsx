@@ -25,7 +25,7 @@ export const ScheduleMapComponent = () => {
                         style={{color: '#eee', fontSize: '12px', position: 'absolute', top: '14px'}}>Католический храм в Щучине</a>
                         <iframe
                             src="https://yandex.by/map-widget/v1/?ll=24.741795%2C53.606309&mode=search&oid=220166635454&ol=biz&z=16.72"
-                            frameBorder="1"
+                            width={width < 450 ? '360' : "979"} height={width < 450 ? '350' : "400"} frameBorder="1"
                             allowFullScreen={true}
                             className={s.map}
                             style={{position: 'relative'}}></iframe>
