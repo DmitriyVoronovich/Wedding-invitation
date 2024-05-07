@@ -2,7 +2,7 @@
   width: 100%;
   padding-bottom: 50px;
 
-  @media screen and (max-width: 366px) {
+  @media screen and (max-width: 450px) {
     padding-bottom: 0;
   }
 }
@@ -16,7 +16,7 @@
   justify-content: center;
   margin: 0 auto;
 
-  @media screen and (max-width: 366px) {
+  @media screen and (max-width: 450px) {
     padding: 0 20px;
   }
 }
@@ -38,7 +38,7 @@
   margin: 60px 0 15px 68px;
   font-family: 'Cormorant Garamond', serif;
 
-  @media screen and (max-width: 366px) {
+  @media screen and (max-width: 450px) {
     margin: 40px 0 0 0;
     font-size: 20px;
   }
@@ -53,7 +53,7 @@
   margin: 0 0 0 68px;
   font-family: "Average Sans", sans-serif;
 
-  @media screen and (max-width: 366px) {
+  @media screen and (max-width: 450px) {
     margin: 16px 0 0 0;
     font-size: 14px;
   }
@@ -66,7 +66,7 @@
   width: 100%;
   max-width: 843px;
 
-  @media screen and (max-width: 366px) {
+  @media screen and (max-width: 450px) {
     margin: 0;
     font-size: 14px;
   }
@@ -79,7 +79,7 @@
   gap: 20px;
   border-bottom: 1px solid #e2e2e2;
 
-  @media screen and (max-width: 366px) {
+  @media screen and (max-width: 450px) {
     flex-direction: column;
     padding-bottom: 30px;
   }
@@ -97,7 +97,7 @@
   margin: 0;
   font-family: 'Avenir Light', sans-serif;
 
-  @media screen and (max-width: 366px) {
+  @media screen and (max-width: 450px) {
     font-size: 14px;
   }
 }
@@ -117,7 +117,7 @@
   margin: 0;
   font-family: 'Cormorant Garamond', serif;
 
-  @media screen and (max-width: 366px) {
+  @media screen and (max-width: 450px) {
     font-size: 14px;
     font-weight: 400;
   }
@@ -131,7 +131,7 @@
   margin: 0;
   font-family: 'Avenir Light', sans-serif;
 
-  @media screen and (max-width: 366px) {
+  @media screen and (max-width: 450px) {
     font-size: 14px;
     font-weight: 400;
   }
@@ -157,7 +157,7 @@
   line-height: 130%;
   cursor: pointer;
 
-  @media screen and (max-width: 366px) {
+  @media screen and (max-width: 450px) {
     font-size: 16px;
     width: 100%;
     max-width: 315px;
