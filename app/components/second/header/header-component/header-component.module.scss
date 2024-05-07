@@ -1,7 +1,11 @@
 .header_container {
   width: 100%;
-  background-color: #cedacc;
+  background-color: #ffffff;
   padding: 30px 0;
+
+  @media screen and (max-width: 450px) {
+    padding: 20px 0;
+  }
 }
 
 .container {
@@ -11,6 +15,12 @@
   padding: 0 80px;
   max-width: 1440px;
   width: 100%;
+  margin: 0 auto;
+  position: relative;
+
+  @media screen and (max-width: 450px) {
+    padding: 0 20px;
+  }
 }
 
 .header_logo {
@@ -19,7 +29,11 @@
   font-size: 25px;
   line-height: 130%;
   font-family: 'Cormorant Garamond', serif;
-  font-style: italic ;
+  font-style: italic;
+
+  @media screen and (max-width: 450px) {
+    font-size: 22px;
+  }
 }
 
 .header_menu_wrapper {
@@ -36,5 +50,42 @@
   font-weight: normal;
   font-size: 16px;
   line-height: 130%;
-  font-family: "Average Sans", sans-serif;
+  font-family: 'Avenir Light', sans-serif;
+
+  @media screen and (max-width: 450px) {
+    &:hover {
+      color: #FFFFFF;
+    }
+  }
+}
+
+.burger_menu {
+  display: flex;
+  flex-direction: column;
+  color: #0a0a0a;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.burger_item {
+  display: block;
+  width: 22px;
+  border: 1px solid #0a0a0a;
+}
+
+.close_icon {
+  margin-bottom: 50px;
+  align-self: flex-end;
+}
+
+.burger_menu_wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background-color: #cedacc;
+  transition: 1s;
 }
