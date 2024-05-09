@@ -1,19 +1,23 @@
 import React from 'react';
-import { createCache, extractStyle, StyleProvider } from '@ant-design/cssinjs';
-import Document, { Head, Html, Main, NextScript } from 'next/document';
-import type { DocumentContext } from 'next/document';
+import {createCache, extractStyle, StyleProvider} from '@ant-design/cssinjs';
+import type {DocumentContext} from 'next/document';
+import Document, {Head, Html, Main, NextScript} from 'next/document';
 
 const MyDocument = () => (
     <Html lang="en">
-        <Head />
+        <Head/>
         <body>
-        <Main />
-        <NextScript />
+        <Main/>
+        <NextScript/>
         </body>
     </Html>
 );
 
 MyDocument.getInitialProps = async (ctx: DocumentContext) => {
+    if (!ctx.pathname.startsWith('/admin')) {
+        return Document.getInitialProps(ctx);
+    }
+
     const cache = createCache();
     const originalRenderPage = ctx.renderPage;
     ctx.renderPage = () =>
