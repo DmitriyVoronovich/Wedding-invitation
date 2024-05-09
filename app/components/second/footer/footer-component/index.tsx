@@ -2,6 +2,7 @@ import React from 'react';
 import s from './footer-component.module.scss';
 import '@pages/invite/style.css'
 import {MENU_HEADER_LIST} from "@/app/constant/constant";
+import Link from "next/link";
 
 export const FooterComponent = () => {
     return (
@@ -15,11 +16,11 @@ export const FooterComponent = () => {
                 <div className={s.footer_menu_wrapper}>
                     {MENU_HEADER_LIST.map((item) => {
                         return (
-                            <a key={item.href} className={s.menu_link}>
+                            <Link href={`/${item.href}`} key={item.id} className={s.menu_link}>
                             <span>
                                 {item.title}
                             </span>
-                            </a>
+                            </Link>
                         )
                     })}
                 </div>

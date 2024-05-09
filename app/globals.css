@@ -1,7 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Average+Sans&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap');
+
 .my-font{
     font-family: 'Cormorant Garamond', serif;
 }
 
 .my-font2 {
-    font-family: "Average Sans", sans-serif;
+    font-family: 'Avenir Light', serif;
+}
+
+.ant-layout-header {
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: 'Avenir Light';
+    font-style: italic;
+    font-weight: auto;
+    src: url('Avenir-Light.otf') format('opentype');
 }

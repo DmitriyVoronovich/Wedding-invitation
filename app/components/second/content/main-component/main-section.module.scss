@@ -1,6 +1,10 @@
 .section_container {
   width: 100%;
   margin-top: 50px;
+
+  @media screen and (max-width: 450px) {
+    margin-top:40px;
+  }
 }
 
 .container {
@@ -9,6 +13,11 @@
   padding: 0 80px;
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
+
+  @media screen and (max-width: 450px) {
+    padding: 0 ;
+  }
 }
 
 .section_title {
@@ -19,6 +28,11 @@
   padding: 0;
   margin: 0;
   font-family: 'Cormorant Garamond', serif;
+
+  @media screen and (max-width: 450px) {
+    font-size: 23px;
+    padding: 0 20px;
+  }
 }
 
 .section_text {
@@ -29,12 +43,23 @@
   padding: 0;
   margin: 0;
   font-family: 'Cormorant Garamond', serif;
+
+  @media screen and (max-width: 450px) {
+    font-size: 40px;
+    line-height: 100%;
+    padding: 0 20px;
+  }
 }
 
 .section_wrapper {
   display: flex;
   justify-content: space-between;
   position: relative;
+
+  @media screen and (max-width: 450px) {
+    flex-direction: column;
+    padding: 0 20px;
+  }
 }
 
 .description_wrapper {
@@ -44,40 +69,52 @@
 
 .section_description {
   color: #0a0a0a;
-  font-weight: 400;
+  font-weight: 300;
   font-size: 20px;
   line-height: 130%;
   padding: 0;
   margin: 0;
-  font-family: "Average Sans", sans-serif;
+  font-family: 'Avenir Light', sans-serif;
+
+  @media screen and (max-width: 450px) {
+    font-size: 15px;
+    margin-top: 19px;
+  }
 }
 
 .description_button {
-  margin-top: 80px;
-  max-width: 200px;
+  cursor: pointer;
+  margin-top: 60px;
+  width: 200px;
   height: 80px;
   background-color: #FFFFFF;
   border-radius: 50px;
   border: 1px solid #0a0a0a;
-  color:#0a0a0a;
-  font-family: "Average Sans", sans-serif;
-  font-weight: 400;
+  color: #0a0a0a;
+  font-family: 'Avenir Light', sans-serif;
+  font-weight: 300;
   font-size: 20px;
   line-height: 130%;
+
+  @media screen and (max-width: 450px) {
+    margin-top: 28px;
+    min-width: 94px;
+    height: 44px;
+    font-size: 14px;
+  }
 }
 
 .image_wrapper {
   top: 0;
   right: 0;
   position: absolute;
-  width: 663px;
-  height: 848px;
+
+  @media screen and (max-width: 450px) {
+    top: 160px;
+  }
 }
 
 .image {
-  //position: fixed;
-  //left: 10%;
-  //transition: left 1s linear;
   width: 100%;
   max-width: 763px;
   height: 100%;

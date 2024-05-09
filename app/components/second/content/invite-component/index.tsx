@@ -1,9 +1,5 @@
 import React from 'react';
 import s from './invite-component.module.scss';
-import Image from "next/image";
-import fon1 from '../../../../Accets/second/fon_image_one.jpg';
-import fon2 from '../../../../Accets/second/fon_image_two.jpg';
-import fon3 from '../../../../Accets/second/fon_section_three2.jpg';
 
 const InviteComponent = () => {
     return (
