@@ -1,5 +1,5 @@
 import {Button, Checkbox, Form, FormProps, Input, Select} from 'antd';
-import {ChangedGuests, CreateOrEditInviteGroup, Invitation, InviteGroup} from "@/types/inviteGroups.type";
+import {CreateOrEditInviteGroup, Invitation, InviteGroup} from "@/types/inviteGroups.type";
 import {useEffect, useState} from "react";
 import {getAllGuestsWithoutInviteGroup} from "@api";
 import {useAdminAccessToken} from "@hooks";
@@ -50,33 +50,26 @@ export const CreateOrEditInviteGroupForm = ({editInviteGroup, handleSubmitForm}:
             >
                 <Input/>
             </Form.Item>
-            <Form.Item<ChangedGuests>
+            <Form.Item<CreateOrEditInviteGroup>
                 label="Guests"
-                name="updatedGuests"
+                name="updateGuests"
                 rules={[{required: true, message: 'Please input guests!'}]}
             >
-                <Select defaultValue={editInviteGroup?.guests.map(item => item.id)} onSelect={handleChange}
+                <Select defaultValue={editInviteGroup?.guests.map(item => item.id)}
                         mode="multiple"
                         allowClear options={guestsWithoutInviteGroup.map(item => ({
                     value: item.id,
                     label: `${item.firstName} ${item.lastName}`
                 }))}/>
             </Form.Item>
-            <Form.Item<Invitation>
-                name="checkSlip"
+            <Form.Item<CreateOrEditInviteGroup>
+                name="invitation"
                 wrapperCol={{offset: 8, span: 16}}
-                initialValue={false}
+                initialValue={{checkSlip: false, checkTransport: false} as Invitation}
                 valuePropName="checked"
             >
-                <Checkbox>Guest need a place to sleep</Checkbox>
-            </Form.Item>
-            <Form.Item<Invitation>
-                name="checkTransport"
-                wrapperCol={{offset: 8, span: 16}}
-                initialValue={false}
-                valuePropName="checked"
-            >
-                <Checkbox>Guest needs transport</Checkbox>
+                <Checkbox name={'checkSlip'}>Guest need a place to sleep</Checkbox>
+                <Checkbox name={'checkTransport'}>Guest needs transport</Checkbox>
             </Form.Item>
             <Form.Item wrapperCol={{offset: 8, span: 16}}>
                 <Button type="primary" htmlType="submit">
