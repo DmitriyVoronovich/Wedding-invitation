@@ -63,13 +63,20 @@ export const CreateOrEditInviteGroupForm = ({editInviteGroup, handleSubmitForm}:
                 }))}/>
             </Form.Item>
             <Form.Item<CreateOrEditInviteGroup>
-                name="invitation"
+                name={['invitation', 'checkSlip']}
+                wrapperCol={{offset: 8, span: 16}}
+                initialValue={false}
+                valuePropName="checked"
+            >
+                <Checkbox>Guest need a place to sleep</Checkbox>
+            </Form.Item>
+            <Form.Item<CreateOrEditInviteGroup>
+                name={['invitation', 'checkTransport']}
                 wrapperCol={{offset: 8, span: 16}}
                 initialValue={{checkSlip: false, checkTransport: false} as Invitation}
                 valuePropName="checked"
             >
-                <Checkbox name={'checkSlip'}>Guest need a place to sleep</Checkbox>
-                <Checkbox name={'checkTransport'}>Guest needs transport</Checkbox>
+                <Checkbox name={'checkTransport'}>Guest need a place to sleep</Checkbox>
             </Form.Item>
             <Form.Item wrapperCol={{offset: 8, span: 16}}>
                 <Button type="primary" htmlType="submit">
