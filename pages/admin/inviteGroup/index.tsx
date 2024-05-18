@@ -7,6 +7,9 @@ import {getServerSession} from "next-auth";
 import {authConfig} from "@/configs/auth";
 import {AuthUser} from "@/types/auth.type";
 import {Guest} from "@/types/guest.type";
+import {getAllInviteGroupsOnServer} from "@/app/service/api/inviteGroups.api";
+import {InviteGroup} from "@/types/inviteGroups.type";
+import {InviteGroupTable} from "@/app/admin/components/panel/inviteGroups";
 
 const Context = createContext({} as any);
 
@@ -16,16 +19,16 @@ export const isLoggedInInServerSide = (session: any) => {
 
 export async function getServerSideProps(context: any) {
     const session = await getServerSession(context.req, context.res, authConfig);
-    const accessToken = getAccessToken(session?.user as AuthUser);
-    const guests = await getAllGuestsOnServer(accessToken);
+    const accessToken =  getAccessToken(session?.user as AuthUser);
+    const inviteGroups = await getAllInviteGroupsOnServer(accessToken);
 
     return {
-        props: {serverGuests: guests || [], session: session || null}
+        props: {serverInviteGroups: inviteGroups || [], session: session || null}
     }
 }
 
-export default function Guests({serverGuests}: any) {
-    const [guests, setGuests] = useState<Guest[]>(serverGuests || []); // [1
+export default function InviteGroup({serverInviteGroups}: any) {
+    const [inviteGroups, setInviteGroups] = useState<InviteGroup[]>(serverInviteGroups || []); // [1
     const [notificationApi, contextHolder] = notification.useNotification();
     const contextValue = useMemo(() => ({} as any), []);
 
@@ -33,7 +36,7 @@ export default function Guests({serverGuests}: any) {
         <Context.Provider value={contextValue}>
             {contextHolder}
             <PanelMenu>
-                <GuestTable notificationApi={notificationApi} guests={guests} setGuests={setGuests}/>
+                <InviteGroupTable inviteGroups={inviteGroups} setInviteGroups={setInviteGroups} notificationApi={notificationApi} />
             </PanelMenu>
         </Context.Provider>
     )

@@ -4,6 +4,7 @@ import {AuthUser} from "@/types/auth.type";
 import {singInAdmin} from "@/app/service/api/auth.api";
 
 export const authConfig: AuthOptions = {
+    secret: process.env.AUTH_SECRET,
     providers: [
         CredentialsProvider({
             credentials: {
@@ -18,7 +19,7 @@ export const authConfig: AuthOptions = {
                     "password": credentials.password
                 });
 
-                return resJson?.data || resJson.error;
+                return resJson?.data || resJson?.error;
             }
         }),
     ],

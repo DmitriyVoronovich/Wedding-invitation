@@ -1,80 +1,122 @@
-import {Table, Space, TableProps} from "antd/lib";
-import React from "react";
-import {Guest} from "@/types/guest.type";
-import {LastChangeCell} from "./lastChangeCell";
-import {DeleteOutlined, EditOutlined} from "@ant-design/icons";
+import {Space, Table} from "antd/lib";
+import React, {Dispatch, SetStateAction, useMemo, useState} from "react";
+import {CreateOrEditGuest, Guest} from "@/types/guest.type";
+import {DataDrawer, DrawerTitle} from "app/admin/components/panel/dataDrawer";
+import {NotificationInstance} from "antd/es/notification/interface";
+import {Button, Modal} from "antd";
+import {createGuest, deleteGuest, editGuest} from "@api";
+import {useAdminAccessToken} from "@hooks";
+import {GuestColumns, rowSelection} from "./guestColumns";
+import {EditGuestForm} from "@admin-components";
+
+import './index.css';
+import {prepareNotificationMessage} from "@/app/admin/components/panel/utils";
+
+export enum TableOpen {
+    editDrawer = 'editDrawer',
+    addDrawer = 'addDrawer',
+    removeConfirm = 'removeConfirm',
+    nothing = ''
+
+}
+
+export const GuestTable = ({guests, setGuests, notificationApi}: {
+        guests: Guest[],
+        setGuests: Dispatch<SetStateAction<Guest[]>>,
+        notificationApi: NotificationInstance
+    }) => {
+        const accessToken = useAdminAccessToken();
+        const [tableOpen, setTableOpen] = useState<TableOpen>(TableOpen.nothing);
+        const [confirmLoading, setConfirmLoading] = useState<boolean>(false);
+        const [selectedGuest, setSelectedGuest] = useState<Guest | undefined>(undefined);
+        const [modalText, setModalText] = useState("Confirm remove");
+        const notificationMessage = prepareNotificationMessage(notificationApi);
+
+        const handleSelectActionGuest = (guest: Guest, tableOpenAction: TableOpen) => {
+            setSelectedGuest(guest);
+            setTableOpen(tableOpenAction);
+        }
+
+        const closeAll = () => {
+            setTableOpen(TableOpen.nothing);
+            setConfirmLoading(false);
+            setSelectedGuest(undefined);
+        }
+
+        const handleDeleteGuest = async () => {
+            setModalText('Please wait ...');
+            setConfirmLoading(true);
+
+            const isDeleted = await deleteGuest(accessToken, selectedGuest?.id!);
+            closeAll();
+
+            notificationMessage(isDeleted, {
+                success: 'Guest removed',
+                error: 'Guest not removed'
+            }, {
+                success: () => setGuests(guests.filter(guest => guest.id !== selectedGuest?.id)),
+            });
+        }
+
+        const handleEditGuest = async (editedGuest: CreateOrEditGuest) => {
+            const editGuestResp = await editGuest(accessToken, {id: selectedGuest?.id, ...editedGuest});
+            closeAll();
 
 
+            notificationMessage(!!editGuestResp, {
+                success: 'Guest edited',
+                error: 'Guest not edited'
+            }, {
+                success: () => editGuestResp &&
+                    setGuests(guests.map(guest => guest.id === selectedGuest?.id ? editGuestResp : guest)),
+            });
+        }
 
-const columns: TableProps<Guest>['columns'] = [
-    {
-        title: 'Adult',
-        dataIndex: 'isAdult',
-        key: 'isAdult',
-        render: (isAdult: boolean) => isAdult ? 'Yes' : 'No'
-    },
-    {
-        title: 'First Name',
-        dataIndex: 'firstName',
-        key: 'firstName',
-    },
-    {
-        title: 'First Name',
-        dataIndex: 'lastName',
-        key: 'lastName',
-    },
-    {
-        title: 'Side',
-        dataIndex: 'side',
-        key: 'side',
-    },
-    {
-        title: 'Last changes',
-        key: 'lastChanges',
-        dataIndex: 'lastChanges',
-        render: (_, guest: Guest) => <LastChangeCell guest={guest}/>
-    },
-    {
-        title: 'Action',
-        key: 'action',
-        render: (_, guest: Guest) => (
-            <Space size="middle">
-                <EditOutlined />
-                <DeleteOutlined />
-            </Space>
-        ),
-    },
-];
+        const handleCreateGuest = async (editedGuest: CreateOrEditGuest) => {
+            const createdGuestResp = await createGuest(accessToken, editedGuest);
+            closeAll();
 
-const data: Guest[] = [
-    {
-        "id": "65c4f617c17a841a58c9ea47",
-        "createdAt": "2024-02-08T15:41:11.004Z",
-        "updatedAt": "2024-02-09T16:48:28.884Z",
-        "role": "guest" as Guest['role'],
-        "inviteId": "6d3ce76f-c00a-444c-a7ce-258a84c8e339",
-        "firstName": "Виталий",
-        "lastName": "Касперко",
-        "side": "husband" as Guest['side'],
-        "isAdult": true,
-        "createdBy": "voronovich.pavel99@gmail.com",
-        "modifyBy": "voronovich.pavel99@gmail.com"
-    },
-    {
-        "id": "65c8ec6ac789d85fd5f611b8",
-        "createdAt": "2024-02-11T15:48:58.459Z",
-        "updatedAt": "2024-02-12T23:25:55.311Z",
-        "role": "guest" as Guest['role'],
-        "inviteId": "623c9ae0-183a-479f-b36d-b675d85b28dc",
-        "firstName": "Виталий 123",
-        "lastName": "Касперко",
-        "side": "wife" as Guest['side'],
-        "isAdult": true,
-        "inviteGroup": "65caa28dfba056e3038a1c48",
-        "createdBy": "voronovich.pavel99@gmail.com"
+            notificationMessage(!!createdGuestResp, {
+                success: 'Guest created',
+                error: 'Guest not created'
+            }, {
+                success: () => createdGuestResp && setGuests([...guests, createdGuestResp]),
+            });
+        }
+
+        const guestsColumns = useMemo(
+            () => GuestColumns(handleSelectActionGuest)
+            , [handleSelectActionGuest]);
+        const drawerOpen = useMemo(
+            () => [TableOpen.editDrawer, TableOpen.addDrawer].includes(tableOpen)
+            , [tableOpen]);
+        const drawerTitle = useMemo(
+            () => tableOpen === TableOpen.editDrawer ? DrawerTitle.EDIT_GUEST : DrawerTitle.CREATE_GUEST
+            , [tableOpen]);
+
+        return (
+            <>
+                <Space wrap className={'guest-table'}>
+                    <Button size={'middle'} ghost type='primary'
+                            onClick={() => setTableOpen(TableOpen.addDrawer)}>
+                        {DrawerTitle.CREATE_GUEST}
+                    </Button>
+                </Space>
+                <Table bordered rowSelection={rowSelection} rowKey="id" columns={guestsColumns}
+                       dataSource={guests}/>
+                <DataDrawer open={drawerOpen} drawerTitle={drawerTitle} onClose={closeAll}>
+                    {tableOpen === TableOpen.editDrawer && selectedGuest &&
+                        <EditGuestForm key={DrawerTitle.EDIT_GUEST} editGuest={selectedGuest}
+                                       handleSubmitForm={handleEditGuest}/>}
+                    {tableOpen === TableOpen.addDrawer &&
+                        <EditGuestForm key={DrawerTitle.CREATE_GUEST} handleSubmitForm={handleCreateGuest}/>}
+                </DataDrawer>
+                <Modal title={modalText}
+                       open={tableOpen === TableOpen.removeConfirm}
+                       confirmLoading={confirmLoading}
+                       onOk={handleDeleteGuest}
+                       onCancel={closeAll}/>
+            </>
+        )
     }
-];
-
-const GuestTable = () => <Table columns={columns} dataSource={data}/>;
-
-export default GuestTable;
+;

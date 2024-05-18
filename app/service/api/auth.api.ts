@@ -6,10 +6,9 @@ type SingInAdminData = {
 }
 
 export const singInAdmin = async (loginData: SingInAdminData) => {
-    const response = await postRequestJson<SingInAdminData>({
-        url: "/api/auth/login/admin",
+    return await postRequestJson<SingInAdminData>({
+        server: true,
+        url: '/api/data/auth/login/admin',
         body: loginData
     });
-
-    return await response.json();
 }

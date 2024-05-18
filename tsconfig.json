@@ -30,14 +30,17 @@
       "@/types/*": [
         "./app/types/*"
       ],
-      "@/api/*": [
-        "./app/services/api/*"
+      "@api": [
+        "./app/service/api/index.ts"
       ],
       "@utils": [
-        "./services/utils"
+        "./app/service/utils/index.ts"
       ],
-      "@/admin-components/*": [
-        "./app/admin/components/*"
+      "@admin-components": [
+        "./app/admin/components/index.ts"
+      ],
+      "@hooks": [
+        "./app/hooks/index.ts"
       ],
       "@pages/*": [
         "./pages/*"

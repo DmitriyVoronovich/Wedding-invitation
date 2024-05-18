@@ -25,13 +25,17 @@ export default function AdminLogin() {
 
     const onSubmit = async ({email, password}: any) => {
         try {
-            await signIn('credentials', {
+            const signInResponse = await signIn('credentials', {
                 redirect: false,
                 email: email,
                 password: password
             });
 
-            router.push('/admin/panel');
+            if (signInResponse?.ok) {
+                router.push('/admin/guests');
+            }
+
+
         } catch (e: any) {
             console.log("error")
         }
@@ -44,7 +48,9 @@ export default function AdminLogin() {
             <Form onFinish={handleSubmit(onSubmit)}>
                 <Form.Item name='email' validateStatus={errors.email && 'error'}
                            help={errors.email && 'Email is required.'}>
-                    <Controller name={'email'} control={control} render={({field}) => (
+                    <Controller name={'email'}
+                                control={control}
+                                render={({field}) => (
                         <Input prefix={<MailOutlined/>} placeholder='Email' {...field} />
                     )}/>
                 </Form.Item>

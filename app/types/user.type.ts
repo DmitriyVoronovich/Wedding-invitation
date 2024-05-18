@@ -8,4 +8,6 @@ export type UserType = {
   role: Role;
   createdAt: string;
   updatedAt: string;
+  createdBy: string;
+  modifyBy?: string;
 };
