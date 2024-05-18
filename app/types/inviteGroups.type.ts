@@ -14,14 +14,19 @@ type InviteGroup = UserType & {
     invitation: Invitation;
 };
 
+type ChangedGuests = {
+    [key: string]: boolean;
+};
+
 type CreateOrEditInviteGroup = {
     id?: string;
     groupName: string;
-    updateGuests: { [key: string]: boolean };
+    updateGuests: ChangedGuests;
     invitation: Invitation;
 };
 
 export type {
+    ChangedGuests,
     InviteGroup,
     CreateOrEditInviteGroup
 };

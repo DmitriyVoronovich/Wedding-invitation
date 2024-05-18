@@ -1,5 +1,5 @@
 import {Button, Checkbox, Form, FormProps, Input, Select} from 'antd';
-import {CreateOrEditInviteGroup, Invitation, InviteGroup} from "@/types/inviteGroups.type";
+import {ChangedGuests, CreateOrEditInviteGroup, Invitation, InviteGroup} from "@/types/inviteGroups.type";
 import {useEffect, useState} from "react";
 import {getAllGuestsWithoutInviteGroup} from "@api";
 import {useAdminAccessToken} from "@hooks";
@@ -31,6 +31,7 @@ export const CreateOrEditInviteGroupForm = ({editInviteGroup, handleSubmitForm}:
         console.log(`selected ${value}`);
     };
 
+
     return (
         <Form
             name="basic"
@@ -49,9 +50,9 @@ export const CreateOrEditInviteGroupForm = ({editInviteGroup, handleSubmitForm}:
             >
                 <Input/>
             </Form.Item>
-            <Form.Item<InviteGroup>
-                label="guests"
-                name="guests"
+            <Form.Item<ChangedGuests>
+                label="Guests"
+                name="updatedGuests"
                 rules={[{required: true, message: 'Please input guests!'}]}
             >
                 <Select defaultValue={editInviteGroup?.guests.map(item => item.id)} onSelect={handleChange}
