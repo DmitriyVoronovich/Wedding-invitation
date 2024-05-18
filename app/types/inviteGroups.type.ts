@@ -1,7 +1,7 @@
 import {Guest} from "@/types/guest.type";
 import {UserType} from "@/types/user.type";
 
-type Invitation = {
+export type Invitation = {
     inviteTitle: string;
     checkSlip: boolean;
     checkTransport: boolean;

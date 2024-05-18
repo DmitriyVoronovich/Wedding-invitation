@@ -1,5 +1,6 @@
 import { CreateOrEditGuest, Guest} from "@/types/guest.type";
 import {deleteRequestJson, getResponseJson, postRequestJson, putRequestJson} from "@/app/service/api/utils.api";
+import {InviteGroup} from "@/types/inviteGroups.type";
 
 export const getAllGuestsOnServer = async (accessToken: string) => {
     try {
@@ -109,5 +110,21 @@ export const deleteGuest = async (accessToken: string, id: string): Promise<bool
         return !!data;
     } catch (error) {
         return false;
+    }
+}
+
+export const getAllGuestsWithoutInviteGroup = async (accessToken: string) => {
+    try {
+        const json = await getResponseJson({
+            server: false,
+            url: `/api/data/guests?inviteGroup=empty`,
+            accessToken
+        });
+        const {data} = json;
+
+        return data as Guest[];
+    } catch
+        (error) {
+        return null;
     }
 }

@@ -3,8 +3,9 @@ import {Space, TableProps} from "antd/lib";
 import {DeleteOutlined, EditOutlined} from "@ant-design/icons";
 import React from "react";
 import {TableRowSelection} from "antd/es/table/interface";
-import {LastChangeCell, TableOpen} from "@admin-components";
+import {LastChangeCell} from "@admin-components";
 import {InviteGroup} from "@/types/inviteGroups.type";
+import {TableGroupOpen} from "@/app/admin/components/panel/inviteGroups";
 
 export const rowSelection: TableRowSelection<InviteGroup> = {
     onChange: (selectedRowKeys, selectedRows) => {
@@ -18,8 +19,8 @@ export const rowSelection: TableRowSelection<InviteGroup> = {
     },
 };
 
-export const InviteGroupColumns: (handleSelectActionInviteGroup: (inviteGroup: InviteGroup, tableOpenAction: TableOpen) => void) => TableProps<InviteGroup>["columns"] =
-    (handleSelectActionInviteGroup: (inviteGroup: InviteGroup, tableOpenAction: TableOpen) => void): TableProps<InviteGroup>['columns'] =>
+export const InviteGroupColumns: (handleSelectActionInviteGroup: (inviteGroup: InviteGroup, tableOpenAction: TableGroupOpen) => void) => TableProps<InviteGroup>["columns"] =
+    (handleSelectActionInviteGroup: (inviteGroup: InviteGroup, tableOpenAction: TableGroupOpen) => void): TableProps<InviteGroup>['columns'] =>
         ([
             {
                 title: 'Group Name',
@@ -47,8 +48,8 @@ export const InviteGroupColumns: (handleSelectActionInviteGroup: (inviteGroup: I
                 key: 'action',
                 render: (_, inviteGroup: InviteGroup) => (
                     <Space size="middle">
-                        <EditOutlined onClick={() => handleSelectActionInviteGroup(inviteGroup, TableOpen.editDrawer)}/>
-                        <DeleteOutlined onClick={() => handleSelectActionInviteGroup(inviteGroup, TableOpen.removeConfirm)}/>
+                        <EditOutlined onClick={() => handleSelectActionInviteGroup(inviteGroup, TableGroupOpen.editDrawer)}/>
+                        <DeleteOutlined onClick={() => handleSelectActionInviteGroup(inviteGroup, TableGroupOpen.removeConfirm)}/>
                     </Space>
                 ),
             },

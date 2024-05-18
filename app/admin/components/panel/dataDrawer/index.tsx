@@ -5,7 +5,9 @@ import {Guest} from "@/types/guest.type";
 
 export enum DrawerTitle {
     CREATE_GUEST = 'Create guest',
-    EDIT_GUEST = 'Edit guest'
+    EDIT_GUEST = 'Edit guest',
+    CREATE_INVITE_GROUP = 'Create invite group',
+    EDIT_INVITE_GROUP = 'Edit invite group',
 }
 
 export type DataDrawerProps = {

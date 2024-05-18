@@ -5,7 +5,7 @@ import Link from "next/link";
 import {CloseOutlined} from "@ant-design/icons";
 
 export const HeaderComponent = () => {
-    const [width, setWidth] = React.useState(0);
+    const [width, setWidth] = React.useState(769);
     const [open, setOpen] = useState(false);
 
     useEffect(() => {

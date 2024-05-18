@@ -1,2 +1,2 @@
 export * from './inviteGroupTable';
-export * from './editGuestForm';
+export * from './editInviteGroupForm';

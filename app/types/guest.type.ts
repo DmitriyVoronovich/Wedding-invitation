@@ -29,6 +29,7 @@ type CreateOrEditGuest = {
     gender: GuestGender;
 };
 
+
 export {GuestSide, GuestGender};
 
 export type {Guest, CreateOrEditGuest};

@@ -1,5 +1,5 @@
 import {getAccessToken} from "@utils";
-import {getAllGuestsOnServer} from "@api";
+import {getAllGuestsOnServer, getAllGuestsWithoutInviteGroup} from "@api";
 import {GuestTable, PanelMenu} from "@admin-components";
 import {createContext, useMemo, useState} from "react";
 import {notification} from "antd";
@@ -36,7 +36,7 @@ export default function InviteGroup({serverInviteGroups}: any) {
         <Context.Provider value={contextValue}>
             {contextHolder}
             <PanelMenu>
-                <InviteGroupTable inviteGroups={inviteGroups} setInviteGroups={setInviteGroups} notificationApi={notificationApi} />
+                <InviteGroupTable inviteGroups={inviteGroups} setInviteGroups={setInviteGroups} notificationApi={notificationApi}  />
             </PanelMenu>
         </Context.Provider>
     )
