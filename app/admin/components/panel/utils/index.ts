@@ -19,7 +19,7 @@ export const inviteText = (inviteGroup: InviteGroup) => {
     }
 
     if (inviteGroup.guests.length === 1) {
-        return inviteGroup.guests[0].gender === GuestGender.male ? 'Дорогой ' : 'Дорогая ';
+        return `${inviteGroup.guests[0].gender === GuestGender.male ? 'Дорогой ' : 'Дорогая '} ${inviteGroup.guests[0].firstName}`;
     }
 
     return `Дорогие ${inviteGroup.guests.map(guest => guest.firstName).join(', ').replace(/,([^,]*)$/, ' и$1')}`;
