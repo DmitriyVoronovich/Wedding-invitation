@@ -45,8 +45,8 @@ export const InviteGroupTable = ({inviteGroups, setInviteGroups, notificationApi
             setSelectedInviteGroup(undefined);
         }
 
-        const handleEditInviteGroup = async (editedInviteGroup: CreateOrEditInviteGroup) => {
-            const editInviteGroupResp = await editInviteGroup(accessToken, editedInviteGroup);
+        const handleEditInviteGroup = async ({guests,...editedInviteGroup}: CreateOrEditInviteGroup) => {
+            const editInviteGroupResp = await editInviteGroup(accessToken, {id: selectedInviteGroup?.id, ...editedInviteGroup});
             closeAll();
 
 
@@ -59,7 +59,7 @@ export const InviteGroupTable = ({inviteGroups, setInviteGroups, notificationApi
             });
         }
 
-        const handleCreateInviteGroup = async (editedInviteGroup: CreateOrEditInviteGroup) => {
+        const handleCreateInviteGroup = async ({updateGuests,...editedInviteGroup}: CreateOrEditInviteGroup) => {
             const editInviteGroupResp = await createInviteGroup(accessToken, editedInviteGroup);
             closeAll();
 
@@ -67,7 +67,7 @@ export const InviteGroupTable = ({inviteGroups, setInviteGroups, notificationApi
                 success: 'Invite group created',
                 error: 'Invite group not created'
             }, {
-                // success: () => editInviteGroupResp && setInviteGroups([...inviteGroups, editInviteGroupResp]),
+                success: () => editInviteGroupResp && setInviteGroups([...inviteGroups, editInviteGroupResp]),
             });
         }
 

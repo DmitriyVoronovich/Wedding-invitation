@@ -1,5 +1,5 @@
 import {Button, Checkbox, Form, FormProps, Input, Select} from 'antd';
-import {CreateOrEditInviteGroup, Invitation, InviteGroup} from "@/types/inviteGroups.type";
+import {ChangedGuests, CreateOrEditInviteGroup, Invitation, InviteGroup} from "@/types/inviteGroups.type";
 import {useEffect, useState} from "react";
 import {getAllGuestsWithoutInviteGroup} from "@api";
 import {useAdminAccessToken} from "@hooks";
@@ -24,13 +24,20 @@ export const CreateOrEditInviteGroupForm = ({editInviteGroup, handleSubmitForm}:
         getGuestsWithoutInviteGroup();
     }, [])
     const onFinish: FormProps<CreateOrEditInviteGroup>['onFinish'] = (values) => {
+
+        const changedGuest = {
+            ...values.guests.reduce( (acum, item) => {
+                acum[item] = true
+                return acum
+            }, {} as ChangedGuests),
+            ...editInviteGroup?.guests.filter(({id}) => !values.guests.includes(id)).reduce( (acum, {id}) => {
+                acum[id] = false
+                return acum
+            }, {} as ChangedGuests)
+        };
+        values.updateGuests = changedGuest;
         handleSubmitForm(values);
     }
-
-    const handleChange = (value: any) => {
-        console.log(`selected ${value}`);
-    };
-
 
     return (
         <Form
@@ -38,12 +45,12 @@ export const CreateOrEditInviteGroupForm = ({editInviteGroup, handleSubmitForm}:
             labelCol={{span: 8}}
             wrapperCol={{span: 16}}
             style={{maxWidth: 600}}
-            initialValues={editInviteGroup || {} as InviteGroup}
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
             autoComplete="off"
         >
             <Form.Item<CreateOrEditInviteGroup>
+                initialValue={editInviteGroup?.groupName}
                 label="group Name"
                 name="groupName"
                 rules={[{required: true, message: 'Please input your group name!'}]}
@@ -52,10 +59,11 @@ export const CreateOrEditInviteGroupForm = ({editInviteGroup, handleSubmitForm}:
             </Form.Item>
             <Form.Item<CreateOrEditInviteGroup>
                 label="Guests"
-                name="updateGuests"
+                name="guests"
                 rules={[{required: true, message: 'Please input guests!'}]}
+                initialValue={editInviteGroup?.guests.map(item => item.id)}
             >
-                <Select defaultValue={editInviteGroup?.guests.map(item => item.id)}
+                <Select
                         mode="multiple"
                         allowClear options={guestsWithoutInviteGroup.map(item => ({
                     value: item.id,
@@ -73,10 +81,10 @@ export const CreateOrEditInviteGroupForm = ({editInviteGroup, handleSubmitForm}:
             <Form.Item<CreateOrEditInviteGroup>
                 name={['invitation', 'checkTransport']}
                 wrapperCol={{offset: 8, span: 16}}
-                initialValue={{checkSlip: false, checkTransport: false} as Invitation}
+                initialValue={false}
                 valuePropName="checked"
             >
-                <Checkbox name={'checkTransport'}>Guest need a place to sleep</Checkbox>
+                <Checkbox >Guest need a place to sleep</Checkbox>
             </Form.Item>
             <Form.Item wrapperCol={{offset: 8, span: 16}}>
                 <Button type="primary" htmlType="submit">

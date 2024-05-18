@@ -1,6 +1,5 @@
-import {CreateOrEditGuest, Guest} from "@/types/guest.type";
 import {deleteRequestJson, getResponseJson, postRequestJson, putRequestJson} from "@/app/service/api/utils.api";
-import {CreateOrEditInviteGroup, InviteGroup} from "@/types/inviteGroups.type";
+import {CreateInviteGroupRequest, EditInviteGroupRequest, InviteGroup} from "@/types/inviteGroups.type";
 
 export const getAllInviteGroupsOnServer = async (accessToken: string) => {
     try {
@@ -18,34 +17,33 @@ export const getAllInviteGroupsOnServer = async (accessToken: string) => {
     }
 }
 
-export const createInviteGroup = async (accessToken: string, addInviteGroup: CreateOrEditInviteGroup): Promise<InviteGroup | null> => {
+export const createInviteGroup = async (accessToken: string, addInviteGroup: CreateInviteGroupRequest): Promise<InviteGroup | null> => {
     try {
-        // const json = await postRequestJson<CreateOrEditInviteGroup>({
-        //     server: false,
-        //     url: "/api/data/inviteGroups",
-        //     accessToken,
-        //     body: addGuest
-        // });
-        // const {data} = json;
-        console.log(addInviteGroup)
-        return {addInviteGroup} as InviteGroup;
+        const json = await postRequestJson<CreateInviteGroupRequest>({
+            server: false,
+            url: "/api/data/inviteGroups",
+            accessToken,
+            body: addInviteGroup
+        });
+        const {data} = json;
+
+        return data as InviteGroup;
     } catch (error) {
         return null;
     }
 }
 
-export const editInviteGroup = async (accessToken: string, editedInviteGroup: CreateOrEditInviteGroup): Promise<InviteGroup | null> => {
+export const editInviteGroup = async (accessToken: string, editedInviteGroup: EditInviteGroupRequest): Promise<InviteGroup | null> => {
     try {
-        // const json = await putRequestJson<CreateOrEditInviteGroup>({
-        //     server: false,
-        //     url: "/api/data/inviteGroups",
-        //     accessToken,
-        //     body: editedInviteGroup
-        // });
-        // const {data} = json;
+        const json = await putRequestJson<EditInviteGroupRequest>({
+            server: false,
+            url: "/api/data/inviteGroups",
+            accessToken,
+            body: editedInviteGroup
+        });
+        const {data} = json;
 
-        console.log(editedInviteGroup)
-        return {} as InviteGroup;
+        return data as InviteGroup;
     } catch (error) {
         return null;
     }
@@ -54,14 +52,14 @@ export const editInviteGroup = async (accessToken: string, editedInviteGroup: Cr
 
 export const deleteInviteGroup = async (accessToken: string, id: string): Promise<boolean> => {
     try {
-        // const json = await deleteRequestJson({
-        //     server: false,
-        //     url: `/api/data/guests/${id}`,
-        //     accessToken
-        // });
-        // const {data} = json;
-        console.log(id)
-        return !!{};
+        const json = await deleteRequestJson({
+            server: false,
+            url: `/api/data/inviteGroups/${id}`,
+            accessToken
+        });
+        const {data} = json;
+
+        return !!data;
     } catch (error) {
         return false;
     }

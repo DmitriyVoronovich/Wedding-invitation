@@ -21,12 +21,20 @@ type ChangedGuests = {
 type CreateOrEditInviteGroup = {
     id?: string;
     groupName: string;
+    guests: string[];
     updateGuests: ChangedGuests;
     invitation: Invitation;
 };
 
+type EditInviteGroupRequest = Omit<CreateOrEditInviteGroup, 'guests'>;
+
+type CreateInviteGroupRequest = Omit<CreateOrEditInviteGroup, 'updateGuests'>
+
+
 export type {
     ChangedGuests,
     InviteGroup,
-    CreateOrEditInviteGroup
+    CreateOrEditInviteGroup,
+    EditInviteGroupRequest,
+    CreateInviteGroupRequest
 };
