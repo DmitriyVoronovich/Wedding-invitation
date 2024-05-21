@@ -3,6 +3,7 @@ import s from "@/app/components/first/ScheduleSection/ScheduleSection.module.css
 import buff from "@/app/Accets/first/svgSchedule/buffet.svg";
 import banq from "@/app/Accets/first/svgSchedule/banquet.svg";
 import second from "@/app/Accets/first/svgSchedule/second_day.svg";
+import {SelectProps} from "antd/lib";
 
 export const MOBILE_MENU_BREAKPOINT = 768;
 
@@ -141,3 +142,21 @@ export const SCHEDULE_LIST = [
         interval: '10 часов',
     }
 ];
+
+export const alcoholicDrinks: SelectProps['options'] = [
+    {
+        label: 'Белое вино',
+        value: 'White_wine',
+    },
+    {
+        label: 'Красное вино',
+        value: 'Red_wine',
+    },
+    {
+        label: 'Водка',
+        value: 'Vodka',
+    },
+    {
+        label: 'Коньяк',
+        value: 'Cognac',
+    }];

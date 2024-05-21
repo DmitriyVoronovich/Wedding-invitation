@@ -13,7 +13,7 @@ import '../../app/globals.css'
 
 const {Header, Footer, Content} = Layout;
 
-export default function Home() {
+export default function Interrogation() {
     return (
         <>
             <style jsx global>{`

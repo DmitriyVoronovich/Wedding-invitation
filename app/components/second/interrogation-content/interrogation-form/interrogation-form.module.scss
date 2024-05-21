@@ -1,0 +1,118 @@
+.section_container {
+  padding-top: 50px;
+  width: 100%;
+
+  @media screen and (max-width: 450px) {
+    padding-top: 0;
+  }
+}
+
+.container {
+  max-width: 1440px;
+  width: 100%;
+  padding: 0 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+
+  @media screen and (max-width: 450px) {
+    padding: 0;
+    flex-direction: column;
+  }
+}
+
+.section_title {
+  color: #0a0a0a;
+  font-weight: 500;
+  font-size: 50px;
+  padding: 0;
+  margin: 0;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.section_form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.form_item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 15px;
+}
+
+.item_title_wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.item_title {
+  color: #0a0a0a;
+  font-weight: 500;
+  font-size: 30px;
+  padding: 0 0 10px 0;
+  text-align: center;
+  margin: 0;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.item_content_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  width: 450px;
+}
+
+.item_radio_group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.item_selector {
+  width: 450px;
+}
+
+.button_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.description_button {
+  margin: 0 0 0 0;
+  width: 170px;
+  height: 48px;
+  background-color: #FFFFFF;
+  border-radius: 50px;
+  border: 1px solid #0a0a0a;
+  color: #0a0a0a;
+  font-family: 'Avenir Light', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 130%;
+  cursor: pointer;
+
+  @media screen and (max-width: 450px) {
+    font-size: 16px;
+    width: 90%;
+    margin: 16px 20px 0 20px;
+    align-self: center;
+    height: 44px;
+  }
+}
