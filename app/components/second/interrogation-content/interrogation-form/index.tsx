@@ -111,7 +111,7 @@ export const InterrogationForm = () => {
                                         <Radio.Button value="any">Будем частично</Radio.Button>
                                     </Radio.Group>
                                     {formLayout === 'any' &&
-                                        <Form.Item name="presentGuestsSelect" className={s.form_item} required={show}>
+                                        <Form.Item name="presentGuestsSelect" className={s.form_item_select} required={show}>
                                             <Select
                                                 style={{width: '450px'}}
                                                 mode="multiple"
@@ -166,7 +166,7 @@ export const InterrogationForm = () => {
                                                 <Radio.Button value="any">Будем частично</Radio.Button>
                                             </Radio.Group>
                                             {layout === 'any' &&
-                                                <Form.Item name="presentOnSecondDaySelect" className={s.form_item}
+                                                <Form.Item name="presentOnSecondDaySelect" className={s.form_item_select}
                                                            required={show}>
                                                     <Select
                                                         style={{width: '450px'}}

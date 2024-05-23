@@ -8,9 +8,17 @@
 
 @media screen and (max-width: 450px) {
     .ant-radio-button-wrapper {
-       width: 90%;
+        width: 90%;
         text-align: center;
     }
+}
+
+.form_item_select {
+    margin: 0;
+}
+
+.ant-form-item {
+    margin: 0;
 }
 
 .ant-select-item-option-content {
@@ -51,7 +59,7 @@
 .ant-radio-button-wrapper:not(:first-child)::before {
     color: #ffffff;
     background: #ffffff;
-display: none;
+    display: none;
 }
 
 :where(.css-dev-only-do-not-override-1drr2mu).ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):first-child {
@@ -63,7 +71,7 @@ display: none;
     padding: 5px 15px;
     border-block-start-width: 1px;
     border-inline-start-width: 2px;
-    border-inline-end-width:1px;
+    border-inline-end-width: 1px;
 }
 
 .ant-radio-button-wrapper:first-child {
@@ -71,7 +79,7 @@ display: none;
     padding: 5px 15px;
     border-block-start-width: 1px;
     border-inline-start-width: 2px;
-    border-inline-end-width:1px;
+    border-inline-end-width: 1px;
 }
 
 .ant-radio-button-wrapper {
@@ -84,7 +92,7 @@ display: none;
 .ant-form-item-control-input-content {
     display: flex;
     flex-direction: column;
-   justify-content: center;
+    justify-content: center;
     align-items: center;
 }
 

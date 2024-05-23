@@ -146,17 +146,17 @@ export const SCHEDULE_LIST = [
 export const alcoholicDrinks: SelectProps['options'] = [
     {
         label: 'Белое вино',
-        value: 'White_wine',
+        value: 'whiteWine',
     },
     {
         label: 'Красное вино',
-        value: 'Red_wine',
+        value: 'redWine',
     },
     {
         label: 'Водка',
-        value: 'Vodka',
+        value: 'vodka',
     },
     {
         label: 'Коньяк',
-        value: 'Cognac',
+        value: 'cognac',
     }];
