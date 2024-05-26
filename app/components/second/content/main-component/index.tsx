@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const MainSectionComponent = ({inviteId}: { inviteId?: string }) => {
+    const scheduleLink = `/schedule${inviteId ? `/${inviteId}` : ''}`;
 
     return (
         <section className={s.section_container}>
@@ -15,7 +16,7 @@ export const MainSectionComponent = ({inviteId}: { inviteId?: string }) => {
                     <div className={s.description_wrapper}>
                         <p className={s.section_description}>Суббота, 27 Июля, 2024<br/> Костел Святой Терезы, Щучин
                         </p>
-                        <Link href={`/schedule${'/' + inviteId || ''}`}>
+                        <Link href={scheduleLink}>
                             <button className={s.description_button}>Расписание</button>
                         </Link>
                     </div>
