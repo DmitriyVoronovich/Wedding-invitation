@@ -20,12 +20,11 @@ export const surveyResponse = async (answer: any): Promise<any | null> => {
     try {
         const json = await postRequestJson({
             server: false,
-            url: "/api/data/inviteInfo/surveyResponse",
+            url: "/api/data/inviteInfo/surveyResponse1",
             body: answer
         });
-        const {data} = json;
 
-        return data;
+        return json;
     } catch (error) {
         return null;
     }

@@ -7,13 +7,12 @@ import s from "./interrogation-form.module.scss";
 import './interrogation-form.css'
 import {surveyResponse} from "@/app/service/api/invitePreload.api";
 
-export const InterrogationForm = ({inviteInfo, inviteId}: any) => {
+export const InterrogationForm = ({inviteInfo, inviteId, onRespForm}: any) => {
     const [firstDayList, setFirstDayList] = useState('');
     const [secondDayList, setSecondDayList] = useState('');
     const [show, setShow] = useState(!!inviteInfo.surveyResponses);
     const [disabled, setDisabled] = useState(true);
     const [surveyCompleted, setSurveyCompleted] = useState(!inviteInfo.surveyResponses);
-    const [showModal, setShowModal] = useState(false);
 
     const [form] = Form.useForm();
 
@@ -51,6 +50,7 @@ export const InterrogationForm = ({inviteInfo, inviteId}: any) => {
                 presentGuests: [],
             }
             const surveyResp = await surveyResponse(answer);
+            onRespForm(!surveyResp.error);
 
         } else {
             const answer = {
@@ -63,6 +63,7 @@ export const InterrogationForm = ({inviteInfo, inviteId}: any) => {
                 likeDrinks: value.likeDrinks
             }
             const surveyResp = await surveyResponse(answer);
+            onRespForm(!surveyResp.error);
         }
 
         setSurveyCompleted(false)
@@ -106,10 +107,6 @@ export const InterrogationForm = ({inviteInfo, inviteId}: any) => {
 
     const presentGuestInit = presentInitialValue('presentGuests');
     const presentOnSecondDayInit = presentInitialValue('presentOnSecondDay');
-
-    const onModalClosed = () => {
-        setShowModal(false);
-    };
 
     return (
         <section className={s.section_container}>
