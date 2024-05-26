@@ -24,17 +24,17 @@ export async function getServerSideProps(context: any) {
     }
 
     return {
-        props: {inviteInfo: {}}
+        props: {}
     }
 }
 
-export default function Invite({inviteInfo}: any) {
+export default function Invite({inviteInfo, inviteId}: any) {
     return (
         <>
             <Layout className={s.layout_style}>
                 <Header className={s.header_style}><HeaderComponent/></Header>
                 <Content className={s.content_style}>
-                    <MainSectionComponent/>
+                    <MainSectionComponent inviteId={inviteId}/>
                     <InviteComponent inviteInfo={inviteInfo}/>
                     <SectionOneComponent/>
                     <ScheduleSectionComponent/>
