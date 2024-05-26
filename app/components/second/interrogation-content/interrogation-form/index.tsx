@@ -124,7 +124,7 @@ export const InterrogationForm = ({inviteInfo, inviteId, onRespForm}: any) => {
                         {guestGroup.length === 1
                             ? <>
                                 <h3 className={s.item_title}>Будете ли вы присутствовать на нашем торжестве?</h3>
-                                <Form.Item name="presentGuests" className={s.form_item} required={show}
+                                <Form.Item name="presentGuests" className={s.form_item} rules={[{required: show}]}
                                            initialValue={presentGuestInit}>
                                     <Radio.Group className={s.item_radio_group}
                                                  onChange={(e) => onShowAllQuestion(e)}>
@@ -137,7 +137,7 @@ export const InterrogationForm = ({inviteInfo, inviteId, onRespForm}: any) => {
                             <>
                                 <h3 className={s.item_title}>Будете ли вы присутствовать на нашем торжестве?</h3>
                                 <div className={s.item_content_wrapper}>
-                                    <Form.Item name="presentGuests" className={s.form_item} required={show}
+                                    <Form.Item name="presentGuests" className={s.form_item} rules={[{required: show}]}
                                                initialValue={presentGuestInit}>
                                         <Radio.Group className={s.item_radio_group}
                                                      onChange={onFirstDayList}
@@ -168,7 +168,8 @@ export const InterrogationForm = ({inviteInfo, inviteId, onRespForm}: any) => {
                                 <h3 className={s.item_title}>Будете ли вы присутствовать на венчании или же сразу
                                     отправитесь на
                                     банкет?</h3>
-                                <Form.Item name="startPlace" className={s.form_item} required={show}
+                                <Form.Item name="startPlace" className={s.form_item}
+                                           rules={[{required: true, message: 'Пожалуйста, выберете вариант'}]}
                                            initialValue={inviteInfo?.surveyResponses?.startPlace}>
                                     <Radio.Group className={s.item_radio_group}>
                                         <Radio.Button value="church">Будeм присутствовать на венчании</Radio.Button>
@@ -176,7 +177,8 @@ export const InterrogationForm = ({inviteInfo, inviteId, onRespForm}: any) => {
                                     </Radio.Group>
                                 </Form.Item>
                                 <h3 className={s.item_title}>Как Вы планируете добираться?</h3>
-                                <Form.Item name="isPrivateTransport" className={s.form_item} required={show}
+                                <Form.Item name="isPrivateTransport" className={s.form_item}
+                                           rules={[{required: true, message: 'Пожалуйста, выберете вариант'}]}
                                            initialValue={inviteInfo?.surveyResponses?.isPrivateTransport}>
                                     <Radio.Group className={s.item_radio_group}>
                                         <Radio.Button value={false}>Транспортом молодых на венчание,
@@ -187,7 +189,8 @@ export const InterrogationForm = ({inviteInfo, inviteId, onRespForm}: any) => {
                                 {guestGroup.length === 1
                                     ? <>
                                         <h3 className={s.item_title}>Будете ли Вы на втором дне нашего торжества?</h3>
-                                        <Form.Item name="presentOnSecondDay" className={s.form_item} required={show}
+                                        <Form.Item name="presentOnSecondDay" className={s.form_item}
+                                                   rules={[{required: true, message: 'Пожалуйста, выберете вариант'}]}
                                                    initialValue={presentOnSecondDayInit}>
                                             <Radio.Group className={s.item_radio_group}>
                                                 <Radio.Button value={true}>Буду</Radio.Button>
@@ -227,7 +230,8 @@ export const InterrogationForm = ({inviteInfo, inviteId, onRespForm}: any) => {
                                     </>
                                 }
                                 <h3 className={s.item_title}>Какие напитки Вы предпочитаете?</h3>
-                                <Form.Item name="likeDrinks" className={s.form_item} required={show}
+                                <Form.Item name="likeDrinks" className={s.form_item}
+                                           rules={[{required: true, message: 'Пожалуйста, выберете вариант'}]}
                                            initialValue={inviteInfo?.surveyResponses?.likeDrinks}>
                                     <Select
                                         mode="multiple"
@@ -239,7 +243,8 @@ export const InterrogationForm = ({inviteInfo, inviteId, onRespForm}: any) => {
                                     />
                                 </Form.Item>
                                 <h3 className={s.item_title}>Нужен ли ночлег?</h3>
-                                <Form.Item name="needSleepPlace" className={s.form_item} required={show}
+                                <Form.Item name="needSleepPlace" className={s.form_item}
+                                           rules={[{required: true, message: 'Пожалуйста, выберете вариант'}]}
                                            initialValue={inviteInfo?.surveyResponses?.needSleepPlace}>
                                     <Radio.Group className={s.item_radio_group}>
                                         <Radio.Button value={true}>Нужен</Radio.Button>
