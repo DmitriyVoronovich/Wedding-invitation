@@ -19,7 +19,7 @@ export async function getServerSideProps(context: any) {
         const inviteInfo = await getInvitePreloadOnServer(inviteId);
 
         return {
-            props: {inviteInfo: inviteInfo || {}}
+            props: {inviteInfo: inviteInfo || {}, inviteId: inviteId}
         }
     }
 
@@ -28,7 +28,7 @@ export async function getServerSideProps(context: any) {
     }
 }
 
-export default function Main({inviteInfo}: any) {
+export default function Main({inviteInfo, inviteId}: any) {
     return (
         <>
             <Layout className={s.layout_style}>
@@ -36,8 +36,8 @@ export default function Main({inviteInfo}: any) {
                 <Content className={s.content_style}>
                     <ScheduleHeaderComponent/>
                     <ScheduleMainComponent/>
-                    <InterrogationForm/>
                     <ScheduleMapComponent/>
+                    <InterrogationForm inviteInfo={inviteInfo} inviteId={inviteId}/>
                 </Content>
                 <Footer className={s.footer_style}><FooterComponent/></Footer>
             </Layout>
