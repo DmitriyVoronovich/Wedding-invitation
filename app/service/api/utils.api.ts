@@ -12,13 +12,17 @@ const getRequestUrl = (server: boolean, url: string) => server ? `${process.env.
 
 export const getResponseJson = async ({server, url, accessToken}: RequestProps) => {
     try {
+        const headers: any = {
+            "Content-Type": "application/json"
+        };
+        if (accessToken) {
+            headers["Authorization"] = `Bearer ${accessToken}`;
+        }
+
         const requestUrl = getRequestUrl(server, url);
         const response = await fetch(requestUrl, {
             method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${accessToken || process.env.TEST_TOKEN}`
-            }
+            headers
         })
 
         return await response.json();

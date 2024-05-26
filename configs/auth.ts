@@ -1,7 +1,7 @@
 import type {AuthOptions} from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials"
 import {AuthUser} from "@/types/auth.type";
-import {singInAdmin} from "@/app/service/api/auth.api";
+import {singInAdmin, singInGuests} from "@/app/service/api/auth.api";
 
 export const authConfig: AuthOptions = {
     secret: process.env.AUTH_SECRET,
@@ -12,7 +12,17 @@ export const authConfig: AuthOptions = {
                 password: {label: "Password", type: "password"}
             },
             authorize: async (credentials: any) => {
-                if (!credentials?.email || !credentials?.password) return null
+                if (!(credentials?.email && credentials?.password) && !credentials?.inviteId) {
+                    return null
+                }
+
+                if (credentials?.inviteId) {
+                    const resJson = await singInGuests({
+                        "inviteId": credentials.inviteId
+                    });
+
+                    return resJson?.data || resJson?.error;
+                }
 
                 const resJson = await singInAdmin({
                     "email": credentials.email,
@@ -27,7 +37,7 @@ export const authConfig: AuthOptions = {
         strategy: "jwt",
     },
     callbacks: {
-        async jwt({token, user, account, profile, isNewUser}) {
+        async jwt({token, user}) {
             if (user) {
                 const authUser = user as AuthUser;
                 token.accessToken = authUser.accessToken

@@ -10,10 +10,6 @@ import {Guest} from "@/types/guest.type";
 
 const Context = createContext({} as any);
 
-export const isLoggedInInServerSide = (session: any) => {
-    return session?.user?.role === 'admin';
-}
-
 export async function getServerSideProps(context: any) {
     const session = await getServerSession(context.req, context.res, authConfig);
     const accessToken = getAccessToken(session?.user as AuthUser);

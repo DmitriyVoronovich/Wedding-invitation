@@ -6,6 +6,11 @@ import Document, {Head, Html, Main, NextScript} from 'next/document';
 const MyDocument = () => (
     <Html lang="en">
         <Head/>
+        <style jsx global>{`
+            body {
+                margin: 0;
+            }
+        `}</style>
         <body>
         <Main/>
         <NextScript/>

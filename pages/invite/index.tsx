@@ -10,22 +10,33 @@ import {SectionTwoComponent} from "@/app/components/second/content/section_two";
 import {FooterComponent} from "app/components/second/footer/footer-component";
 import './style.css'
 import '../../app/globals.css'
+import {getInvitePreloadOnServer} from "@/app/service/api/invitePreload.api";
 
 const {Header, Footer, Content} = Layout;
 
-export default function Interrogation() {
+export async function getServerSideProps(context: any) {
+    const inviteId = context.query?.inviteId;
+    if (inviteId) {
+        const inviteInfo = await getInvitePreloadOnServer(inviteId);
+
+        return {
+            props: {inviteInfo: inviteInfo || {}}
+        }
+    }
+
+    return {
+        props: {inviteInfo: {}}
+    }
+}
+
+export default function Invite({inviteInfo}: any) {
     return (
         <>
-            <style jsx global>{`
-                body {
-                    margin: 0;
-                }
-            `}</style>
             <Layout className={s.layout_style}>
                 <Header className={s.header_style}><HeaderComponent/></Header>
                 <Content className={s.content_style}>
                     <MainSectionComponent/>
-                    <InviteComponent/>
+                    <InviteComponent inviteInfo={inviteInfo}/>
                     <SectionOneComponent/>
                     <ScheduleSectionComponent/>
                     <SectionTwoComponent/>

@@ -1,4 +1,3 @@
-import {Guest} from "@/types/guest.type";
 import {Space, TableProps} from "antd/lib";
 import {DeleteOutlined, EditOutlined} from "@ant-design/icons";
 import React from "react";
@@ -31,11 +30,22 @@ export const InviteGroupColumns: (handleSelectActionInviteGroup: (inviteGroup: I
                 title: 'Guests',
                 dataIndex: 'guests',
                 key: 'guests',
+                filters: [
+                    {
+                        text: 'Husband',
+                        value: 'husband',
+                    },
+                    {
+                        text: 'Wife',
+                        value: 'wife',
+                    }
+                ],
+                onFilter: (value, {guests}) => guests?.[0]?.side && guests?.[0]?.side === value,
                 render: (_, {guests}: InviteGroup) => (
                     <ul>
                         {guests.map(({firstName, lastName}) => <li key={firstName}>{firstName} {lastName}</li>)}
                     </ul>
-                )
+                ),
             },
             {
                 title: 'Last changes',

@@ -1,14 +1,18 @@
 import React from 'react';
 import s from './invite-component.module.scss';
+import {InvitePreload} from "@/types/inviteGroups.type";
+import {inviteText} from "@/app/admin/components/panel/utils";
 
-const InviteComponent = () => {
+const InviteComponent = ({inviteInfo}: {inviteInfo: InvitePreload}) => {
+    const inviteTextValue = inviteText(inviteInfo);
+
     return (
         <section className={s.section_container}>
             <div className={s.container}>
                 <div className={s.section_wrapper}>
                     <h2 className={s.section_title}>Мы женимся</h2>
                     <div className={s.text_wrapper}>
-                        <p className={s.text}>Дорогие <b>Виталий</b> и <b>Дарья</b>!</p>
+                        <p className={s.text}>{inviteTextValue}</p>
                         <p className={s.text}>С большой радостью мы приглашаем вас присоединиться к нам в наш особенный
                             день
                             – день нашей свадьбы и венчания.</p>

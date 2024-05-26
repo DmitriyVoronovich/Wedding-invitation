@@ -7,11 +7,23 @@ export type Invitation = {
     checkTransport: boolean;
 };
 
-type InviteGroup = UserType & {
+type InvitePreload = {
     id: string;
     groupName: string;
     guests: Guest[];
     invitation: Invitation;
+    surveyResponses: SurveyResponses;
+}
+
+type InviteGroup = UserType & InvitePreload;
+
+type SurveyResponses = {
+    presentGuests: string[];
+    startPlace: string;
+    isPrivateTransport: boolean | null;
+    presentOnSecondDay: boolean | null;
+    needSleepPlace: boolean | null;
+    likeDrinks: boolean | null;
 };
 
 type ChangedGuests = {
@@ -34,6 +46,7 @@ type CreateInviteGroupRequest = Omit<CreateOrEditInviteGroup, 'updateGuests'>
 export type {
     ChangedGuests,
     InviteGroup,
+    InvitePreload,
     CreateOrEditInviteGroup,
     EditInviteGroupRequest,
     CreateInviteGroupRequest

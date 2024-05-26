@@ -9,11 +9,6 @@ const {Header, Footer, Content} = Layout;
 export default function Home() {
     return (
         <>
-            <style jsx global>{`
-                body {
-                    margin: 0;
-                }
-            `}</style>
             <Layout className={s.layout_style}>
                 <Header className={s.header_style}><HeaderComponent/></Header>
                 <Content className={s.content_style}>
