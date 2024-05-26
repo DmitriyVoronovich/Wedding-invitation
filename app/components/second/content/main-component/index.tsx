@@ -4,7 +4,7 @@ import image from '../../../../Accets/images/CHEM7630_resized.jpeg'
 import Image from "next/image";
 import Link from "next/link";
 
-export const MainSectionComponent = () => {
+export const MainSectionComponent = ({inviteId}: { inviteId?: string }) => {
 
     return (
         <section className={s.section_container}>
@@ -15,7 +15,7 @@ export const MainSectionComponent = () => {
                     <div className={s.description_wrapper}>
                         <p className={s.section_description}>Суббота, 27 Июля, 2024<br/> Костел Святой Терезы, Щучин
                         </p>
-                        <Link href="/schedule">
+                        <Link href={`/schedule${'/' + inviteId || ''}`}>
                             <button className={s.description_button}>Расписание</button>
                         </Link>
                     </div>

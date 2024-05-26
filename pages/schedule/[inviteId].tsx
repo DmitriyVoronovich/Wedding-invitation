@@ -1,19 +1,34 @@
-import s from '../invite/index.module.scss';
+import s from './index.module.scss';
 import {Layout} from 'antd';
 import {HeaderComponent} from "@/app/components/second/header/header-component";
 import '../../app/components/second/style_ant.css'
 import {FooterComponent} from "app/components/second/footer/footer-component";
-import '../invite/style.css';
-import '../../app/globals.css';
-import {ScheduleHeaderComponent} from "app/components/second/schedule_content/schedule-header";
-import {ScheduleMainComponent} from "app/components/second/schedule_content/schedule-main";
-import {ScheduleMapComponent} from "@/app/components/second/schedule_content/schedule-map";
+import './style.css'
+import '../../app/globals.css'
+import {getInvitePreloadOnServer} from "@/app/service/api/invitePreload.api";
+import {ScheduleHeaderComponent} from "@/app/components/second/schedule_content/schedule-header";
+import {ScheduleMainComponent} from "@/app/components/second/schedule_content/schedule-main";
 import {InterrogationForm} from "@/app/components/second/interrogation-content/interrogation-form";
+import {ScheduleMapComponent} from "@/app/components/second/schedule_content/schedule-map";
 
 const {Header, Footer, Content} = Layout;
 
+export async function getServerSideProps(context: any) {
+    const inviteId = context.params?.inviteId;
+    if (inviteId) {
+        const inviteInfo = await getInvitePreloadOnServer(inviteId);
 
-export default function Main() {
+        return {
+            props: {inviteInfo: inviteInfo || {}}
+        }
+    }
+
+    return {
+        props: {inviteInfo: {}}
+    }
+}
+
+export default function Main({inviteInfo}: any) {
     return (
         <>
             <Layout className={s.layout_style}>
@@ -21,6 +36,7 @@ export default function Main() {
                 <Content className={s.content_style}>
                     <ScheduleHeaderComponent/>
                     <ScheduleMainComponent/>
+                    <InterrogationForm/>
                     <ScheduleMapComponent/>
                 </Content>
                 <Footer className={s.footer_style}><FooterComponent/></Footer>

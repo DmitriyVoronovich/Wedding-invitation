@@ -10,9 +10,6 @@ import {SectionTwoComponent} from "@/app/components/second/content/section_two";
 import {FooterComponent} from "app/components/second/footer/footer-component";
 import './style.css'
 import '../../app/globals.css'
-import {getInvitePreloadOnServer} from "@/app/service/api/invitePreload.api";
-import {useEffect} from "react";
-
 const {Header, Footer, Content} = Layout;
 
 export default function Invite() {

@@ -19,7 +19,7 @@ export async function getServerSideProps(context: any) {
         const inviteInfo = await getInvitePreloadOnServer(inviteId);
 
         return {
-            props: {inviteInfo: inviteInfo || {}}
+            props: {inviteInfo: inviteInfo || {}, inviteId: inviteId}
         }
     }
 
