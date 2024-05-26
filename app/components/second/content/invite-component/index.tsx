@@ -3,7 +3,7 @@ import s from './invite-component.module.scss';
 import {InvitePreload} from "@/types/inviteGroups.type";
 import {inviteText} from "@/app/admin/components/panel/utils";
 
-const InviteComponent = ({inviteInfo}: {inviteInfo: InvitePreload}) => {
+const InviteComponent = ({inviteInfo}: { inviteInfo?: InvitePreload }) => {
     const inviteTextValue = inviteText(inviteInfo);
 
     return (

@@ -8,6 +8,7 @@ import '../../app/globals.css';
 import {ScheduleHeaderComponent} from "app/components/second/schedule_content/schedule-header";
 import {ScheduleMainComponent} from "app/components/second/schedule_content/schedule-main";
 import {ScheduleMapComponent} from "@/app/components/second/schedule_content/schedule-map";
+import {InterrogationForm} from "@/app/components/second/interrogation-content/interrogation-form";
 
 const {Header, Footer, Content} = Layout;
 
@@ -26,6 +27,7 @@ export default function Main() {
                 <Content className={s.content_style}>
                     <ScheduleHeaderComponent/>
                     <ScheduleMainComponent/>
+                    <InterrogationForm/>
                     <ScheduleMapComponent/>
                 </Content>
                 <Footer className={s.footer_style}><FooterComponent/></Footer>

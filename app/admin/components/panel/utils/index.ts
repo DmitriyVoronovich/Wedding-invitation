@@ -13,7 +13,7 @@ export const prepareNotificationMessage = (notificationApi: NotificationInstance
     callback?.[fieldName]?.();
 }
 
-export const inviteText = (inviteGroup: InviteGroup | InvitePreload) => {
+export const inviteText = (inviteGroup?: InviteGroup | InvitePreload) => {
     if (!inviteGroup?.guests?.length) {
         return 'Дорогие гости!';
     }

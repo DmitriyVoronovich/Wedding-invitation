@@ -12,7 +12,7 @@ export default function Home() {
             <Layout className={s.layout_style}>
                 <Header className={s.header_style}><HeaderComponent/></Header>
                 <Content className={s.content_style}>
-                    <InterrogationForm/>
+
                 </Content>
                 <Footer className={s.footer_style}><FooterComponent/></Footer>
             </Layout>

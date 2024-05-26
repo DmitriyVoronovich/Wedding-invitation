@@ -11,18 +11,31 @@ import {FooterComponent} from "app/components/second/footer/footer-component";
 import './style.css'
 import '../../app/globals.css'
 import {getInvitePreloadOnServer} from "@/app/service/api/invitePreload.api";
-import {useEffect} from "react";
-
 const {Header, Footer, Content} = Layout;
 
-export default function Invite() {
+export async function getServerSideProps(context: any) {
+    const inviteId = context.params?.inviteId;
+    if (inviteId) {
+        const inviteInfo = await getInvitePreloadOnServer(inviteId);
+
+        return {
+            props: {inviteInfo: inviteInfo || {}}
+        }
+    }
+
+    return {
+        props: {inviteInfo: {}}
+    }
+}
+
+export default function Invite({inviteInfo}: any) {
     return (
         <>
             <Layout className={s.layout_style}>
                 <Header className={s.header_style}><HeaderComponent/></Header>
                 <Content className={s.content_style}>
                     <MainSectionComponent/>
-                    <InviteComponent/>
+                    <InviteComponent inviteInfo={inviteInfo}/>
                     <SectionOneComponent/>
                     <ScheduleSectionComponent/>
                     <SectionTwoComponent/>
