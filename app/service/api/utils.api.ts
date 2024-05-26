@@ -60,7 +60,7 @@ export const putRequestJson = async <T>({server, url, accessToken, body}: Reques
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${accessToken || process.env.TEST_TOKEN}`
+                "Authorization": `Bearer ${accessToken}`
             },
             body: JSON.stringify(body)
         })
@@ -78,7 +78,7 @@ export const deleteRequestJson = async ({server, url, accessToken}: RequestProps
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${accessToken || process.env.TEST_TOKEN}`
+                "Authorization": `Bearer ${accessToken}`
             }
         })
 
