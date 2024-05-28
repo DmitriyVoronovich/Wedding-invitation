@@ -1,16 +1,15 @@
 import {
     SurveyResponseColumns
-} from "@/app/admin/components/panel/surveyResponse/surveyResponseTable/surveyResponseColumns";
+} from "./surveyResponseColumns";
 import React, {useRef, useState} from "react";
 import {Button, Input, InputRef, TableColumnType} from "antd";
 import {FilterDropdownProps} from "antd/es/table/interface";
 import {Space, Table} from "antd/lib";
 import {SearchOutlined} from "@ant-design/icons";
 import {InviteGroup} from "@types";
-import {inviteText} from "@/app/admin/components";
 
 export const SurveyResponseTable = ({inviteGroups}: { inviteGroups: InviteGroup[] }) => {
-    const [searchText, setSearchText] = useState('');
+    const [_searchText, setSearchText] = useState('');
     const searchInput = useRef<InputRef>(null);
 
     const handleSearch = (
@@ -27,7 +26,7 @@ export const SurveyResponseTable = ({inviteGroups}: { inviteGroups: InviteGroup[
     };
 
     const getColumnSearchProps = (): TableColumnType<InviteGroup> => ({
-        filterDropdown: ({setSelectedKeys, selectedKeys, confirm, clearFilters, close}) => (
+        filterDropdown: ({setSelectedKeys, selectedKeys, confirm, clearFilters}) => (
             <div style={{padding: 8}} onKeyDown={(e) => e.stopPropagation()}>
                 <Input
                     ref={searchInput}

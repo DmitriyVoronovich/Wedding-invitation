@@ -147,7 +147,7 @@ export const SurveyResponseColumns: (getColumnSearchProps: () => TableColumnType
                 key: 'likeDrinks',
                 render: (_, inviteGroup: InviteGroup) => inviteGroup.surveyResponses?.likeDrinks
                     ? <div>
-                        {inviteGroup.surveyResponses?.likeDrinks?.map(drink => <p>{drink}</p>)}
+                        {inviteGroup.surveyResponses?.likeDrinks?.map(drink => <p key={drink}>{drink}</p>)}
                     </div>
                     : `Don't filled`
             },
