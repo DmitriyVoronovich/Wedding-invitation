@@ -10,8 +10,8 @@ export const FooterComponent = () => {
             <div className={s.container}>
                 <div className={s.contact_wrapper}>
                     <h3 className={s.contact_title}>Свяжитесь с нами</h3>
-                    <h4 className={s.contact_title}>Алина: +375-29-887-3817</h4>
-                    <h4 className={s.contact_title}>Павел: +375-29-149-939</h4>
+                    <h4 className={s.contact_title}>Алина: +375-29-887-38-17</h4>
+                    <h4 className={s.contact_title}>Павел: +375-29-149-93-59</h4>
                 </div>
                 <div className={s.footer_menu_wrapper}>
                     {MENU_HEADER_LIST.map((item) => {

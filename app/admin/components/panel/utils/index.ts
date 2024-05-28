@@ -26,3 +26,6 @@ export const inviteText = (inviteGroup?: InviteGroup | InvitePreload) => {
 
     return `Дорогие ${inviteGroup.guests.map(guest => guest.firstName).join(', ').replace(/,([^,]*)$/, ' и$1')}!`;
 }
+
+export const isOneGuest = (inviteGroup?: InviteGroup | InvitePreload) =>
+    inviteGroup?.guests?.length === 1;
