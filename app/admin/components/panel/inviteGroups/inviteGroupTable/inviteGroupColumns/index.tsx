@@ -2,7 +2,7 @@ import {Space, TableProps} from "antd/lib";
 import {DeleteOutlined, EditOutlined} from "@ant-design/icons";
 import React from "react";
 import {LastChangeCell} from "@admin-components";
-import {InviteGroup} from "@/types/inviteGroups.type";
+import {InviteGroup} from "@types";
 import {TableGroupOpen} from "@/app/admin/components/panel/inviteGroups";
 import {TableColumnType} from "antd";
 

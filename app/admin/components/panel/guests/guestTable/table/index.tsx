@@ -1,6 +1,6 @@
 import {GuestColumns} from "@/app/admin/components/panel/guests/guestTable/guestColumns";
 import React, {useRef, useState} from "react";
-import {Guest} from "@/types/guest.type";
+import {Guest} from "@types";
 import {TableOpen} from "@admin-components";
 import {Space, Table} from "antd/lib";
 import {Button, Input, InputRef, TableColumnType} from "antd";
@@ -30,7 +30,7 @@ export const CustomGuestTable = ({
                                      setTableOpen,
                                      guests
                                  }: TableProps) => {
-    const [searchText, setSearchText] = useState('');
+    const [_searchText, setSearchText] = useState('');
     const searchInput = useRef<InputRef>(null);
 
     const handleSearch = (
@@ -47,7 +47,7 @@ export const CustomGuestTable = ({
     };
 
     const getColumnSearchProps = (): TableColumnType<Guest> => ({
-        filterDropdown: ({setSelectedKeys, selectedKeys, confirm, clearFilters, close}) => (
+        filterDropdown: ({setSelectedKeys, selectedKeys, confirm, clearFilters}) => (
             <div style={{padding: 8}} onKeyDown={(e) => e.stopPropagation()}>
                 <Input
                     ref={searchInput}
@@ -96,7 +96,7 @@ export const CustomGuestTable = ({
 
         navigator.clipboard.writeText(copyInviteUrl).then(function () {
             notificationMessage(true, COPY_MESSAGE, {});
-        }, function (err) {
+        }, function () {
             notificationMessage(false, COPY_MESSAGE, {});
         });
     }

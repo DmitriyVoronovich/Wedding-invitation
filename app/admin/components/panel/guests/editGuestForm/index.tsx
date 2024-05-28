@@ -1,4 +1,4 @@
-import {CreateOrEditGuest, Guest, GuestGender, GuestSide} from "@/types/guest.type";
+import {CreateOrEditGuest, Guest, GuestGender, GuestSide} from "@types";
 import {Button, Checkbox, Form, FormProps, Input, Radio} from 'antd';
 
 

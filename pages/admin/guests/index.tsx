@@ -5,8 +5,7 @@ import {createContext, useMemo, useState} from "react";
 import {notification} from "antd";
 import {getServerSession} from "next-auth";
 import {authConfig} from "@/configs/auth";
-import {AuthUser} from "@/types/auth.type";
-import {Guest} from "@/types/guest.type";
+import {AuthUser, Guest} from "@types";
 
 const Context = createContext({} as any);
 
@@ -29,7 +28,8 @@ export default function Guests({serverGuests, publicUrl}: any) {
         <Context.Provider value={contextValue}>
             {contextHolder}
             <PanelMenu>
-                <GuestTable notificationApi={notificationApi} publicUrl={publicUrl} guests={guests} setGuests={setGuests}/>
+                <GuestTable notificationApi={notificationApi} publicUrl={publicUrl} guests={guests}
+                            setGuests={setGuests}/>
             </PanelMenu>
         </Context.Provider>
     )
