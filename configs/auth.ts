@@ -1,13 +1,10 @@
-import type {AuthOptions, User} from "next-auth";
+import type {AuthOptions} from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials"
-
-export interface AuthUser extends User {
-    accessToken: string;
-    role: string;
-    expirationTime: string;
-}
+import {AuthUser} from "@/types/auth.type";
+import {singInAdmin, singInGuests} from "@/app/service/api/auth.api";
 
 export const authConfig: AuthOptions = {
+    secret: process.env.AUTH_SECRET,
     providers: [
         CredentialsProvider({
             credentials: {
@@ -15,22 +12,24 @@ export const authConfig: AuthOptions = {
                 password: {label: "Password", type: "password"}
             },
             authorize: async (credentials: any) => {
-                if (!credentials?.email || !credentials?.password) return null
+                if (!(credentials?.email && credentials?.password) && !credentials?.inviteId) {
+                    return null
+                }
 
-                const res = await fetch('http://localhost:5050/api/auth/login/admin', {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        "email": credentials.email,
-                        "password": credentials.password
-                    })
-                })
+                if (credentials?.inviteId) {
+                    const resJson = await singInGuests({
+                        "inviteId": credentials.inviteId
+                    });
 
-                const resJson = await res.json()
+                    return resJson?.data || resJson?.error;
+                }
 
-                return resJson?.data || resJson.error;
+                const resJson = await singInAdmin({
+                    "email": credentials.email,
+                    "password": credentials.password
+                });
+
+                return resJson?.data || resJson?.error;
             }
         }),
     ],
@@ -38,7 +37,7 @@ export const authConfig: AuthOptions = {
         strategy: "jwt",
     },
     callbacks: {
-        async jwt({ token, user, account, profile, isNewUser }) {
+        async jwt({token, user}) {
             if (user) {
                 const authUser = user as AuthUser;
                 token.accessToken = authUser.accessToken

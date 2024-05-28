@@ -1,32 +1,41 @@
 import React from 'react';
 import s from './invite-component.module.scss';
+import {InvitePreload} from "@/types/inviteGroups.type";
+import {inviteText} from "@/app/admin/components/panel/utils";
+import {Fade} from "react-awesome-reveal";
 
-const InviteComponent = () => {
+const InviteComponent = ({inviteInfo}: { inviteInfo?: InvitePreload }) => {
+    const inviteTextValue = inviteText(inviteInfo);
+
     return (
-        <section className={s.section_container}>
+        <section className={s.section_container} id={'invite'}>
             <div className={s.container}>
                 <div className={s.section_wrapper}>
-                    <h2 className={s.section_title}>Мы женимся</h2>
-                    <div className={s.text_wrapper}>
-                        <p className={s.text}>Дорогие <b>Виталий</b> и <b>Дарья</b>!</p>
-                        <p className={s.text}>С большой радостью мы приглашаем вас присоединиться к нам в наш особенный
-                            день
-                            – день нашей свадьбы и венчания.</p>
-                        <p className={s.text}>Этот день будет одним из самых значимых и счастливых в нашей жизни
-                            , и ваше присутствие сделает его еще более особенным. Мы надеемся разделить с вами радость
-                            и торжественность этого момента.</p>
-                        <p className={s.text}>С нетерпением ожидаем встречи с вами.</p>
-                        <h3 className={s.text}><b>27 ИЮЛЯ 2024</b></h3>
-                        <p className={s.text}>С любовью, Павел и Алина ♡♡♡ </p>
-                        <p className={s.text}>P.S.: Отличной альтернативой цветам может стать бутылочка алкагольного
-                            напитка,
-                            упаковочка зернового кофе или вкусного чая.:)</p>
-                    </div>
+                   <Fade triggerOnce={true} cascade={true} damping={0.3}>
+                        <h2 className={s.section_title}>Мы женимся</h2>
+                    </Fade>
+                        <div className={s.text_wrapper}>
+                           <Fade triggerOnce={true} cascade={true} damping={0.3} direction={'up'}>
+                            <p className={s.text}>{inviteTextValue}</p>
+                            <p className={s.text}>Мы искренне приглашаем вас разделить с нами радость и благодать в день
+                                нашего венчания, который также станет днем нашей свадьбы.</p>
+                            <p className={s.text}>Этот день, наполненный особой святыней и глубоким значением, будет
+                                одним
+                                из самых важных в нашей жизни. Ваше присутствие сделает его еще более особенным и
+                                незабываемым. Мы хотели бы разделить с вами этот момент священного единения.</p>
+                            <p className={s.text}>С нетерпением ожидаем встречи с вами!
+                            </p>
+                            <h3 className={s.text}>27 ИЮЛЯ 2024</h3>
+                            <p className={s.text}>С любовью, Павел и Алина ♡♡♡ </p>
+                            <p className={s.text}>P.S.: Отличной альтернативой цветам может стать бутылочка алкогольного
+                                напитка, небольшая упаковка зернового кофе или вкусного чая. :)</p>
+                            </Fade>
+                        </div>
+
                 </div>
             </div>
         </section>
-    )
-        ;
+    );
 };
 
 export default InviteComponent;

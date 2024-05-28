@@ -3,6 +3,7 @@ import s from "@/app/components/first/ScheduleSection/ScheduleSection.module.css
 import buff from "@/app/Accets/first/svgSchedule/buffet.svg";
 import banq from "@/app/Accets/first/svgSchedule/banquet.svg";
 import second from "@/app/Accets/first/svgSchedule/second_day.svg";
+import {SelectProps} from "antd/lib";
 
 export const MOBILE_MENU_BREAKPOINT = 768;
 
@@ -41,7 +42,7 @@ export const MENU_HEADER_LIST = [
     {
         id: 1,
         title: "Главное",
-        href: 'invite',
+        href: 'home',
         offsetDesk: -30,
         offsetMob: -30
     },
@@ -49,7 +50,7 @@ export const MENU_HEADER_LIST = [
         id: 2,
         title: "Приглашение",
         secondTitle: 'МЫ ЖЕНИМСЯ',
-        href: 'schedule',
+        href: 'invite',
         offsetDesk: -125,
         offsetMob: -60
 
@@ -141,3 +142,21 @@ export const SCHEDULE_LIST = [
         interval: '10 часов',
     }
 ];
+
+export const alcoholicDrinks: SelectProps['options'] = [
+    {
+        label: 'Белое вино',
+        value: 'whiteWine',
+    },
+    {
+        label: 'Красное вино',
+        value: 'redWine',
+    },
+    {
+        label: 'Водка',
+        value: 'vodka',
+    },
+    {
+        label: 'Коньяк',
+        value: 'cognac',
+    }];

@@ -9,7 +9,6 @@ export default function Guest() {
     console.log(session)
     return (
         <div>
-            fvvvav
             {session?.data && <Link href={'#'} onClick={() => signOut({callbackUrl: '/'})}>singUot</Link>}
         </div>
     );

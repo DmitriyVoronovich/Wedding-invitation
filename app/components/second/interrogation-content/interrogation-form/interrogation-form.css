@@ -1,0 +1,120 @@
+.ant-radio-button-wrapper {
+    color: #0a0a0a;
+    font-weight: 400;
+    font-size: 16px;
+    margin: 0;
+    font-family: 'Avenir Light', sans-serif;
+}
+
+@media screen and (max-width: 450px) {
+    .ant-radio-button-wrapper {
+        width: 90%;
+        text-align: center;
+    }
+}
+
+.form_item_select {
+    margin: 0;
+}
+
+.ant-form-item {
+    margin: 0;
+}
+
+.ant-select-item-option-content {
+    color: #0a0a0a;
+    font-weight: 400;
+    font-size: 16px;
+    margin: 0;
+    font-family: 'Avenir Light', sans-serif;
+}
+
+.ant-select-selection-item-content {
+    color: #0a0a0a;
+    font-weight: 400;
+    font-size: 16px;
+    margin: 0;
+    font-family: 'Avenir Light', sans-serif;
+}
+
+.ant-select-selection-placeholder {
+    color: #0a0a0a;
+    font-weight: 500;
+    font-size: 16px;
+    margin: 0;
+    font-family: 'Avenir Light', sans-serif;
+}
+
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
+    color: #0a0a0a;
+    background: #e8dad2;
+    border-color: #ffffff;
+}
+
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled)::before {
+    color: #0a0a0a;
+    background: #ffffff;
+}
+
+.ant-radio-button-wrapper:not(:first-child)::before {
+    color: #ffffff;
+    background: #ffffff;
+    display: none;
+}
+
+:where(.css-dev-only-do-not-override-1drr2mu).ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):first-child {
+    border-color: #ffffff;
+}
+
+.ant-radio-button-wrapper:last-child {
+    border-radius: 20px;
+    padding: 5px 15px;
+    border-block-start-width: 1px;
+    border-inline-start-width: 2px;
+    border-inline-end-width: 1px;
+}
+
+.ant-radio-button-wrapper:first-child {
+    border-radius: 20px;
+    padding: 5px 15px;
+    border-block-start-width: 1px;
+    border-inline-start-width: 2px;
+    border-inline-end-width: 1px;
+}
+
+.ant-radio-button-wrapper {
+    padding: 5px 15px;
+    height: auto;
+    border-radius: 20px;
+    border: 1px solid #d9d9d9;
+}
+
+.ant-form-item-control-input-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ant-radio-button-wrapper:hover {
+    color: #0a0a0a;
+}
+
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):active {
+    color: #0a0a0a;
+}
+
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):hover {
+    color: #0a0a0a;
+    border-color: #FFFFFF;
+}
+
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):hover::before {
+    color: #0a0a0a;
+    border-color: #FFFFFF;
+    background-color: #ffffff;
+}
+
+.ant-select.ant-select-in-form-item:hover {
+    border-color: #d9d9d9;
+}
