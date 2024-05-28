@@ -8,6 +8,7 @@ import './interrogation-form.css'
 import {surveyResponse} from "@/app/service/api/invitePreload.api";
 import pedroGif from 'app/Accets/resp/педро.gif'
 import Image from "next/image";
+// @ts-ignore
 import useSound from "use-sound";
 
 export const InterrogationForm = ({inviteInfo, inviteId, onRespForm}: any) => {

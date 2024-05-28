@@ -1,4 +1,4 @@
-import {AuthUser} from "@/types/auth.type";
+import {AuthUser} from "@types";
 import {useSession} from "next-auth/react";
 import {useRouter} from "next/router";
 import {getAccessToken} from "@/app/service/utils";
