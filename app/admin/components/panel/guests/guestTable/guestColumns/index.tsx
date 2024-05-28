@@ -1,4 +1,4 @@
-import {Guest} from "@/types/guest.type";
+import {Guest} from "@types";
 import {Space, TableProps} from "antd/lib";
 import {CheckCircleOutlined, CloseCircleOutlined, CopyOutlined, DeleteOutlined, EditOutlined} from "@ant-design/icons";
 import React from "react";

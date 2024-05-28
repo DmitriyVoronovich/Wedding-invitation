@@ -1,5 +1,5 @@
 import {deleteRequestJson, getResponseJson, postRequestJson, putRequestJson} from "@/app/service/api/utils.api";
-import {CreateInviteGroupRequest, EditInviteGroupRequest, InviteGroup} from "@/types/inviteGroups.type";
+import {CreateInviteGroupRequest, EditInviteGroupRequest, InviteGroup} from "@types";
 
 export const getAllInviteGroupsOnServer = async (accessToken: string) => {
     try {

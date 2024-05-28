@@ -1,4 +1,4 @@
-import { CreateOrEditGuest, Guest} from "@/types/guest.type";
+import { CreateOrEditGuest, Guest} from "@types";
 import {deleteRequestJson, getResponseJson, postRequestJson, putRequestJson} from "@/app/service/api/utils.api";
 
 export const getAllGuestsOnServer = async (accessToken: string) => {

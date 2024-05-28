@@ -1,6 +1,5 @@
-import React, {Dispatch, SetStateAction} from "react";
+import React from "react";
 import {Drawer} from "antd/lib";
-import {Guest} from "@/types/guest.type";
 
 
 export enum DrawerTitle {

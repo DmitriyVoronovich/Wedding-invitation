@@ -4,9 +4,8 @@ import {createContext, useMemo, useState} from "react";
 import {notification} from "antd";
 import {getServerSession} from "next-auth";
 import {authConfig} from "@/configs/auth";
-import {AuthUser} from "@/types/auth.type";
+import {AuthUser, InviteGroup} from "@types";
 import {getAllInviteGroupsOnServer} from "@/app/service/api/inviteGroups.api";
-import {InviteGroup} from "@/types/inviteGroups.type";
 import {InviteGroupTable} from "@/app/admin/components/panel/inviteGroups";
 
 const Context = createContext({} as any);
@@ -17,7 +16,7 @@ export const isLoggedInInServerSide = (session: any) => {
 
 export async function getServerSideProps(context: any) {
     const session = await getServerSession(context.req, context.res, authConfig);
-    const accessToken =  getAccessToken(session?.user as AuthUser);
+    const accessToken = getAccessToken(session?.user as AuthUser);
     const inviteGroups = await getAllInviteGroupsOnServer(accessToken);
 
     return {
@@ -34,7 +33,8 @@ export default function InviteGroup({serverInviteGroups}: any) {
         <Context.Provider value={contextValue}>
             {contextHolder}
             <PanelMenu>
-                <InviteGroupTable inviteGroups={inviteGroups} setInviteGroups={setInviteGroups} notificationApi={notificationApi}  />
+                <InviteGroupTable inviteGroups={inviteGroups} setInviteGroups={setInviteGroups}
+                                  notificationApi={notificationApi}/>
             </PanelMenu>
         </Context.Provider>
     )

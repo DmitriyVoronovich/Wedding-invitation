@@ -1,5 +1,5 @@
 import {Button, Checkbox, Form, FormProps, Input, Select} from 'antd';
-import {ChangedGuests, CreateOrEditInviteGroup, InviteGroup} from "@/types/inviteGroups.type";
+import {ChangedGuests, CreateOrEditInviteGroup, InviteGroup} from "@types";
 import {useEffect, useState} from "react";
 import {getAllGuestsWithoutInviteGroup} from "@api";
 import {useAdminAccessToken} from "@hooks";
