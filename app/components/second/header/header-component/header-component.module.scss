@@ -46,6 +46,12 @@
   a:hover {
     color: #e0c6be;
   }
+
+  @media screen and (max-width: 450px) {
+    a:hover {
+      color: #ffffff;
+    }
+  }
 }
 
 .menu_link {
@@ -58,8 +64,20 @@
 
   @media screen and (max-width: 450px) {
     &:hover {
-      color: #e8dad2;
+      color: #ffffff;
     }
+  }
+}
+
+.header_menu_wrapper_mob {
+  color: #0a0a0a;
+  text-decoration: none;
+  text-transform: uppercase;
+  display: flex;
+  gap: 50px;
+
+  a:hover {
+    color: #ffffff;
   }
 }
 
