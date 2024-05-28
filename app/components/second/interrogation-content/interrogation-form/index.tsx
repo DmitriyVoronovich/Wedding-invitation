@@ -186,7 +186,7 @@ export const InterrogationForm = ({inviteInfo, inviteId, onRespForm, singleGuest
                                            rules={[{required: true, message: 'Пожалуйста, выберете вариант'}]}
                                            initialValue={inviteInfo?.surveyResponses?.startPlace}>
                                     <Radio.Group className={s.item_radio_group}>
-                                        <Radio.Button value="church">Будeм присутствовать на венчании</Radio.Button>
+                                        <Radio.Button value="church">Будем присутствовать на венчании</Radio.Button>
                                         <Radio.Button value="manor">Сразу отправимся на банкет</Radio.Button>
                                     </Radio.Group>
                                 </Form.Item>
