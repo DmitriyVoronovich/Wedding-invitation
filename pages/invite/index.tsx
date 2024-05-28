@@ -8,19 +8,15 @@ import InviteComponent from "@/app/components/second/content/invite-component";
 import {SectionOneComponent} from "@/app/components/second/content/section-one";
 import {SectionTwoComponent} from "@/app/components/second/content/section_two";
 import {FooterComponent} from "app/components/second/footer/footer-component";
+
 import './style.css'
 import '../../app/globals.css'
 
 const {Header, Footer, Content} = Layout;
 
-export default function Home() {
+export default function Invite() {
     return (
         <>
-            <style jsx global>{`
-                body {
-                    margin: 0;
-                }
-            `}</style>
             <Layout className={s.layout_style}>
                 <Header className={s.header_style}><HeaderComponent/></Header>
                 <Content className={s.content_style}>
@@ -31,6 +27,7 @@ export default function Home() {
                     <SectionTwoComponent/>
                 </Content>
                 <Footer className={s.footer_style}><FooterComponent/></Footer>
+                <audio src='../../public/sound/pedro.mp3'/>
             </Layout>
         </>
     )

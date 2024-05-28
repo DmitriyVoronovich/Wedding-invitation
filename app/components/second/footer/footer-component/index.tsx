@@ -2,11 +2,11 @@ import React from 'react';
 import s from './footer-component.module.scss';
 import '@pages/invite/style.css'
 import {MENU_HEADER_LIST} from "@/app/constant/constant";
-import Link from "next/link";
+import {Link} from "react-scroll";
 
 export const FooterComponent = () => {
     return (
-        <section className={s.section_container}>
+        <section className={s.section_container} id={'contacts'}>
             <div className={s.container}>
                 <div className={s.contact_wrapper}>
                     <h3 className={s.contact_title}>Свяжитесь с нами</h3>
@@ -16,7 +16,7 @@ export const FooterComponent = () => {
                 <div className={s.footer_menu_wrapper}>
                     {MENU_HEADER_LIST.map((item) => {
                         return (
-                            <Link href={`/${item.href}`} key={item.id} className={s.menu_link}>
+                            <Link to={item.href} smooth={true} spy={true} key={item.id} className={s.menu_link}>
                             <span>
                                 {item.title}
                             </span>

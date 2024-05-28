@@ -1,12 +1,12 @@
 import {getSession} from "next-auth/react";
-import {AuthUser} from "@/configs/auth";
+import {AuthUser} from "@/types/auth.type";
 
 export async function getServerSideProps(context: any) {
     const session = await getSession(context)
     const isAdmin = (session?.user as AuthUser)?.role === 'admin'
     return {
         redirect: {
-            destination:  isAdmin ? '/admin/panel' : '/admin/antLogin',  // redirect destination path
+            destination:  isAdmin ? '/admin/guests' : '/admin/login',  // redirect destination path
             permanent: false,
         },
     }

@@ -1,18 +1,10 @@
 .section_container {
   width: 100%;
-  margin-top: 40px;
-  padding-bottom: 50px;
-
-  @media screen and (max-width: 450px) {
-    margin-top: 20px;
-    padding-bottom: 50px;
-  }
 }
 
 .container {
   max-width: 1440px;
   width: 100%;
-  padding: 0 80px;
   display: flex;
   align-items: center;
   justify-content: center;
