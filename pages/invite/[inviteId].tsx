@@ -17,6 +17,7 @@ import {RespMessage} from "@/app/components/second/respons-message";
 import {InterrogationForm} from "@/app/components/second/interrogation-content/interrogation-form";
 import {useState} from "react";
 import {Fade} from "react-awesome-reveal";
+
 const {Header, Footer, Content} = Layout;
 
 export async function getServerSideProps(context: any) {
@@ -58,9 +59,13 @@ export default function Invite({inviteInfo, inviteId}: any) {
                     <AboutEventComponent/>
                     <ScheduleSectionComponent/>
                     <ScheduleHeaderComponent/>
-                   <Fade triggerOnce={true} cascade={true} damping={0.3} direction={'up'} >
-                    {showMessage ? <RespMessage ans={success}/> : <InterrogationForm inviteInfo={inviteInfo} inviteId={inviteId} onRespForm={onRespForm}/>}
-                    </Fade>
+                    <div id={'survey'}>
+                        <Fade triggerOnce={true} cascade={true} damping={0.3} direction={'up'}>
+                            {showMessage ? <RespMessage ans={success}/> :
+                                <InterrogationForm inviteInfo={inviteInfo} inviteId={inviteId}
+                                                   onRespForm={onRespForm}/>}
+                        </Fade>
+                    </div>
                     <SectionTwoComponent/>
                 </Content>
                 <Footer className={s.footer_style}><FooterComponent/></Footer>
