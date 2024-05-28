@@ -1,10 +1,10 @@
 import type {AuthOptions} from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials"
-import {AuthUser} from "@/types/auth.type";
+import {AuthUser} from "@types";
 import {singInAdmin, singInGuests} from "@/app/service/api/auth.api";
 
 export const authConfig: AuthOptions = {
-    secret: process.env.AUTH_SECRET,
+    secret: process.env.SECRET,
     providers: [
         CredentialsProvider({
             credentials: {
