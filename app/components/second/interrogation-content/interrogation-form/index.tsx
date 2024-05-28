@@ -11,7 +11,7 @@ import Image from "next/image";
 // @ts-ignore
 import useSound from "use-sound";
 
-export const InterrogationForm = ({inviteInfo, inviteId, onRespForm}: any) => {
+export const InterrogationForm = ({inviteInfo, inviteId, onRespForm, singleGuest}: any) => {
     const [play, {stop}] = useSound('/sound/pedro.mp3');
     const [startPedroPlay, setStartPedroPlay] = useState(false);
     const [firstDayList, setFirstDayList] = useState('');
@@ -22,8 +22,7 @@ export const InterrogationForm = ({inviteInfo, inviteId, onRespForm}: any) => {
 
     const [form] = Form.useForm();
 
-    const guestGroup = inviteInfo.guests
-    console.log(guestGroup)
+    const guestGroup = inviteInfo.guests;
 
     const options: SelectProps['options'] = guestGroup?.map((item: any) => {
         return {
@@ -123,7 +122,8 @@ export const InterrogationForm = ({inviteInfo, inviteId, onRespForm}: any) => {
 
     return (
         <section className={s.section_container}>
-            {startPedroPlay && <Image src={pedroGif} style={{position: 'absolute', width: '100vw', height: '100vh'}} alt={'pedro'}/>}
+            {startPedroPlay &&
+                <Image src={pedroGif} style={{position: 'absolute', width: '100vw', height: '100vh'}} alt={'pedro'}/>}
             <div className={s.container}>
                 {surveyCompleted
                     ? <h2 className={s.section_title}>Ответьте на несколько вопросов</h2>
@@ -135,7 +135,7 @@ export const InterrogationForm = ({inviteInfo, inviteId, onRespForm}: any) => {
                     </div>}
                 {surveyCompleted &&
                     <Form form={form} className={s.section_form} onFinish={onFinish} onChange={onFormValueChange}>
-                        {guestGroup.length === 1
+                        {singleGuest
                             ? <>
                                 <h3 className={s.item_title}>Будете ли вы присутствовать на нашем торжестве?</h3>
                                 <Form.Item name="presentGuests" className={s.form_item} rules={[{required: show}]}
@@ -200,7 +200,7 @@ export const InterrogationForm = ({inviteInfo, inviteId, onRespForm}: any) => {
                                         <Radio.Button value={true}>Личным транспортом</Radio.Button>
                                     </Radio.Group>
                                 </Form.Item>
-                                {guestGroup.length === 1
+                                {singleGuest
                                     ? <>
                                         <h3 className={s.item_title}>Будете ли Вы на втором дне нашего торжества?</h3>
                                         <Form.Item name="presentOnSecondDay" className={s.form_item}

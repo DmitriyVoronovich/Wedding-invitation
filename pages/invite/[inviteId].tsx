@@ -17,6 +17,7 @@ import {RespMessage} from "@/app/components/second/respons-message";
 import {InterrogationForm} from "@/app/components/second/interrogation-content/interrogation-form";
 import {useState} from "react";
 import {Fade} from "react-awesome-reveal";
+import {isOneGuest} from "@admin-components";
 
 const {Header, Footer, Content} = Layout;
 
@@ -38,6 +39,7 @@ export async function getServerSideProps(context: any) {
 export default function Invite({inviteInfo, inviteId}: any) {
     const [success, setSuccess] = useState(true);
     const [showMessage, setShowMessage] = useState(false);
+    const singleGuest = isOneGuest(inviteInfo);
 
     const onRespForm = (res: boolean) => {
         setShowMessage(true);
@@ -54,16 +56,20 @@ export default function Invite({inviteInfo, inviteId}: any) {
                 <Header className={s.header_style}><HeaderComponent/></Header>
                 <Content className={s.content_style}>
                     <MainSectionComponent inviteId={inviteId}/>
-                    <InviteComponent inviteInfo={inviteInfo}/>
+                    <InviteComponent inviteInfo={inviteInfo} singleGuest={singleGuest}/>
                     <SectionOneComponent/>
-                    <AboutEventComponent/>
+                    <AboutEventComponent singleGuest={singleGuest}/>
                     <ScheduleSectionComponent/>
                     <ScheduleHeaderComponent/>
                     <div id={'survey'}>
                         <Fade triggerOnce={true} cascade={true} damping={0.3} direction={'up'}>
-                            {showMessage ? <RespMessage ans={success}/> :
-                                <InterrogationForm inviteInfo={inviteInfo} inviteId={inviteId}
-                                                   onRespForm={onRespForm}/>}
+                            {showMessage
+                                ? <RespMessage ans={success}/>
+                                : <InterrogationForm inviteInfo={inviteInfo}
+                                                     inviteId={inviteId}
+                                                     singleGuest={singleGuest}
+                                                     onRespForm={onRespForm}/>
+                            }
                         </Fade>
                     </div>
                     <SectionTwoComponent/>

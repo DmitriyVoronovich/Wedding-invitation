@@ -3,7 +3,7 @@ import s from "@/app/components/second/content/invite-component/invite-component
 import e from './about-event-component.module.scss';
 import {Fade} from "react-awesome-reveal";
 
-export const AboutEventComponent = () => {
+export const AboutEventComponent = ({singleGuest = false}: { singleGuest?: boolean }) => {
     return (
         <section className={e.event_section_container}>
             <div className={s.container}>
@@ -23,11 +23,10 @@ export const AboutEventComponent = () => {
                             </p>
                             <p className={s.text}>
                                 А уже на следующий день, мы продолжим наше празднование в том же месте, наслаждаясь днем
-                                на
-                                свежем воздухе.
+                                на свежем воздухе.
                             </p>
                             <p className={s.text}>
-                                Мы с нетерпением ждем встречи с вами и надеемся, что этот день станет для нас всех
+                                Мы с нетерпением ждем встречи с {singleGuest ? `тобой` : 'вами'} и надеемся, что этот день станет для нас всех
                                 незабываемым!
                             </p>
                         </Fade>

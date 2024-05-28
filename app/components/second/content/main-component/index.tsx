@@ -5,7 +5,6 @@ import Image from "next/image";
 import {Link} from "react-scroll";
 
 export const MainSectionComponent = ({inviteId}: { inviteId?: string }) => {
-
     return (
         <section className={s.section_container} >
             <div className={s.container}>

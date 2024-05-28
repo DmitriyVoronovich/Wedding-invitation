@@ -19,7 +19,8 @@ export default function InvitationSection() {
             </div>
             <h3 className={s.section_date}>27 ИЮЛЯ 2024</h3>
             <p className={s.section_text}>С любовью, Павел и Алина ♡♡♡ </p>
-            <p className={s.section_text}>P.S.: Отличной альтернативой цветам может стать бутылочка алкагольного напитка,
+            <p className={s.section_text}>P.S.: Отличной альтернативой цветам может стать бутылочка алкагольного
+                напитка,
                 упаковочка зернового кофе или вкусного чая.:)</p>
             <Image src={svg} alt={'src'} className={s.section_svg}/>
         </section>
