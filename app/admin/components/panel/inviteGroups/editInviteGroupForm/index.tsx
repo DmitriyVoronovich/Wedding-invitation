@@ -9,6 +9,11 @@ const onFinishFailed: FormProps<CreateOrEditInviteGroup>['onFinishFailed'] = (er
     console.log('Failed:', errorInfo);
 };
 
+const TransportsFrom = [
+    {label: 'Mosty', value: 'mosty'},
+    {label: 'Shchuchyn', value: 'shchuchyn'},
+]
+
 export const CreateOrEditInviteGroupForm = ({editInviteGroup, handleSubmitForm}: {
     editInviteGroup?: InviteGroup,
     handleSubmitForm: (editedInviteGroup: CreateOrEditInviteGroup) => void
@@ -82,9 +87,19 @@ export const CreateOrEditInviteGroupForm = ({editInviteGroup, handleSubmitForm}:
                     }))}/>
             </Form.Item>
             <Form.Item<CreateOrEditInviteGroup>
+                label="Transfer From"
+                name={['invitation', 'transportFrom']}
+                rules={[{required: true, message: 'Please input city from!'}]}
+                initialValue={editInviteGroup?.invitation.transportFrom}
+            >
+                <Select
+                    allowClear
+                    options={TransportsFrom}/>
+            </Form.Item>
+            <Form.Item<CreateOrEditInviteGroup>
                 name={['invitation', 'checkSlip']}
                 wrapperCol={{offset: 8, span: 16}}
-                initialValue={false}
+                initialValue={editInviteGroup?.invitation.checkSlip}
                 valuePropName="checked"
             >
                 <Checkbox>Guest need a place to sleep</Checkbox>
@@ -92,7 +107,7 @@ export const CreateOrEditInviteGroupForm = ({editInviteGroup, handleSubmitForm}:
             <Form.Item<CreateOrEditInviteGroup>
                 name={['invitation', 'checkTransport']}
                 wrapperCol={{offset: 8, span: 16}}
-                initialValue={false}
+                initialValue={editInviteGroup?.invitation.checkTransport}
                 valuePropName="checked"
             >
                 <Checkbox>Guest need a transport</Checkbox>

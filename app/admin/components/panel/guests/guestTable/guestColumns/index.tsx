@@ -1,30 +1,19 @@
 import {Guest} from "@/types/guest.type";
 import {Space, TableProps} from "antd/lib";
-import {DeleteOutlined, EditOutlined} from "@ant-design/icons";
+import {CheckCircleOutlined, CloseCircleOutlined, CopyOutlined, DeleteOutlined, EditOutlined} from "@ant-design/icons";
 import React from "react";
-import {TableRowSelection} from "antd/es/table/interface";
 import {LastChangeCell, TableOpen} from "@admin-components";
+import {TableColumnType} from "antd";
 
-export const rowSelection: TableRowSelection<Guest> = {
-    onChange: (selectedRowKeys, selectedRows) => {
-        console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
-    },
-    onSelect: (record, selected, selectedRows) => {
-        console.log(record, selected, selectedRows);
-    },
-    onSelectAll: (selected, selectedRows, changeRows) => {
-        console.log(selected, selectedRows, changeRows);
-    },
-};
-
-export const GuestColumns: (handleSelectActionGuest: (guest: Guest, tableOpenAction: TableOpen) => void) => TableProps<Guest>["columns"] =
-    (handleSelectActionGuest: (guest: Guest, tableOpenAction: TableOpen) => void): TableProps<Guest>['columns'] =>
+export const GuestColumns: (handleSelectActionGuest: (guest: Guest, tableOpenAction: TableOpen) => void, copyIntoBuffer: (guest: Guest) => void, getColumnSearchProps: () => TableColumnType<Guest>) => TableProps<Guest>["columns"] =
+    (handleSelectActionGuest: (guest: Guest, tableOpenAction: TableOpen) => void, copyIntoBuffer: (guest: Guest) => void, getColumnSearchProps: () => TableColumnType<Guest>): TableProps<Guest>['columns'] =>
         ([
             {
                 title: 'Adult',
                 dataIndex: 'isAdult',
                 key: 'isAdult',
                 render: (isAdult: boolean) => isAdult ? 'Yes' : 'No',
+                width: 100,
                 filters: [
                     {
                         text: 'Adult',
@@ -38,14 +27,39 @@ export const GuestColumns: (handleSelectActionGuest: (guest: Guest, tableOpenAct
                 onFilter: (value, {isAdult}) => value !== '' && isAdult === value,
             },
             {
-                title: 'First Name',
+                title: 'Invite',
+                dataIndex: 'inviteGroup',
+                key: 'inviteGroup',
+                width: 100,
+                render: (inviteGroup: string) => !!inviteGroup ? <CheckCircleOutlined/> : <CloseCircleOutlined/>,
+                filters: [
+                    {
+                        text: 'Exist',
+                        value: true,
+                    },
+                    {
+                        text: 'Non Exist',
+                        value: false,
+                    },
+                ],
+                onFilter: (value, {inviteGroup}) => !!inviteGroup === value,
+            },
+            {
+                title: 'Last Seen At',
+                key: 'lastSeenAt',
+                dataIndex: 'lastSeenAt',
+                render: (_, guest: Guest) => guest.lastSeenAt ? new Date(guest.lastSeenAt).toLocaleString() : 'Never',
+            },
+            {
+                title: 'Name',
                 dataIndex: 'firstName',
                 key: 'firstName',
             },
             {
-                title: 'First Name',
+                title: 'Last Name',
                 dataIndex: 'lastName',
                 key: 'lastName',
+                ...getColumnSearchProps(),
             },
             {
                 title: 'Side',
@@ -92,6 +106,7 @@ export const GuestColumns: (handleSelectActionGuest: (guest: Guest, tableOpenAct
                     <Space size="middle">
                         <EditOutlined onClick={() => handleSelectActionGuest(guest, TableOpen.editDrawer)}/>
                         <DeleteOutlined onClick={() => handleSelectActionGuest(guest, TableOpen.removeConfirm)}/>
+                        <CopyOutlined onClick={() => copyIntoBuffer(guest)}/>
                     </Space>
                 ),
             },

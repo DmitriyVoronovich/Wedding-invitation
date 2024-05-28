@@ -16,11 +16,11 @@ export async function getServerSideProps(context: any) {
     const guests = await getAllGuestsOnServer(accessToken);
 
     return {
-        props: {serverGuests: guests || [], session: session || null}
+        props: {serverGuests: guests || [], publicUrl: process.env.NEXT_PRODUTION_URL, session: session || null}
     }
 }
 
-export default function Guests({serverGuests}: any) {
+export default function Guests({serverGuests, publicUrl}: any) {
     const [guests, setGuests] = useState<Guest[]>(serverGuests || []); // [1
     const [notificationApi, contextHolder] = notification.useNotification();
     const contextValue = useMemo(() => ({} as any), []);
@@ -29,7 +29,7 @@ export default function Guests({serverGuests}: any) {
         <Context.Provider value={contextValue}>
             {contextHolder}
             <PanelMenu>
-                <GuestTable notificationApi={notificationApi} guests={guests} setGuests={setGuests}/>
+                <GuestTable notificationApi={notificationApi} publicUrl={publicUrl} guests={guests} setGuests={setGuests}/>
             </PanelMenu>
         </Context.Provider>
     )

@@ -17,7 +17,7 @@ export const MainSectionComponent = ({inviteId}: { inviteId?: string }) => {
                         <p className={s.section_description}>Суббота, 27 Июля, 2024<br/> Костел Святой Терезы, Щучин
                         </p>
                         <Link href={scheduleLink}>
-                            <button className={s.description_button}>Расписание</button>
+                            <button className={s.description_button}>{inviteId ? `Детали и Опрос` : `Расписание`}</button>
                         </Link>
                     </div>
                     <div className={s.image_wrapper}>

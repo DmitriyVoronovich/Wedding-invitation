@@ -3,11 +3,19 @@ export enum Role {
   admin = 'admin'
 }
 
-export type UserType = {
-  id: string; // uuid,
-  role: Role;
+type BaseType = {
   createdAt: string;
   updatedAt: string;
   createdBy: string;
   modifyBy?: string;
+}
+
+type UserType = BaseType & {
+  id: string; // uuid,
+  role: Role;
 };
+
+export type {
+  BaseType,
+  UserType
+}

@@ -27,8 +27,8 @@
       "@/*": [
         "./*"
       ],
-      "@/types/*": [
-        "./app/types/*"
+      "@types": [
+        "./app/types/index.ts"
       ],
       "@api": [
         "./app/service/api/index.ts"
@@ -51,7 +51,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "src/app/**/*.d.ts"
   ],
   "exclude": [
     "node_modules"

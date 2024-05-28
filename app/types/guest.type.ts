@@ -17,7 +17,8 @@ type Guest = UserType & {
     gender: GuestGender;
     isAdult: boolean;
     inviteId: string;
-    inviteGroup?: string
+    inviteGroup?: string;
+    lastSeenAt?: string;
 };
 
 type CreateOrEditGuest = {

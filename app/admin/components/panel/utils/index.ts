@@ -1,13 +1,15 @@
 import {NotificationInstance} from "antd/es/notification/interface";
-import {InviteGroup, InvitePreload} from "@/types/inviteGroups.type";
-import {GuestGender} from "@/types/guest.type";
+import {GuestGender, InviteGroup, InvitePreload} from "@types";
 
 export const prepareNotificationMessage = (notificationApi: NotificationInstance) => (success: boolean,
-                                                                                      message: { success: string, error: string },
+                                                                                      message: {
+                                                                                          success: string,
+                                                                                          error: string
+                                                                                      },
                                                                                       callback: {
-                                                      success?: Function,
-                                                      error?: Function
-                                                  }) => {
+                                                                                          success?: Function,
+                                                                                          error?: Function
+                                                                                      }) => {
     const fieldName = success ? 'success' : 'error';
     notificationApi[fieldName]({message: message[fieldName], placement: 'topRight'});
     callback?.[fieldName]?.();
@@ -15,7 +17,7 @@ export const prepareNotificationMessage = (notificationApi: NotificationInstance
 
 export const inviteText = (inviteGroup?: InviteGroup | InvitePreload) => {
     if (!inviteGroup?.guests?.length) {
-        return 'Дорогие гости!';
+        return 'Дорогие друзья и близкие!';
     }
 
     if (inviteGroup.guests.length === 1) {

@@ -47,7 +47,7 @@
 
 .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
     color: #0a0a0a;
-    background: #cedacc;
+    background: #e8dad2;
     border-color: #ffffff;
 }
 

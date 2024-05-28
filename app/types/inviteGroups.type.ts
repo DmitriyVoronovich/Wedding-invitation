@@ -1,29 +1,10 @@
-import {Guest} from "@/types/guest.type";
-import {UserType} from "@/types/user.type";
+import {UserType} from "./user.type";
+import {InvitePreload} from "./inviteInfo.type";
 
 export type Invitation = {
-    inviteTitle: string;
     checkSlip: boolean;
+    transportFrom: string;
     checkTransport: boolean;
-};
-
-type InvitePreload = {
-    id: string;
-    groupName: string;
-    guests: Guest[];
-    invitation: Invitation;
-    surveyResponses: SurveyResponses;
-}
-
-type InviteGroup = UserType & InvitePreload;
-
-type SurveyResponses = {
-    presentGuests: string[];
-    startPlace: string;
-    isPrivateTransport: boolean | null;
-    presentOnSecondDay: boolean | null;
-    needSleepPlace: boolean | null;
-    likeDrinks: boolean | null;
 };
 
 type ChangedGuests = {
@@ -38,15 +19,16 @@ type CreateOrEditInviteGroup = {
     invitation: Invitation;
 };
 
+type InviteGroup = UserType & InvitePreload;
+
 type EditInviteGroupRequest = Omit<CreateOrEditInviteGroup, 'guests'>;
 
 type CreateInviteGroupRequest = Omit<CreateOrEditInviteGroup, 'updateGuests'>
 
 
 export type {
-    ChangedGuests,
     InviteGroup,
-    InvitePreload,
+    ChangedGuests,
     CreateOrEditInviteGroup,
     EditInviteGroupRequest,
     CreateInviteGroupRequest

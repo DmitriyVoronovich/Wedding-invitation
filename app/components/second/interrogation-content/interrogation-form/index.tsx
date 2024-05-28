@@ -6,8 +6,13 @@ import {alcoholicDrinks} from "@/app/constant/constant";
 import s from "./interrogation-form.module.scss";
 import './interrogation-form.css'
 import {surveyResponse} from "@/app/service/api/invitePreload.api";
+import useSound from "use-sound";
+import pedroGif from 'app/Accets/images/mapache-pedro.gif'
+import Image from "next/image";
 
 export const InterrogationForm = ({inviteInfo, inviteId}: any) => {
+    const [play, {stop}] = useSound('/sound/pedro.mp3');
+    const [startPedroPlay, setStartPedroPlay] = useState(false);
     const [firstDayList, setFirstDayList] = useState('');
     const [secondDayList, setSecondDayList] = useState('');
     const [show, setShow] = useState(!!inviteInfo.surveyResponses);
@@ -65,6 +70,12 @@ export const InterrogationForm = ({inviteInfo, inviteId}: any) => {
             const surveyResp = await surveyResponse(answer);
         }
 
+        play()
+        setStartPedroPlay(true)
+        setTimeout(() => {
+            stop()
+            setStartPedroPlay(false);
+        }, 15000)
         setSurveyCompleted(false)
     };
 
@@ -85,9 +96,9 @@ export const InterrogationForm = ({inviteInfo, inviteId}: any) => {
         setDisabled(false)
     };
 
-    const presentInitialValue = (paramName: string) => {
+    const presentInitialValue = (inviteInfo: any, paramName: string) => {
         let resultValue;
-        if (!inviteInfo[paramName]) {
+        if (!inviteInfo.surveyResponses[paramName]) {
             return ''
         }
         if (!inviteInfo.surveyResponses[paramName].length) {
@@ -100,12 +111,12 @@ export const InterrogationForm = ({inviteInfo, inviteId}: any) => {
     }
 
     useEffect(() => {
-        setFirstDayList(presentInitialValue('presentGuests'))
-        setSecondDayList(presentInitialValue('presentOnSecondDay'))
+        setFirstDayList(presentInitialValue(inviteInfo, 'presentGuests'))
+        setSecondDayList(presentInitialValue(inviteInfo, 'presentOnSecondDay'))
     }, []);
 
-    const presentGuestInit = presentInitialValue('presentGuests');
-    const presentOnSecondDayInit = presentInitialValue('presentOnSecondDay');
+    const presentGuestInit = presentInitialValue(inviteInfo, 'presentGuests');
+    const presentOnSecondDayInit = presentInitialValue(inviteInfo, 'presentOnSecondDay');
 
     const onModalClosed = () => {
         setShowModal(false);
@@ -113,6 +124,7 @@ export const InterrogationForm = ({inviteInfo, inviteId}: any) => {
 
     return (
         <section className={s.section_container}>
+            {startPedroPlay && <Image src={pedroGif} style={{position: 'absolute', width: '100vw', height: '100vh'}} alt={'pedro'}/>}
             <div className={s.container}>
                 {surveyCompleted
                     ? <h2 className={s.section_title}>Ответьте на несколько вопросов</h2>

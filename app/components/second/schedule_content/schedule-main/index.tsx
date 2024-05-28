@@ -22,11 +22,9 @@ export const ScheduleMainComponent = () => {
                         Щучин, Костел Святой Терезы
                     </p>
                     <h5 className={s.section_title}>О мероприятии</h5>
-                    <p className={s.section_description}>I’m an event description.
-                        Click here to open up the Event Editor and change my text. Simply click me,
-                        Manage Event and start editing your event. I’m a great place for you to say a little
-                        more about your upcoming event. People like to know what they are getting before they show
-                        up to an event so use this space to give people a reason to come!
+                    <p className={s.section_description}>
+                        Наше торжество начнется с венчания в Костеле Святой Терезы в 15:00. Затем мы отправимся на фуршет и банкет в уютную Усадьбу "Долина Заречная", где будем наслаждаться вкусной едой, теплой компанией и, конечно же, танцами до полуночи. А уже на следующий день, мы продолжим наше празднование в том же месте, наслаждаясь днем на свежем воздухе.
+                        Мы с нетерпением ждем встречи с вами и надеемся, что этот день станет для нас всех незабываемым!
                     </p>
                     <h5 className={s.section_title}>Расписание</h5>
                     <ul className={s.list_wrapper}>

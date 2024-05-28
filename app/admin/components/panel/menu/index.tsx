@@ -6,7 +6,7 @@ import {useRouter} from "next/navigation";
 import {AppRouterInstance} from "next/dist/shared/lib/app-router-context.shared-runtime";
 
 const redirectToAdminPageByKey = (router: AppRouterInstance) => {
-    return  ({key}: { key: string }) => router.push(key);
+    return ({key}: { key: string }) => router.push(key);
 }
 
 const prepareMenuItems: (router: AppRouterInstance) => MenuProps['items'] =
@@ -25,8 +25,8 @@ const prepareMenuItems: (router: AppRouterInstance) => MenuProps['items'] =
                 onClick: redirectToAdminPageByKey(router)
             },
             {
-                label: 'Schedule',
-                key: 'schedule',
+                label: 'Survey Response',
+                key: 'surveyResponse',
                 icon: <ScheduleOutlined/>,
                 onClick: redirectToAdminPageByKey(router)
             },

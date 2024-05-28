@@ -1,4 +1,4 @@
-import {Space, Table} from "antd/lib";
+import {Space} from "antd/lib";
 import React, {Dispatch, SetStateAction, useMemo, useState} from "react";
 import {CreateOrEditGuest, Guest} from "@/types/guest.type";
 import {DataDrawer, DrawerTitle} from "app/admin/components/panel/dataDrawer";
@@ -6,21 +6,21 @@ import {NotificationInstance} from "antd/es/notification/interface";
 import {Button, Modal} from "antd";
 import {createGuest, deleteGuest, editGuest} from "@api";
 import {useAdminAccessToken} from "@hooks";
-import {GuestColumns, rowSelection} from "./guestColumns";
 import {EditGuestForm} from "@admin-components";
 
 import './index.css';
 import {prepareNotificationMessage} from "@/app/admin/components/panel/utils";
+import {CustomGuestTable} from "@/app/admin/components/panel/guests/guestTable/table";
 
 export enum TableOpen {
     editDrawer = 'editDrawer',
     addDrawer = 'addDrawer',
     removeConfirm = 'removeConfirm',
     nothing = ''
-
 }
 
-export const GuestTable = ({guests, setGuests, notificationApi}: {
+export const GuestTable = ({publicUrl, guests, setGuests, notificationApi}: {
+        publicUrl: string,
         guests: Guest[],
         setGuests: Dispatch<SetStateAction<Guest[]>>,
         notificationApi: NotificationInstance
@@ -31,11 +31,6 @@ export const GuestTable = ({guests, setGuests, notificationApi}: {
         const [selectedGuest, setSelectedGuest] = useState<Guest | undefined>(undefined);
         const [modalText, setModalText] = useState("Confirm remove");
         const notificationMessage = prepareNotificationMessage(notificationApi);
-
-        const handleSelectActionGuest = (guest: Guest, tableOpenAction: TableOpen) => {
-            setSelectedGuest(guest);
-            setTableOpen(tableOpenAction);
-        }
 
         const closeAll = () => {
             setTableOpen(TableOpen.nothing);
@@ -84,9 +79,6 @@ export const GuestTable = ({guests, setGuests, notificationApi}: {
             });
         }
 
-        const guestsColumns = useMemo(
-            () => GuestColumns(handleSelectActionGuest)
-            , [handleSelectActionGuest]);
         const drawerOpen = useMemo(
             () => [TableOpen.editDrawer, TableOpen.addDrawer].includes(tableOpen)
             , [tableOpen]);
@@ -102,8 +94,8 @@ export const GuestTable = ({guests, setGuests, notificationApi}: {
                         {DrawerTitle.CREATE_GUEST}
                     </Button>
                 </Space>
-                <Table bordered rowSelection={rowSelection} rowKey="id" columns={guestsColumns}
-                       dataSource={guests}/>
+                <CustomGuestTable publicUrl={publicUrl} guests={guests} setTableOpen={setTableOpen}
+                                  setSelectedGuest={setSelectedGuest} notificationMessage={notificationMessage}/>
                 <DataDrawer open={drawerOpen} drawerTitle={drawerTitle} onClose={closeAll}>
                     {tableOpen === TableOpen.editDrawer && selectedGuest &&
                         <EditGuestForm key={DrawerTitle.EDIT_GUEST} editGuest={selectedGuest}
