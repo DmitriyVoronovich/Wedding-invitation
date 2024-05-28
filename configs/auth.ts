@@ -4,7 +4,7 @@ import {AuthUser} from "@types";
 import {singInAdmin, singInGuests} from "@/app/service/api/auth.api";
 
 export const authConfig: AuthOptions = {
-    secret: process.env.SECRET,
+    secret: process.env.NEXTAUTH_SECRET,
     providers: [
         CredentialsProvider({
             credentials: {
