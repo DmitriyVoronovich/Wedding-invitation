@@ -15,7 +15,7 @@ export const MainSectionComponent = ({inviteId}: { inviteId?: string }) => {
                     <div className={s.description_wrapper}>
                         <p className={s.section_description}>Суббота, 27 Июля, 2024<br/> Костел Святой Терезы, Щучин
                         </p>
-                        <Link to={'schedule'} smooth={true} spy={true}>
+                        <Link to={inviteId ? 'survey' : 'schedule'} smooth={true} spy={true}>
                             <button className={s.description_button}>{inviteId ? `Детали и Опрос` : `Расписание`}</button>
                         </Link>
                     </div>
