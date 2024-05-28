@@ -23,9 +23,8 @@ export const surveyResponse = async (answer: any): Promise<any | null> => {
             url: "/api/data/inviteInfo/surveyResponse",
             body: answer
         });
-        const {data} = json;
 
-        return data;
+        return json;
     } catch (error) {
         return null;
     }

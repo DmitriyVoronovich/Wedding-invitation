@@ -10,7 +10,7 @@ import useSound from "use-sound";
 import pedroGif from 'app/Accets/images/mapache-pedro.gif'
 import Image from "next/image";
 
-export const InterrogationForm = ({inviteInfo, inviteId}: any) => {
+export const InterrogationForm = ({inviteInfo, inviteId, onRespForm}: any) => {
     const [play, {stop}] = useSound('/sound/pedro.mp3');
     const [startPedroPlay, setStartPedroPlay] = useState(false);
     const [firstDayList, setFirstDayList] = useState('');
@@ -18,7 +18,6 @@ export const InterrogationForm = ({inviteInfo, inviteId}: any) => {
     const [show, setShow] = useState(!!inviteInfo.surveyResponses);
     const [disabled, setDisabled] = useState(true);
     const [surveyCompleted, setSurveyCompleted] = useState(!inviteInfo.surveyResponses);
-    const [showModal, setShowModal] = useState(false);
 
     const [form] = Form.useForm();
 
@@ -56,6 +55,7 @@ export const InterrogationForm = ({inviteInfo, inviteId}: any) => {
                 presentGuests: [],
             }
             const surveyResp = await surveyResponse(answer);
+            onRespForm(!surveyResp.error);
 
         } else {
             const answer = {
@@ -68,6 +68,7 @@ export const InterrogationForm = ({inviteInfo, inviteId}: any) => {
                 likeDrinks: value.likeDrinks
             }
             const surveyResp = await surveyResponse(answer);
+            onRespForm(!surveyResp.error);
         }
 
         play()
@@ -117,10 +118,6 @@ export const InterrogationForm = ({inviteInfo, inviteId}: any) => {
 
     const presentGuestInit = presentInitialValue(inviteInfo, 'presentGuests');
     const presentOnSecondDayInit = presentInitialValue(inviteInfo, 'presentOnSecondDay');
-
-    const onModalClosed = () => {
-        setShowModal(false);
-    };
 
     return (
         <section className={s.section_container}>

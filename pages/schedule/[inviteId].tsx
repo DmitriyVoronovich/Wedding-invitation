@@ -10,6 +10,8 @@ import {ScheduleHeaderComponent} from "@/app/components/second/schedule_content/
 import {ScheduleMainComponent} from "@/app/components/second/schedule_content/schedule-main";
 import {InterrogationForm} from "@/app/components/second/interrogation-content/interrogation-form";
 import {ScheduleMapComponent} from "@/app/components/second/schedule_content/schedule-map";
+import {useState} from "react";
+import {RespMessage} from "@/app/components/second/respons-message";
 
 const {Header, Footer, Content} = Layout;
 
@@ -29,6 +31,14 @@ export async function getServerSideProps(context: any) {
 }
 
 export default function Main({inviteInfo, inviteId}: any) {
+    const [success, setSuccess] = useState(true);
+    const [showMessage, setShowMessage] = useState(false);
+
+    const onRespForm = (res: boolean) => {
+        setShowMessage(true);
+        setSuccess(res);
+    }
+
     return (
         <>
             <Layout className={s.layout_style}>
@@ -37,7 +47,7 @@ export default function Main({inviteInfo, inviteId}: any) {
                     <ScheduleHeaderComponent/>
                     <ScheduleMainComponent/>
                     <ScheduleMapComponent/>
-                    <InterrogationForm inviteInfo={inviteInfo} inviteId={inviteId}/>
+                    {showMessage ? <RespMessage ans={success}/> : <InterrogationForm inviteInfo={inviteInfo} inviteId={inviteId} onRespForm={onRespForm}/>}
                 </Content>
                 <Footer className={s.footer_style}><FooterComponent/></Footer>
             </Layout>
