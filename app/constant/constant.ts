@@ -42,7 +42,7 @@ export const MENU_HEADER_LIST = [
     {
         id: 1,
         title: "Главное",
-        href: 'invite',
+        href: 'home',
         offsetDesk: -30,
         offsetMob: -30
     },
@@ -50,7 +50,7 @@ export const MENU_HEADER_LIST = [
         id: 2,
         title: "Приглашение",
         secondTitle: 'МЫ ЖЕНИМСЯ',
-        href: 'schedule',
+        href: 'invite',
         offsetDesk: -125,
         offsetMob: -60
 

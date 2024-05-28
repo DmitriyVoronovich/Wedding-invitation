@@ -11,6 +11,12 @@ import {FooterComponent} from "app/components/second/footer/footer-component";
 import './style.css'
 import '../../app/globals.css'
 import {getInvitePreloadOnServer} from "@/app/service/api/invitePreload.api";
+import {AboutEventComponent} from "@/app/components/second/content/about-event-component";
+import {ScheduleHeaderComponent} from "@/app/components/second/schedule_content/schedule-header";
+import {RespMessage} from "@/app/components/second/respons-message";
+import {InterrogationForm} from "@/app/components/second/interrogation-content/interrogation-form";
+import {useState} from "react";
+import {Fade} from "react-awesome-reveal";
 const {Header, Footer, Content} = Layout;
 
 export async function getServerSideProps(context: any) {
@@ -29,6 +35,18 @@ export async function getServerSideProps(context: any) {
 }
 
 export default function Invite({inviteInfo, inviteId}: any) {
+    const [success, setSuccess] = useState(true);
+    const [showMessage, setShowMessage] = useState(false);
+
+    const onRespForm = (res: boolean) => {
+        setShowMessage(true);
+        setSuccess(res);
+
+        setTimeout(() => {
+            location.reload()
+            setShowMessage(false);
+        }, 15500)
+    };
     return (
         <>
             <Layout className={s.layout_style}>
@@ -37,7 +55,12 @@ export default function Invite({inviteInfo, inviteId}: any) {
                     <MainSectionComponent inviteId={inviteId}/>
                     <InviteComponent inviteInfo={inviteInfo}/>
                     <SectionOneComponent/>
+                    <AboutEventComponent/>
                     <ScheduleSectionComponent/>
+                    <ScheduleHeaderComponent/>
+                   <Fade triggerOnce={true} cascade={true} damping={0.3} direction={'up'} >
+                    {showMessage ? <RespMessage ans={success}/> : <InterrogationForm inviteInfo={inviteInfo} inviteId={inviteId} onRespForm={onRespForm}/>}
+                    </Fade>
                     <SectionTwoComponent/>
                 </Content>
                 <Footer className={s.footer_style}><FooterComponent/></Footer>

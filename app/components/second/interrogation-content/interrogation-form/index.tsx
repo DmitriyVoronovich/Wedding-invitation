@@ -6,9 +6,9 @@ import {alcoholicDrinks} from "@/app/constant/constant";
 import s from "./interrogation-form.module.scss";
 import './interrogation-form.css'
 import {surveyResponse} from "@/app/service/api/invitePreload.api";
-import useSound from "use-sound";
-import pedroGif from 'app/Accets/images/mapache-pedro.gif'
+import pedroGif from 'app/Accets/resp/педро.gif'
 import Image from "next/image";
+import useSound from "use-sound";
 
 export const InterrogationForm = ({inviteInfo, inviteId, onRespForm}: any) => {
     const [play, {stop}] = useSound('/sound/pedro.mp3');
@@ -22,6 +22,7 @@ export const InterrogationForm = ({inviteInfo, inviteId, onRespForm}: any) => {
     const [form] = Form.useForm();
 
     const guestGroup = inviteInfo.guests
+    console.log(guestGroup)
 
     const options: SelectProps['options'] = guestGroup?.map((item: any) => {
         return {
@@ -205,8 +206,8 @@ export const InterrogationForm = ({inviteInfo, inviteId, onRespForm}: any) => {
                                                    rules={[{required: true, message: 'Пожалуйста, выберете вариант'}]}
                                                    initialValue={presentOnSecondDayInit}>
                                             <Radio.Group className={s.item_radio_group}>
-                                                <Radio.Button value={true}>Буду</Radio.Button>
-                                                <Radio.Button value={false}>Не буду</Radio.Button>
+                                                <Radio.Button value={"yes"}>Буду</Radio.Button>
+                                                <Radio.Button value={'no'}>Не буду</Radio.Button>
                                             </Radio.Group>
                                         </Form.Item>
                                     </>

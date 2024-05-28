@@ -1,5 +1,5 @@
 .section_container {
-  background-color: #e8dad2;
+  background-color: #ffffff;
   padding-top: 50px;
   width: 100%;
   padding-bottom: 50px;
@@ -125,5 +125,34 @@
 
   @media screen and (max-width: 450px) {
     font-size: 15px;
+  }
+}
+
+.button_wrapper {
+  display: flex;
+  align-items: end;
+  justify-content: end;
+  padding: 0 80px;
+}
+
+.description_button {
+  cursor: pointer;
+  margin-top: 60px;
+  width: 200px;
+  height: 80px;
+  background-color: #FFFFFF;
+  border-radius: 50px;
+  border: 1px solid #0a0a0a;
+  color: #0a0a0a;
+  font-family: 'Avenir Light', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 130%;
+
+  @media screen and (max-width: 450px) {
+    margin-top: 28px;
+    min-width: 94px;
+    height: 44px;
+    font-size: 14px;
   }
 }
