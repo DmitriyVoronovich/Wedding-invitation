@@ -43,7 +43,7 @@ export default function Invite({inviteInfo, inviteId}: any) {
         setSuccess(res);
 
         setTimeout(() => {
-            location.reload()
+            // location.reload()
             setShowMessage(false);
         }, 15500)
     };
