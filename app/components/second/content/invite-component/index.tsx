@@ -5,7 +5,7 @@ import {inviteText} from "@/app/admin/components/panel/utils";
 // @ts-ignore
 import {Fade} from "react-awesome-reveal";
 
-const InviteComponent = ({inviteInfo, singleGuest = false}: { inviteInfo?: InvitePreload, singleGuest: boolean }) => {
+const InviteComponent = ({inviteInfo, singleGuest = false}: { inviteInfo?: InvitePreload, singleGuest?: boolean }) => {
     const inviteTextValue = inviteText(inviteInfo);
 
     return (
