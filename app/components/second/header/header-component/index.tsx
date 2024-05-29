@@ -6,12 +6,13 @@ import {CloseOutlined} from "@ant-design/icons";
 import {Link} from "react-scroll";
 
 export const HeaderComponent = () => {
-    const [width, setWidth] = React.useState(769);
+    const [width, setWidth] = React.useState<number>();
     const [open, setOpen] = useState(false);
 
     useEffect(() => {
         const handleWindowResize = () => setWidth(window.innerWidth)
         window.addEventListener('resize', handleWindowResize);
+        handleWindowResize()
 
         return () => window.removeEventListener('resize', handleWindowResize);
     });
@@ -29,7 +30,13 @@ export const HeaderComponent = () => {
                         <CloseOutlined className={s.close_icon} onClick={onMenuToggle}/>
                         {MENU_HEADER_LIST.map((item) => {
                             return (
-                                <Link to={item.href} smooth={true} spy={true} key={item.id} className={s.menu_link} onClick={onMenuToggle}>
+                                <Link to={item.href}
+                                      smooth={true}
+                                      spy={true}
+                                      key={item.id}
+                                      className={s.menu_link}
+                                      offset={item.offsetMob}
+                                      onClick={onMenuToggle}>
                             <span>
                                 {item.title}
                             </span>
@@ -50,7 +57,11 @@ export const HeaderComponent = () => {
                             : <div className={s.header_menu_wrapper}>
                                 {MENU_HEADER_LIST.map((item) => {
                                     return (
-                                        <Link to={item.href} smooth={true} spy={true} key={item.id} className={s.menu_link}>
+                                        <Link to={item.href}
+                                              smooth={true}
+                                              spy={true}
+                                              key={item.id}
+                                              className={s.menu_link}>
                             <span>
                                 {item.title}
                             </span>

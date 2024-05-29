@@ -1,13 +1,28 @@
 .event_section_container {
-    background-color: #e8dad2;
-    padding-top: 50px;
-    width: 100%;
-    padding-bottom: 50px;
+  background-color: #e8dad2;
+  padding-top: 50px;
+  width: 100%;
+  padding-bottom: 50px;
   margin-top: 120px;
 
-    @media screen and (max-width: 450px) {
-      margin-top: 50px;
-      padding-top:35px;
-      padding-bottom: 35px;
-    }
+  @media screen and (max-width: 450px) {
+    margin-top: 50px;
+    padding-top: 35px;
+    padding-bottom: 35px;
+  }
+}
+
+.section_title {
+  color: #0a0a0a;
+  font-weight: 400;
+  font-size: 35px;
+  padding: 0;
+  margin: 0;
+  font-family: 'Cormorant Garamond', serif;
+  width: 100%;
+  max-width: 531px;
+
+  @media screen and (max-width: 450px) {
+    font-size: 30px;
+  }
 }

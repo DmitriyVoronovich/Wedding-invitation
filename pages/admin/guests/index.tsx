@@ -11,6 +11,11 @@ const Context = createContext({} as any);
 
 export async function getServerSideProps(context: any) {
     const session = await getServerSession(context.req, context.res, authConfig);
+
+    if (!session) {
+
+    }
+
     const accessToken = getAccessToken(session?.user as AuthUser);
     const guests = await getAllGuestsOnServer(accessToken);
 

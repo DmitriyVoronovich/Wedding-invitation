@@ -133,26 +133,30 @@
   align-items: end;
   justify-content: end;
   padding: 0 80px;
+
+  @media screen and (max-width: 450px) {
+    padding: 0;
+  }
 }
 
 .description_button {
-  cursor: pointer;
-  margin-top: 60px;
-  width: 200px;
-  height: 80px;
+  margin: 25px 0 0 0;
+  height: 48px;
   background-color: #FFFFFF;
   border-radius: 50px;
   border: 1px solid #0a0a0a;
   color: #0a0a0a;
   font-family: 'Avenir Light', sans-serif;
-  font-weight: 300;
-  font-size: 20px;
+  font-weight: 400;
+  font-size: 15px;
   line-height: 130%;
+  cursor: pointer;
 
   @media screen and (max-width: 450px) {
-    margin-top: 28px;
-    min-width: 94px;
+    font-size: 16px;
+    width: 90%;
+    margin: 35px 20px 0 20px;
+    align-self: center;
     height: 44px;
-    font-size: 14px;
   }
 }

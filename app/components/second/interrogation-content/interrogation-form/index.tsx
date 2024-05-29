@@ -1,25 +1,23 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Form, FormProps, Select} from "antd";
+import {Button, Form, FormProps} from "antd";
 import Radio from 'antd/lib/radio';
 import {SelectProps} from "antd/lib";
 import {alcoholicDrinks} from "@/app/constant/constant";
 import s from "./interrogation-form.module.scss";
 import './interrogation-form.css'
 import {surveyResponse} from "@/app/service/api/invitePreload.api";
-import pedroGif from 'app/Accets/resp/педро.gif'
-import Image from "next/image";
-// @ts-ignore
-import useSound from "use-sound";
+import {RadioInput} from "@/app/components/second/interrogation-content/radio-input-item";
+import {SelectInputItem} from "@/app/components/second/interrogation-content/select-input-item";
+import {PresentGuestComponent} from "@/app/components/second/interrogation-content/present-guest-component";
+import PresentOnSecondDayComponent from "@/app/components/second/interrogation-content/present-on-second-day-component";
+import {presentInitialValue} from "@/app/components/second/interrogation-content/interrogation-form/utils";
 
 export const InterrogationForm = ({inviteInfo, inviteId, onRespForm, singleGuest}: any) => {
-    const [play, {stop}] = useSound('/sound/pedro.mp3');
-    const [startPedroPlay, setStartPedroPlay] = useState(false);
     const [firstDayList, setFirstDayList] = useState('');
     const [secondDayList, setSecondDayList] = useState('');
-    const [show, setShow] = useState(!!inviteInfo.surveyResponses);
+    const [show, setShow] = useState(!!inviteInfo.surveyResponses && inviteInfo.surveyResponses?.presentGuests.length);
     const [disabled, setDisabled] = useState(true);
     const [surveyCompleted, setSurveyCompleted] = useState(!inviteInfo.surveyResponses);
-
     const [form] = Form.useForm();
 
     const guestGroup = inviteInfo.guests;
@@ -29,7 +27,7 @@ export const InterrogationForm = ({inviteInfo, inviteId, onRespForm, singleGuest
             label: `${item.lastName} ${item.firstName}`,
             value: item.inviteId,
         }
-    })
+    });
 
     const onShowAllQuestion = (e: any) => {
         if (e.target.value === 'no') {
@@ -38,11 +36,11 @@ export const InterrogationForm = ({inviteInfo, inviteId, onRespForm, singleGuest
         } else {
             setShow(true)
         }
-    }
+    };
 
     const onFirstDayList = (e: any) => {
         setFirstDayList(e.target.value);
-        onShowAllQuestion(e)
+        onShowAllQuestion(e);
     };
     const onSecondDayListChange = (e: any) => {
         setSecondDayList(e.target.value);
@@ -56,7 +54,7 @@ export const InterrogationForm = ({inviteInfo, inviteId, onRespForm, singleGuest
                 presentGuests: [],
             }
             const surveyResp = await surveyResponse(answer);
-            onRespForm(!surveyResp.error);
+            onRespForm(!surveyResp.error, false);
 
         } else {
             const answer = {
@@ -69,16 +67,11 @@ export const InterrogationForm = ({inviteInfo, inviteId, onRespForm, singleGuest
                 likeDrinks: value.likeDrinks
             }
             const surveyResp = await surveyResponse(answer);
-            onRespForm(!surveyResp.error);
+            onRespForm(!surveyResp.error, true);
         }
 
-        play()
-        setStartPedroPlay(true)
-        setTimeout(() => {
-            stop()
-            setStartPedroPlay(false);
-        }, 15000)
-        setSurveyCompleted(false)
+
+        setSurveyCompleted(false);
     };
 
     const onFormValueChange = () => {
@@ -87,7 +80,7 @@ export const InterrogationForm = ({inviteInfo, inviteId, onRespForm, singleGuest
         } else {
             setDisabled(checkFields(form.getFieldsValue()));
         }
-    }
+    };
 
     const checkFields = (obj: any) => {
         return Object.values(obj).some(value => value === undefined || value === '');
@@ -98,20 +91,6 @@ export const InterrogationForm = ({inviteInfo, inviteId, onRespForm, singleGuest
         setDisabled(false)
     };
 
-    const presentInitialValue = (inviteInfo: any, paramName: string) => {
-        let resultValue;
-        if (!inviteInfo.surveyResponses?.[paramName]) {
-            return ''
-        }
-        if (!inviteInfo.surveyResponses?.[paramName].length) {
-            resultValue = 'no';
-        } else {
-            resultValue = inviteInfo.surveyResponses?.[paramName].length === inviteInfo.guests.length ? 'yes' : 'any';
-        }
-
-        return resultValue
-    }
-
     useEffect(() => {
         setFirstDayList(presentInitialValue(inviteInfo, 'presentGuests'))
         setSecondDayList(presentInitialValue(inviteInfo, 'presentOnSecondDay'))
@@ -121,9 +100,7 @@ export const InterrogationForm = ({inviteInfo, inviteId, onRespForm, singleGuest
     const presentOnSecondDayInit = presentInitialValue(inviteInfo, 'presentOnSecondDay');
 
     return (
-        <section className={s.section_container}>
-            {startPedroPlay &&
-                <Image src={pedroGif} style={{position: 'absolute', width: '100vw', height: '100vh'}} alt={'pedro'}/>}
+        <section className={s.section_container} id={'survey'}>
             <div className={s.container}>
                 {surveyCompleted
                     ? <h2 className={s.section_title}>Ответьте на несколько вопросов</h2>
@@ -135,141 +112,72 @@ export const InterrogationForm = ({inviteInfo, inviteId, onRespForm, singleGuest
                     </div>}
                 {surveyCompleted &&
                     <Form form={form} className={s.section_form} onFinish={onFinish} onChange={onFormValueChange}>
-                        {singleGuest
-                            ? <>
-                                <h3 className={s.item_title}>Будете ли вы присутствовать на нашем торжестве?</h3>
-                                <Form.Item name="presentGuests" className={s.form_item} rules={[{required: show}]}
-                                           initialValue={presentGuestInit}>
-                                    <Radio.Group className={s.item_radio_group}
-                                                 onChange={(e) => onShowAllQuestion(e)}>
-                                        <Radio.Button value="yes">Буду</Radio.Button>
-                                        <Radio.Button value="no">Не буду</Radio.Button>
-                                    </Radio.Group>
-                                </Form.Item>
-                            </>
-                            :
-                            <>
-                                <h3 className={s.item_title}>Будете ли вы присутствовать на нашем торжестве?</h3>
-                                <div className={s.item_content_wrapper}>
-                                    <Form.Item name="presentGuests" className={s.form_item} rules={[{required: show}]}
-                                               initialValue={presentGuestInit}>
-                                        <Radio.Group className={s.item_radio_group}
-                                                     onChange={onFirstDayList}
-                                                     value={firstDayList}>
-                                            <Radio.Button value="yes">Буду</Radio.Button>
-                                            <Radio.Button value="no">Не буду</Radio.Button>
-                                            <Radio.Button value="any">Будем частично</Radio.Button>
-                                        </Radio.Group>
-                                    </Form.Item>
-                                    {firstDayList === 'any' &&
-                                        <Form.Item name="presentGuestsSelect" className={s.form_item_select}
-                                                   required={show}
-                                                   initialValue={inviteInfo?.surveyResponses?.presentGuests}>
-                                            <Select
-                                                style={{width: '450px'}}
-                                                mode="multiple"
-                                                allowClear
-                                                className={s.item_selector}
-                                                placeholder="Пожалуйста, выберете кто будет присутствовать"
-                                                options={options}
-                                            />
-                                        </Form.Item>}
-                                </div>
-                            </>}
-
+                        <PresentGuestComponent singleGuest={singleGuest}
+                                               presentGuestInit={presentGuestInit}
+                                               show={show}
+                                               options={options}
+                                               onShowAllQuestion={onShowAllQuestion}
+                                               inviteInfo={inviteInfo}
+                                               onFirstDayList={onFirstDayList}
+                                               firstDayList={firstDayList}/>
                         {show &&
                             <>
                                 <h3 className={s.item_title}>Будете ли вы присутствовать на венчании или же сразу
-                                    отправитесь на
-                                    банкет?</h3>
-                                <Form.Item name="startPlace" className={s.form_item}
-                                           rules={[{required: true, message: 'Пожалуйста, выберете вариант'}]}
-                                           initialValue={inviteInfo?.surveyResponses?.startPlace}>
-                                    <Radio.Group className={s.item_radio_group}>
-                                        <Radio.Button value="church">Будем присутствовать на венчании</Radio.Button>
-                                        <Radio.Button value="manor">Сразу отправимся на банкет</Radio.Button>
-                                    </Radio.Group>
-                                </Form.Item>
-                                <h3 className={s.item_title}>Как Вы планируете добираться?</h3>
-                                <Form.Item name="isPrivateTransport" className={s.form_item}
-                                           rules={[{required: true, message: 'Пожалуйста, выберете вариант'}]}
-                                           initialValue={inviteInfo?.surveyResponses?.isPrivateTransport}>
-                                    <Radio.Group className={s.item_radio_group}>
-                                        <Radio.Button value={false}>Транспортом молодых на венчание,
-                                            а затем на банкет</Radio.Button>
-                                        <Radio.Button value={true}>Личным транспортом</Radio.Button>
-                                    </Radio.Group>
-                                </Form.Item>
-                                {singleGuest
-                                    ? <>
-                                        <h3 className={s.item_title}>Будете ли Вы на втором дне нашего торжества?</h3>
-                                        <Form.Item name="presentOnSecondDay" className={s.form_item}
-                                                   rules={[{required: true, message: 'Пожалуйста, выберете вариант'}]}
-                                                   initialValue={presentOnSecondDayInit}>
-                                            <Radio.Group className={s.item_radio_group}>
-                                                <Radio.Button value={"yes"}>Буду</Radio.Button>
-                                                <Radio.Button value={'no'}>Не буду</Radio.Button>
-                                            </Radio.Group>
-                                        </Form.Item>
-                                    </>
-                                    :
+                                    отправитесь на банкет?</h3>
+                                <RadioInput initialValue={inviteInfo?.surveyResponses?.startPlace}
+                                            requiredValue={show}
+                                            requiredMessage={'Пожалуйста, выберете вариант'}
+                                            itemName={'startPlace'}>
+                                    <Radio.Button value="church">{singleGuest ? 'Буду' : 'Будем'} присутствовать на
+                                        венчании</Radio.Button>
+                                    <Radio.Button value="manor">Сразу {singleGuest ? 'отправлюсь' : 'отправимся'} на
+                                        банкет</Radio.Button>
+                                </RadioInput>
+                                {inviteInfo.invitation.checkTransport &&
                                     <>
-                                        <h3 className={s.item_title}>Будете ли Вы на втором дне нашего торжества?</h3>
-                                        <div className={s.item_content_wrapper}>
-                                            <Form.Item name="presentOnSecondDay" className={s.form_item} required={show}
-                                                       initialValue={presentOnSecondDayInit}>
-                                                <Radio.Group className={s.item_radio_group}
-                                                             onChange={onSecondDayListChange}
-                                                             value={secondDayList}>
-                                                    <Radio.Button value="yes">Буду</Radio.Button>
-                                                    <Radio.Button value="no">Не буду</Radio.Button>
-                                                    <Radio.Button value="any">Будем частично</Radio.Button>
-                                                </Radio.Group>
-                                            </Form.Item>
-                                            {secondDayList === 'any' &&
-                                                <Form.Item name="presentOnSecondDaySelect"
-                                                           className={s.form_item_select}
-                                                           required={show}
-                                                           initialValue={inviteInfo?.surveyResponses?.presentOnSecondDay}>
-                                                    <Select
-                                                        style={{width: '450px'}}
-                                                        mode="multiple"
-                                                        allowClear
-                                                        className={s.item_selector}
-                                                        placeholder="Пожалуйста, выберете кто будет присутствовать"
-                                                        options={options}
-                                                    />
-                                                </Form.Item>}
-                                        </div>
-                                    </>
-                                }
-                                <h3 className={s.item_title}>Какие напитки Вы предпочитаете?</h3>
-                                <Form.Item name="likeDrinks" className={s.form_item}
-                                           rules={[{required: true, message: 'Пожалуйста, выберете вариант'}]}
-                                           initialValue={inviteInfo?.surveyResponses?.likeDrinks}>
-                                    <Select
-                                        mode="multiple"
-                                        allowClear
-                                        className={s.item_selector}
-                                        style={{width: '450px'}}
-                                        placeholder="Пожалуйста выберете напитки"
-                                        options={alcoholicDrinks}
-                                    />
-                                </Form.Item>
-                                <h3 className={s.item_title}>Нужен ли ночлег?</h3>
-                                <Form.Item name="needSleepPlace" className={s.form_item}
-                                           rules={[{required: true, message: 'Пожалуйста, выберете вариант'}]}
-                                           initialValue={inviteInfo?.surveyResponses?.needSleepPlace}>
-                                    <Radio.Group className={s.item_radio_group}>
-                                        <Radio.Button value={true}>Нужен</Radio.Button>
-                                        <Radio.Button value={false}>Не нужен</Radio.Button>
-                                    </Radio.Group>
-                                </Form.Item>
+                                        <h3 className={s.item_title}>Как Вы планируете добираться?</h3>
+                                        <RadioInput initialValue={inviteInfo?.surveyResponses?.isPrivateTransport}
+                                                    requiredValue={show}
+                                                    requiredMessage={'Пожалуйста, выберете вариант'}
+                                                    itemName={'isPrivateTransport'}>
+                                            <Radio.Button value={false}>Транспортом молодых на венчание,
+                                                а затем на банкет</Radio.Button>
+                                            <Radio.Button value={true}>Личным транспортом</Radio.Button>
+                                        </RadioInput>
+                                    </>}
+                                <PresentOnSecondDayComponent inviteInfo={inviteInfo}
+                                                             presentOnSecondDayInit={presentOnSecondDayInit}
+                                                             secondDayList={secondDayList}
+                                                             options={options}
+                                                             onSecondDayListChange={onSecondDayListChange}
+                                                             show={show}
+                                                             singleGuest={singleGuest}/>
+                                <h3 className={s.item_title}>{singleGuest ? 'Какой напиток' : 'Какие напитки'} Вы
+                                    предпочитаете?</h3>
+                                <SelectInputItem itemName={"likeDrinks"}
+                                                 initialValue={inviteInfo?.surveyResponses?.likeDrinks}
+                                                 requiredValue={true}
+                                                 optionsValue={alcoholicDrinks}
+                                                 requiredMessage={'Пожалуйста, выберете вариант'}
+                                                 placeholderValue={`Пожалуйста выберете ${singleGuest ? 'напиток' : 'напитки'}`}
+                                />
+                                {inviteInfo.invitation.checkSlip &&
+                                    <>
+                                        <h3 className={s.item_title}>Нужен ли ночлег?</h3>
+                                        <RadioInput initialValue={inviteInfo?.surveyResponses?.needSleepPlace}
+                                                    requiredValue={true}
+                                                    requiredMessage={'Пожалуйста, выберете вариант'}
+                                                    callback={onSecondDayListChange}
+                                                    itemName={'needSleepPlace'}>
+                                            <Radio.Button value={true}>Нужен</Radio.Button>
+                                            <Radio.Button value={false}>Не нужен</Radio.Button>
+                                        </RadioInput>
+                                    </>}
                             </>}
                         <div className={s.button_wrapper}>
                             <Form.Item>
                                 <Button className={s.description_button} htmlType="submit"
-                                        disabled={disabled}>Сохранить</Button>
+                                        disabled={disabled}> Сохранить</Button>
                             </Form.Item>
                         </div>
                     </Form>}

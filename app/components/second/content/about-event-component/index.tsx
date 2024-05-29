@@ -9,7 +9,7 @@ export const AboutEventComponent = ({singleGuest = false}: { singleGuest?: boole
             <div className={s.container}>
                 <div className={s.section_wrapper}>
                    <Fade triggerOnce={true} cascade={true} damping={0.3} >
-                        <h2 className={s.section_title}>О мероприятии</h2>
+                        <h2 className={e.section_title}>О мероприятии</h2>
                     </Fade>
                     <div className={s.text_wrapper}>
                        <Fade triggerOnce={true} cascade={true} damping={0.3} direction={'up'} >
