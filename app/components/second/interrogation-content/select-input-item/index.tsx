@@ -11,8 +11,7 @@ export const SelectInputItem = ({
                                     maxCountValue,
                                     initialValue,
                                     requiredMessage
-                                }: SelectInputItemProps) => {
-    return (
+                                }: SelectInputItemProps) => (
         <Form.Item name={itemName} className={s.form_item_select}
                    rules={[{required: requiredValue, message: requiredMessage}]}
                    initialValue={initialValue}>
@@ -27,4 +26,3 @@ export const SelectInputItem = ({
             />
         </Form.Item>
     );
-};

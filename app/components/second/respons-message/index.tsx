@@ -7,18 +7,18 @@ import Image from "next/image";
 export const RespMessage = ({ans, willThereBe: willBeThere}: any) => {
     return (
         <div className={s.container}>
-            {ans ?  willBeThere ? <div className={s.wrapper}>
-                            <p className={s.message_text}>Все успешно отправлено, спасибо за ответ</p>
-                            <Image src={pedro} alt={'pedro gif'} className={s.gif}/>
-                        </div>
-                        : <div className={s.wrapper}>
-                            <p className={s.message_text}>Нам искренне жаль это слышать, спасибо за ответ</p>
-                            <Image src={grust} alt={'rain gif'} className={s.gif}/>
-                        </div>
-                : <div className={s.wrapper}>
-                    <p className={s.message_text}>Произошла ошибка, свяжитесь с нами</p>
-                </div>
-            }
+            <div className={s.wrapper}>
+                {ans && <>
+                    <p className={s.message_text}>
+                        {willBeThere
+                            ? 'Все успешно отправлено, спасибо за ответ'
+                            : 'Нам искренне жаль это слышать, спасибо за ответ'}
+                    </p>
+                    <Image src={willBeThere ? pedro : grust} alt={willBeThere ? 'pedro gif' : 'rain gif'}
+                           className={s.gif}/>
+                </>}
+                {!ans && <p className={s.message_text}>Произошла ошибка, свяжитесь с нами</p>}
+            </div>
         </div>
     );
 };

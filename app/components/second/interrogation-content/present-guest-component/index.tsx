@@ -16,19 +16,16 @@ export const PresentGuestComponent = ({
                                           onShowAllQuestion
                                       }: PresentGuestComponentProps) => {
     return (<>
+            <h3 className={s.item_title}>Будете ли вы присутствовать на нашем торжестве?</h3>
             {singleGuest
-                ? <>
-                    <h3 className={s.item_title}>Будете ли вы присутствовать на нашем торжестве?</h3>
-                    <RadioInput initialValue={presentGuestInit}
-                                requiredValue={show}
-                                callback={onShowAllQuestion}
-                                itemName={'presentGuests'}>
-                        <Radio.Button value="yes">Буду</Radio.Button>
-                        <Radio.Button value="no">Не буду</Radio.Button>
-                    </RadioInput>
-                </>
+                ? <RadioInput initialValue={presentGuestInit}
+                              requiredValue={show}
+                              callback={onShowAllQuestion}
+                              itemName={'presentGuests'}>
+                    <Radio.Button value="yes">Буду</Radio.Button>
+                    <Radio.Button value="no">Не буду</Radio.Button>
+                </RadioInput>
                 : <>
-                    <h3 className={s.item_title}>Будете ли вы присутствовать на нашем торжестве?</h3>
                     <div className={s.item_content_wrapper}>
                         <RadioInput initialValue={presentGuestInit}
                                     requiredValue={show}

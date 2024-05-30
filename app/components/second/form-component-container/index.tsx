@@ -5,8 +5,9 @@ import {InterrogationForm} from "@/app/components/second/interrogation-content/i
 // @ts-ignore
 import useSound from "use-sound";
 import {SectionTwoComponent} from "@/app/components/second/content/section_two";
+import {FormComponentContainerProps} from "@/app/components/second/form-component-container/types";
 
-export const FormComponentContent = ({inviteInfo, inviteId, onInviteInfoUpdate, singleGuest}: any) => {
+export const FormComponentContent = ({inviteInfo, inviteId, onInviteInfoUpdate, singleGuest}: FormComponentContainerProps) => {
     const [success, setSuccess] = useState(true);
     const [showMessage, setShowMessage] = useState(false);
     const [willBeThere, setWillBeThere] = useState(true);
@@ -33,8 +34,6 @@ export const FormComponentContent = ({inviteInfo, inviteId, onInviteInfoUpdate, 
         setWillBeThere(willBe);
         onChangeWillThereBe(willBe);
     };
-
-
 
     return (
         <>
