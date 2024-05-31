@@ -1,10 +1,9 @@
 import React from 'react';
-import s from "@/app/components/second/content/invite-component/invite-component.module.scss";
+import s from "@component/content/invite-component/invite-component.module.scss";
 import e from './about-event-component.module.scss';
 import {Fade} from "react-awesome-reveal";
 
-export const AboutEventComponent = ({singleGuest = false}: { singleGuest?: boolean }) => {
-    return (
+export const AboutEventComponent = ({singleGuest = false}: { singleGuest?: boolean }) => (
         <section className={e.event_section_container}>
             <div className={s.container}>
                 <div className={s.section_wrapper}>
@@ -35,4 +34,3 @@ export const AboutEventComponent = ({singleGuest = false}: { singleGuest?: boole
             </div>
         </section>
     );
-};

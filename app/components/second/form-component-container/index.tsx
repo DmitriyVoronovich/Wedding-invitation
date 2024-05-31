@@ -1,11 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {Fade} from "react-awesome-reveal";
-import {RespMessage} from "@/app/components/second/respons-message";
-import {InterrogationForm} from "@/app/components/second/interrogation-content/interrogation-form";
 // @ts-ignore
 import useSound from "use-sound";
-import {SectionTwoComponent} from "@/app/components/second/content/section_two";
-import {FormComponentContainerProps} from "@/app/components/second/form-component-container/types";
+import {FormComponentContainerProps} from "@component/form-component-container/types";
+import {RespMessage} from "@component/respons-message";
+import {InterrogationForm} from "@component/interrogation-content";
+import {SectionTwoComponent} from "@component/content/section_two";
+
 
 export const FormComponentContent = ({inviteInfo, inviteId, onInviteInfoUpdate, singleGuest}: FormComponentContainerProps) => {
     const [success, setSuccess] = useState(true);
@@ -25,7 +26,7 @@ export const FormComponentContent = ({inviteInfo, inviteId, onInviteInfoUpdate, 
             stopSuccess();
             setShowMessage(false);
         }, 13000);
-    }
+    };
 
     const onRespForm = (res: boolean, willBe: boolean) => {
         setShowMessage(true);
@@ -39,7 +40,7 @@ export const FormComponentContent = ({inviteInfo, inviteId, onInviteInfoUpdate, 
         <>
             <Fade triggerOnce={true} cascade={true} damping={0.3} direction={'up'} >
                 {showMessage
-                    ? <RespMessage ans={success} willThereBe={willBeThere}/>
+                    ? <RespMessage ans={success} willBeThere={willBeThere}/>
                     : <InterrogationForm inviteInfo={inviteInfo} inviteId={inviteId} onRespForm={onRespForm} singleGuest={singleGuest}/>}
             </Fade>
             <SectionTwoComponent/>

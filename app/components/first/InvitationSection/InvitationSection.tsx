@@ -1,6 +1,6 @@
 import s from './InvitationSection.module.css'
 import Image from "next/image";
-import svg from '@/app/Accets/first/svgSection/brilint.svg'
+import svg from '@accets/first/svgSection/brilint.svg'
 import {MENU_LIST} from "@/app/constant/constant";
 
 export default function InvitationSection() {

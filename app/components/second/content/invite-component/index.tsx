@@ -33,7 +33,6 @@ const InviteComponent = ({inviteInfo, singleGuest = false}: { inviteInfo?: Invit
                                 напитка, небольшая упаковка зернового кофе или вкусного листового чая. :)</p>
                         </Fade>
                     </div>
-
                 </div>
             </div>
         </section>

@@ -1,19 +1,18 @@
 import s from './index.module.scss';
 import {Layout} from 'antd';
-import {HeaderComponent} from "@/app/components/second/header/header-component";
+import {HeaderComponent} from "@component/header/header-component";
 import '../../app/components/second/style_ant.css'
 import {MainSectionComponent} from "app/components/second/content/main-component";
-import {ScheduleSectionComponent} from "@/app/components/second/content/schedule-component";
-import InviteComponent from "@/app/components/second/content/invite-component";
-import {SectionOneComponent} from "@/app/components/second/content/section-one";
-import {SectionTwoComponent} from "@/app/components/second/content/section_two";
+import {ScheduleSectionComponent} from "@component/content/schedule-component";
+import InviteComponent from "@component/content/invite-component";
+import {SectionOneComponent} from "@component/content/section-one";
 import {FooterComponent} from "app/components/second/footer/footer-component";
 import './style.css'
 import '../../app/globals.css'
 import {getInvitePreloadOn} from "@/app/service/api/invitePreload.api";
-import {AboutEventComponent} from "@/app/components/second/content/about-event-component";
-import {ScheduleHeaderComponent} from "@/app/components/second/schedule_content/schedule-header";
-import {FormComponentContent} from "@/app/components/second/form-component-container";
+import {AboutEventComponent} from "@component/content/about-event-component";
+import {ScheduleHeaderComponent} from "@component/schedule_content/schedule-header";
+import {FormComponentContent} from "@component/form-component-container";
 import {useState} from "react";
 import {isOneGuest} from "@admin-components";
 
@@ -38,11 +37,10 @@ export default function Invite({serverInviteInfo, inviteId}: any) {
     const [inviteInfo, setInviteInfo] = useState(serverInviteInfo);
     const singleGuest = isOneGuest(inviteInfo);
 
-
     const onInviteInfoUpdate = async () => {
         const updatedInviteInfo = await getInvitePreloadOn(inviteId, false);
         setInviteInfo(updatedInviteInfo);
-    }
+    };
 
     return (
         <>

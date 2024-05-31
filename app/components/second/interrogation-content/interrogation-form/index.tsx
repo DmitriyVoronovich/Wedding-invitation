@@ -6,16 +6,17 @@ import {alcoholicDrinks} from "@/app/constant/constant";
 import s from "./interrogation-form.module.scss";
 import './interrogation-form.css'
 import {surveyResponse} from "@/app/service/api/invitePreload.api";
-import {RadioInput} from "@/app/components/second/interrogation-content/radio-input-item";
-import {SelectInputItem} from "@/app/components/second/interrogation-content/select-input-item";
-import {PresentGuestComponent} from "@/app/components/second/interrogation-content/present-guest-component";
-import PresentOnSecondDayComponent from "@/app/components/second/interrogation-content/present-on-second-day-component";
-import {presentInitialValue} from "@/app/components/second/interrogation-content/interrogation-form/utils";
+import {presentInitialValue} from "@component/interrogation-content/interrogation-form/utils";
+import {
+    PresentGuestComponent,
+    PresentOnSecondDayComponent,
+    RadioInput, SelectInputItem
+} from "@interrogation-content";
 
 export const InterrogationForm = ({inviteInfo, inviteId, onRespForm, singleGuest}: any) => {
     const [firstDayList, setFirstDayList] = useState('');
     const [secondDayList, setSecondDayList] = useState('');
-    const [show, setShow] = useState(!!inviteInfo.surveyResponses && inviteInfo.surveyResponses?.presentGuests.length);
+    const [show, setShow] = useState<boolean>(!!inviteInfo.surveyResponses && !!inviteInfo.surveyResponses?.presentGuests.length);
     const [disabled, setDisabled] = useState(true);
     const [surveyCompleted, setSurveyCompleted] = useState(!inviteInfo.surveyResponses);
     const [form] = Form.useForm();
@@ -42,6 +43,7 @@ export const InterrogationForm = ({inviteInfo, inviteId, onRespForm, singleGuest
         setFirstDayList(e.target.value);
         onShowAllQuestion(e);
     };
+
     const onSecondDayListChange = (e: any) => {
         setSecondDayList(e.target.value);
     };
@@ -70,7 +72,6 @@ export const InterrogationForm = ({inviteInfo, inviteId, onRespForm, singleGuest
             onRespForm(!surveyResp.error, true);
         }
 
-
         setSurveyCompleted(false);
     };
 
@@ -82,9 +83,7 @@ export const InterrogationForm = ({inviteInfo, inviteId, onRespForm, singleGuest
         }
     };
 
-    const checkFields = (obj: any) => {
-        return Object.values(obj).some(value => value === undefined || value === '');
-    };
+    const checkFields = (obj: any) => Object.values(obj).some(value => value === undefined || value === '');
 
     const onChangeCompletedSurvey = () => {
         setSurveyCompleted(true)
@@ -155,6 +154,9 @@ export const InterrogationForm = ({inviteInfo, inviteId, onRespForm, singleGuest
                                 <h3 className={s.item_title}>{singleGuest ? 'Какой напиток' : 'Какие напитки'} Вы
                                     предпочитаете?</h3>
                                 <SelectInputItem itemName={"likeDrinks"}
+                                                 maxCountValue={inviteInfo?.surveyResponses?.presentGuests.length === 1
+                                                     ? 1
+                                                     : inviteInfo?.guests.length}
                                                  initialValue={inviteInfo?.surveyResponses?.likeDrinks}
                                                  requiredValue={true}
                                                  optionsValue={alcoholicDrinks}

@@ -1,12 +1,12 @@
 import s from './index.module.scss';
 import {Layout} from 'antd';
-import {HeaderComponent} from "@/app/components/second/header/header-component";
+import {HeaderComponent} from "@component/header/header-component";
 import '../../app/components/second/style_ant.css'
 import {MainSectionComponent} from "app/components/second/content/main-component";
-import {ScheduleSectionComponent} from "@/app/components/second/content/schedule-component";
-import InviteComponent from "@/app/components/second/content/invite-component";
-import {SectionOneComponent} from "@/app/components/second/content/section-one";
-import {SectionTwoComponent} from "@/app/components/second/content/section_two";
+import {ScheduleSectionComponent} from "@component/content/schedule-component";
+import InviteComponent from "@component/content/invite-component";
+import {SectionOneComponent} from "@component/content/section-one";
+import {SectionTwoComponent} from "@component/content/section_two";
 import {FooterComponent} from "app/components/second/footer/footer-component";
 
 import './style.css'

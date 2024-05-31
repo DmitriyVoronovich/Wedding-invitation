@@ -1,7 +1,7 @@
 import React from 'react';
-import s from "@/app/components/second/interrogation-content/interrogation-form/interrogation-form.module.scss";
+import s from "@component/interrogation-content/interrogation-form/interrogation-form.module.scss";
 import {Form, Select} from "antd";
-import {SelectInputItemProps} from "@/app/components/second/interrogation-content/types";
+import {SelectInputItemProps} from "@component/interrogation-content/types";
 
 export const SelectInputItem = ({
                                     requiredValue,

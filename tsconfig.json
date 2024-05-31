@@ -30,6 +30,15 @@
       "@types": [
         "./app/types/index.ts"
       ],
+      "@interrogation-content": [
+        "./app/components/second/interrogation-content/index.ts"
+      ],
+      "@component/*": [
+        "./app/components/second/*"
+      ],
+      "@accets/*": [
+        "./app/Accets/*"
+      ],
       "@api": [
         "./app/service/api/index.ts"
       ],

@@ -10,39 +10,35 @@ export const HeaderComponent = () => {
     const [open, setOpen] = useState(false);
 
     useEffect(() => {
-        const handleWindowResize = () => setWidth(window.innerWidth)
+        const handleWindowResize = () => setWidth(window.innerWidth);
         window.addEventListener('resize', handleWindowResize);
-        handleWindowResize()
+        handleWindowResize();
 
         return () => window.removeEventListener('resize', handleWindowResize);
     });
 
-    const onMenuToggle = () => {
-        setOpen(!open)
-    }
+    const onMenuToggle = () => setOpen(!open);
 
     return (
         <section className={s.header_container} id={'home'}>
             <div className={s.container}>
-
                 {open
                     ? <div className={s.burger_menu_wrapper}>
                         <CloseOutlined className={s.close_icon} onClick={onMenuToggle}/>
-                        {MENU_HEADER_LIST.map((item) => {
-                            return (
-                                <Link to={item.href}
-                                      smooth={true}
-                                      spy={true}
-                                      key={item.id}
-                                      className={s.menu_link}
-                                      offset={item.offsetMob}
-                                      onClick={onMenuToggle}>
+                        {MENU_HEADER_LIST.map((item) =>
+                            <Link to={item.href}
+                                  smooth={true}
+                                  spy={true}
+                                  key={item.id}
+                                  className={s.menu_link}
+                                  offset={item.offsetMob}
+                                  onClick={onMenuToggle}>
                             <span>
                                 {item.title}
                             </span>
-                                </Link>
-                            )
-                        })}
+                            </Link>
+                        )
+                        }
                     </div>
                     : <>
                         <Link to={`invite`} smooth={true} spy={true} className={s.menu_link}>
@@ -72,6 +68,5 @@ export const HeaderComponent = () => {
                     </>}
             </div>
         </section>
-    )
-        ;
+    );
 };

@@ -1,8 +1,8 @@
-import castel from "@/app/Accets/first/svgSchedule/Catholic_castel.svg";
+import castel from "@accets/first/svgSchedule/Catholic_castel.svg";
 import s from "@/app/components/first/ScheduleSection/ScheduleSection.module.css";
-import buff from "@/app/Accets/first/svgSchedule/buffet.svg";
-import banq from "@/app/Accets/first/svgSchedule/banquet.svg";
-import second from "@/app/Accets/first/svgSchedule/second_day.svg";
+import buff from "@accets/first/svgSchedule/buffet.svg";
+import banq from "@accets/first/svgSchedule/banquet.svg";
+import second from "@accets/first/svgSchedule/second_day.svg";
 import {SelectProps} from "antd/lib";
 
 export const MOBILE_MENU_BREAKPOINT = 768;
