@@ -1,20 +1,21 @@
 import s from './index.module.scss';
 import {Layout} from 'antd';
-import {HeaderComponent} from "@component/header/header-component";
-import '../../app/components/second/style_ant.css'
-import {MainSectionComponent} from "app/components/second/content/main-component";
-import {ScheduleSectionComponent} from "@component/content/schedule-component";
-import InviteComponent from "@component/content/invite-component";
-import {SectionOneComponent} from "@component/content/section-one";
-import {FooterComponent} from "app/components/second/footer/footer-component";
+import '../../app/components/second-version/style_ant.css'
 import './style.css'
 import '../../app/globals.css'
 import {getInvitePreloadOn} from "@/app/service/api/invitePreload.api";
-import {AboutEventComponent} from "@component/content/about-event-component";
-import {ScheduleHeaderComponent} from "@component/schedule_content/schedule-header";
-import {FormComponentContent} from "@component/form-component-container";
 import {useState} from "react";
 import {isOneGuest} from "@admin-components";
+import {
+    AboutEventComponent, FormComponentContent,
+    HeaderComponent,
+    ScheduleHeaderComponent,
+    ScheduleSectionComponent,
+    SectionOneComponent,
+    MainSectionComponent,
+    FooterComponent
+} from "@components";
+import InviteComponent from "@/app/components/second-version/content/invite-component";
 
 const {Header, Footer, Content} = Layout;
 

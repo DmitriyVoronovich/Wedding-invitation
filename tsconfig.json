@@ -31,10 +31,10 @@
         "./app/types/index.ts"
       ],
       "@interrogation-content": [
-        "./app/components/second/interrogation-content/index.ts"
+        "./app/components/second-version/interrogation-content/index.ts"
       ],
-      "@components/*": [
-        "./app/components/*"
+      "@components": [
+        "./app/components"
       ],
       "@accets/*": [
         "./app/Accets/*"

@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import {Fade} from "react-awesome-reveal";
 // @ts-ignore
 import useSound from "use-sound";
-import {FormComponentContainerProps} from "@components/second/form-component-container/types";
-import {InterrogationForm, RespMessage, SectionTwoComponent} from "@components/second";
+import {FormComponentContainerProps} from "./types";
+import {InterrogationForm, RespMessage, SectionTwoComponent} from "@components";
 
 
 export const FormComponentContent = ({inviteInfo, inviteId, onInviteInfoUpdate, singleGuest}: FormComponentContainerProps) => {

@@ -1,8 +1,8 @@
 import React from 'react';
-import s from "@component/interrogation-content/interrogation-form/interrogation-form.module.scss";
+import s from "../interrogation-form/interrogation-form.module.scss";
 import Radio from "antd/lib/radio";
-import {PresentOnSecondDayComponentProps} from "@components/second/interrogation-content/types";
-import {RadioInput, SelectInputItem} from "@components/second";
+import {PresentOnSecondDayComponentProps} from "../types";
+import {RadioInput, SelectInputItem} from "@components";
 export const PresentOnSecondDayComponent = ({
                                                 secondDayList,
                                                 onSecondDayListChange,

@@ -1,5 +1,5 @@
 export * from './content';
-export * from './interrogation-content';
+export * from '@interrogation-content';
 export * from './header';
 export * from './footer';
 export * from './respons-message';

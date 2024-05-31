@@ -5,7 +5,7 @@ import fon from '@accets/images/CHEM9032_resized.jpg'
 import {EVENTS_LIST} from "@/app/constant/constant";
 import {Button} from "antd";
 import {Fade} from "react-awesome-reveal";
-import {ScheduleMapComponent} from "@components/second";
+import {ScheduleMapComponent} from "@components";
 
 export const ScheduleSectionComponent = () => {
     const [showMap, setShowMap] = useState(false);

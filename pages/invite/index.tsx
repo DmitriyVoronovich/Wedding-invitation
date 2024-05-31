@@ -1,16 +1,13 @@
 import s from './index.module.scss';
 import {Layout} from 'antd';
-import {HeaderComponent} from "@component/header/header-component";
-import '../../app/components/second/style_ant.css'
-import {MainSectionComponent} from "app/components/second/content/main-component";
-import {ScheduleSectionComponent} from "@component/content/schedule-component";
-import InviteComponent from "@component/content/invite-component";
-import {SectionOneComponent} from "@component/content/section-one";
-import {SectionTwoComponent} from "@component/content/section_two";
-import {FooterComponent} from "app/components/second/footer/footer-component";
+import '../../app/components/second-version/style_ant.css'
+import {MainSectionComponent} from "app/components/second-version/content/main-component";
+import {FooterComponent} from "app/components/second-version/footer/footer-component";
 
 import './style.css'
 import '../../app/globals.css'
+import {HeaderComponent, ScheduleSectionComponent, SectionOneComponent, SectionTwoComponent} from "@components/second-version";
+import InviteComponent from "@components/second-version/content/invite-component";
 
 const {Header, Footer, Content} = Layout;
 
