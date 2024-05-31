@@ -2,7 +2,7 @@ import React from 'react';
 import s from "@component/interrogation-content/interrogation-form/interrogation-form.module.scss";
 import {Form} from "antd";
 import Radio from "antd/lib/radio";
-import {RadioInputItemProps} from "@component/interrogation-content/types";
+import {RadioInputItemProps} from "@components/second/interrogation-content/types";
 
 export const RadioInput = ({
                                requiredValue,

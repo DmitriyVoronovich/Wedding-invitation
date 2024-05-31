@@ -6,12 +6,9 @@ import {alcoholicDrinks} from "@/app/constant/constant";
 import s from "./interrogation-form.module.scss";
 import './interrogation-form.css'
 import {surveyResponse} from "@/app/service/api/invitePreload.api";
-import {presentInitialValue} from "@component/interrogation-content/interrogation-form/utils";
-import {
-    PresentGuestComponent,
-    PresentOnSecondDayComponent,
-    RadioInput, SelectInputItem
-} from "@interrogation-content";
+import {presentInitialValue} from "@components/second/interrogation-content/interrogation-form/utils";
+import {PresentGuestComponent, PresentOnSecondDayComponent, RadioInput, SelectInputItem} from "@components/second";
+
 
 export const InterrogationForm = ({inviteInfo, inviteId, onRespForm, singleGuest}: any) => {
     const [firstDayList, setFirstDayList] = useState('');

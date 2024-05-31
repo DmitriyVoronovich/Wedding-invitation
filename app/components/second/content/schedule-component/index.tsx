@@ -3,9 +3,9 @@ import Image from "next/image";
 import s from './schedule-component.module.scss';
 import fon from '@accets/images/CHEM9032_resized.jpg'
 import {EVENTS_LIST} from "@/app/constant/constant";
-import {ScheduleMapComponent} from "@component/schedule_content/schedule-map";
 import {Button} from "antd";
 import {Fade} from "react-awesome-reveal";
+import {ScheduleMapComponent} from "@components/second";
 
 export const ScheduleSectionComponent = () => {
     const [showMap, setShowMap] = useState(false);
