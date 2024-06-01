@@ -8,9 +8,9 @@ import './interrogation-form.css'
 import {surveyResponse} from "@/app/service/api/invitePreload.api";
 import {presentInitialValue} from "./utils";
 import {PresentGuestComponent, PresentOnSecondDayComponent, RadioInput, SelectInputItem} from "@components";
+import {InterrogationFormProps} from '../types';
 
-
-export const InterrogationForm = ({inviteInfo, inviteId, onRespForm, singleGuest}: any) => {
+export const InterrogationForm = ({inviteInfo, inviteId, onRespForm, singleGuest, onBePresent}: InterrogationFormProps) => {
     const [firstDayList, setFirstDayList] = useState('');
     const [secondDayList, setSecondDayList] = useState('');
     const [show, setShow] = useState<boolean>(!!inviteInfo.surveyResponses && !!inviteInfo.surveyResponses?.presentGuests.length);
@@ -53,6 +53,7 @@ export const InterrogationForm = ({inviteInfo, inviteId, onRespForm, singleGuest
                 presentGuests: [],
             }
             const surveyResp = await surveyResponse(answer);
+            onBePresent(false);
             onRespForm(!surveyResp.error, false);
 
         } else {
@@ -66,6 +67,7 @@ export const InterrogationForm = ({inviteInfo, inviteId, onRespForm, singleGuest
                 likeDrinks: value.likeDrinks
             }
             const surveyResp = await surveyResponse(answer);
+            onBePresent(true);
             onRespForm(!surveyResp.error, true);
         }
 
