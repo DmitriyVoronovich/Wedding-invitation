@@ -6,7 +6,7 @@ import {FooterComponent} from "app/components/second-version/footer/footer-compo
 import './style.css'
 import '../../app/globals.css'
 import {HeaderComponent, ScheduleSectionComponent, SectionOneComponent, SectionTwoComponent} from "@components";
-import InviteComponent from "@/app/components/second-version/content/invite-component";
+import InviteComponent from "@components/second-version/content/invite-component";
 
 const {Header, Footer, Content} = Layout;
 

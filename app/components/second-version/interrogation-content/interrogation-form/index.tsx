@@ -8,9 +8,9 @@ import './interrogation-form.css'
 import {surveyResponse} from "@/app/service/api/invitePreload.api";
 import {presentInitialValue} from "./utils";
 import {PresentGuestComponent, PresentOnSecondDayComponent, RadioInput, SelectInputItem} from "@components";
+import {InterrogationFormProps} from '../types';
 
-
-export const InterrogationForm = ({inviteInfo, inviteId, onRespForm, singleGuest, onBePresent}: any) => {
+export const InterrogationForm = ({inviteInfo, inviteId, onRespForm, singleGuest, onBePresent}: InterrogationFormProps) => {
     const [firstDayList, setFirstDayList] = useState('');
     const [secondDayList, setSecondDayList] = useState('');
     const [show, setShow] = useState<boolean>(!!inviteInfo.surveyResponses && !!inviteInfo.surveyResponses?.presentGuests.length);

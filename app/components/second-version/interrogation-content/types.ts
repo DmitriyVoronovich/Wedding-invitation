@@ -38,3 +38,11 @@ export type PresentGuestComponentProps = {
     inviteInfo: any
     options: any
 };
+
+export type InterrogationFormProps = {
+    inviteInfo: any
+    inviteId: string
+    onRespForm: (res: boolean, willBe: boolean) => void
+    singleGuest: boolean
+    onBePresent: (willBe: boolean) => void
+};
