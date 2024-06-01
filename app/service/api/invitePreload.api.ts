@@ -1,10 +1,10 @@
 import {getResponseJson, postRequestJson} from "@/app/service/api/utils.api";
 import {InvitePreload} from "@types";
 
-export const getInvitePreloadOnServer = async (inviteId: string) => {
+export const getInvitePreloadOn = async (inviteId: string, server: boolean ) => {
     try {
         const json = await getResponseJson({
-            server: true,
+            server,
             url: `/api/data/inviteInfo/${inviteId}`
         });
         const {data} = json;

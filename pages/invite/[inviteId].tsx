@@ -1,33 +1,31 @@
 import s from './index.module.scss';
 import {Layout} from 'antd';
-import {HeaderComponent} from "@/app/components/second/header/header-component";
-import '../../app/components/second/style_ant.css'
-import {MainSectionComponent} from "app/components/second/content/main-component";
-import {ScheduleSectionComponent} from "@/app/components/second/content/schedule-component";
-import InviteComponent from "@/app/components/second/content/invite-component";
-import {SectionOneComponent} from "@/app/components/second/content/section-one";
-import {SectionTwoComponent} from "@/app/components/second/content/section_two";
-import {FooterComponent} from "app/components/second/footer/footer-component";
+import '../../app/components/second-version/style_ant.css'
 import './style.css'
 import '../../app/globals.css'
-import {getInvitePreloadOnServer} from "@/app/service/api/invitePreload.api";
-import {AboutEventComponent} from "@/app/components/second/content/about-event-component";
-import {ScheduleHeaderComponent} from "@/app/components/second/schedule_content/schedule-header";
-import {RespMessage} from "@/app/components/second/respons-message";
-import {InterrogationForm} from "@/app/components/second/interrogation-content/interrogation-form";
+import {getInvitePreloadOn} from "@/app/service/api/invitePreload.api";
 import {useState} from "react";
-import {Fade} from "react-awesome-reveal";
 import {isOneGuest} from "@admin-components";
+import {
+    AboutEventComponent, FormComponentContent,
+    HeaderComponent,
+    ScheduleHeaderComponent,
+    ScheduleSectionComponent,
+    SectionOneComponent,
+    MainSectionComponent,
+    FooterComponent
+} from "@components";
+import InviteComponent from "@/app/components/second-version/content/invite-component";
 
 const {Header, Footer, Content} = Layout;
 
 export async function getServerSideProps(context: any) {
     const inviteId = context.params?.inviteId;
     if (inviteId) {
-        const inviteInfo = await getInvitePreloadOnServer(inviteId);
+        const inviteInfo = await getInvitePreloadOn(inviteId, true);
 
         return {
-            props: {inviteInfo: inviteInfo || {}, inviteId}
+            props: {serverInviteInfo: inviteInfo || {}, inviteId}
         }
     }
 
@@ -36,20 +34,15 @@ export async function getServerSideProps(context: any) {
     }
 }
 
-export default function Invite({inviteInfo, inviteId}: any) {
-    const [success, setSuccess] = useState(true);
-    const [showMessage, setShowMessage] = useState(false);
+export default function Invite({serverInviteInfo, inviteId}: any) {
+    const [inviteInfo, setInviteInfo] = useState(serverInviteInfo);
     const singleGuest = isOneGuest(inviteInfo);
 
-    const onRespForm = (res: boolean) => {
-        setShowMessage(true);
-        setSuccess(res);
-
-        setTimeout(() => {
-            // location.reload()
-            setShowMessage(false);
-        }, 15500)
+    const onInviteInfoUpdate = async () => {
+        const updatedInviteInfo = await getInvitePreloadOn(inviteId, false);
+        setInviteInfo(updatedInviteInfo);
     };
+
     return (
         <>
             <Layout className={s.layout_style}>
@@ -61,18 +54,7 @@ export default function Invite({inviteInfo, inviteId}: any) {
                     <AboutEventComponent singleGuest={singleGuest}/>
                     <ScheduleSectionComponent/>
                     <ScheduleHeaderComponent/>
-                    <div id={'survey'}>
-                        <Fade triggerOnce={true} cascade={true} damping={0.3} direction={'up'}>
-                            {showMessage
-                                ? <RespMessage ans={success}/>
-                                : <InterrogationForm inviteInfo={inviteInfo}
-                                                     inviteId={inviteId}
-                                                     singleGuest={singleGuest}
-                                                     onRespForm={onRespForm}/>
-                            }
-                        </Fade>
-                    </div>
-                    <SectionTwoComponent/>
+                    <FormComponentContent inviteInfo={inviteInfo} inviteId={inviteId} onInviteInfoUpdate={onInviteInfoUpdate} singleGuest={singleGuest}/>
                 </Content>
                 <Footer className={s.footer_style}><FooterComponent/></Footer>
             </Layout>
