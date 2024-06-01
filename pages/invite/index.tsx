@@ -3,11 +3,10 @@ import {Layout} from 'antd';
 import '../../app/components/second-version/style_ant.css'
 import {MainSectionComponent} from "app/components/second-version/content/main-component";
 import {FooterComponent} from "app/components/second-version/footer/footer-component";
-
 import './style.css'
 import '../../app/globals.css'
-import {HeaderComponent, ScheduleSectionComponent, SectionOneComponent, SectionTwoComponent} from "@components/second-version";
-import InviteComponent from "@components/second-version/content/invite-component";
+import {HeaderComponent, ScheduleSectionComponent, SectionOneComponent, SectionTwoComponent} from "@components";
+import InviteComponent from "@/app/components/second-version/content/invite-component";
 
 const {Header, Footer, Content} = Layout;
 
