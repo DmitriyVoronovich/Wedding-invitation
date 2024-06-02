@@ -55,14 +55,14 @@ export const EVENTS_LIST = [
         id: 2,
         name: 'Фуршет',
         place: 'Усадьба Долина Заречная',
-        time: '16:00',
+        time: '16:30',
         image: buff,
     },
     {
         id: 3,
         name: 'Банкет',
         place: 'Усадьба Долина Заречная',
-        time: '16:30',
+        time: '17:00',
         image: banq,
     },
     {
