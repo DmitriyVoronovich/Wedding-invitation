@@ -6,6 +6,11 @@ const COPY_MESSAGE = {
     error: 'Could not copy to clipboard'
 };
 
+const padL = (nr: number, len = 2, chr = `0`) => `${nr}`.padStart(2, chr);
+
+export const transformDate = (dt: Date) =>
+    `${padL(dt.getMonth() + 1)}.${padL(dt.getDate())}.${dt.getFullYear()} ${padL(dt.getHours())}:${padL(dt.getMinutes())}:${padL(dt.getSeconds())}`;
+
 
 export const prepareNotificationMessage = (notificationApi: NotificationInstance) =>
     (success: boolean,

@@ -1,7 +1,7 @@
 import {Guest} from "@types";
 import {Space, TableProps} from "antd/lib";
 import {CheckCircleOutlined, CloseCircleOutlined, CopyOutlined, DeleteOutlined, EditOutlined} from "@ant-design/icons";
-import {LastChangeCell, TableOpen} from "@admin-components";
+import {LastChangeCell, TableOpen, transformDate} from "@admin-components";
 import {TableColumnType} from "antd";
 
 export const GuestColumns: (handleSelectActionGuest: (guest: Guest, tableOpenAction: TableOpen) => void, copyIntoBuffer: (guest: Guest) => Promise<void>, getColumnSearchProps: () => TableColumnType<Guest>) => TableProps<Guest>["columns"] =
@@ -47,7 +47,7 @@ export const GuestColumns: (handleSelectActionGuest: (guest: Guest, tableOpenAct
                 title: 'Last Seen At',
                 key: 'lastSeenAt',
                 dataIndex: 'lastSeenAt',
-                render: (_, guest: Guest) => guest.lastSeenAt ? new Date(guest.lastSeenAt).toLocaleString() : 'Never',
+                render: (_, guest: Guest) => guest.lastSeenAt ? transformDate(new Date(guest.lastSeenAt)) : 'Never',
             },
             {
                 title: 'Name',
