@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import Image from "next/image";
 import s from './schedule-component.module.scss';
 import fon from '@accets/images/CHEM9032_resized.jpg'

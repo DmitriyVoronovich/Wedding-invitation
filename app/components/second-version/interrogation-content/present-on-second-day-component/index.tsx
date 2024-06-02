@@ -1,4 +1,3 @@
-import React from 'react';
 import s from "../interrogation-form/interrogation-form.module.scss";
 import Radio from "antd/lib/radio";
 import {PresentOnSecondDayComponentProps} from "../types";

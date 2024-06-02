@@ -1,7 +1,7 @@
-import {InviteGroupColumns} from "@/app/admin/components/panel/inviteGroups/inviteGroupTable/inviteGroupColumns";
-import {TableGroupOpen} from "@/app/admin/components/panel/inviteGroups";
+import React, {useRef} from "react";
+import {InviteGroupColumns} from "./inviteGroupColumns";
+import {createCopyIntoBuffer, TableGroupOpen} from "@admin-components";
 import {InviteGroup} from "@types";
-import React, {useRef, useState} from "react";
 import {Space, Table} from "antd/lib";
 import {inviteText} from "@/app/admin/components/panel/utils";
 import {Button, Input, InputRef, TableColumnType} from "antd";
@@ -9,30 +9,32 @@ import {FilterDropdownProps} from "antd/es/table/interface";
 import {SearchOutlined} from "@ant-design/icons";
 
 type TableProps = {
+    publicUrl: string,
     inviteGroups: InviteGroup[],
     setTableOpen: React.Dispatch<React.SetStateAction<TableGroupOpen>>,
     setSelectedInviteGroup: React.Dispatch<React.SetStateAction<InviteGroup | undefined>>
+    notificationMessage: (success: boolean, message: { success: string, error: string }, callback: {
+        success?: Function | undefined,
+        error?: Function | undefined
+    }) => void,
 }
 
-export const CustomInviteGroupTable = ({inviteGroups, setSelectedInviteGroup, setTableOpen}: TableProps) => {
-    const [searchText, setSearchText] = useState('');
+export const CustomInviteGroupTable = ({publicUrl, inviteGroups, setSelectedInviteGroup, setTableOpen, notificationMessage}: TableProps) => {
     const searchInput = useRef<InputRef>(null);
 
     const handleSearch = (
-        selectedKeys: string[],
+        _selectedKeys: string[],
         confirm: FilterDropdownProps['confirm'],
     ) => {
         confirm();
-        setSearchText(selectedKeys[0]);
     };
 
     const handleReset = (clearFilters: () => void) => {
         clearFilters();
-        setSearchText('');
     };
 
     const getColumnSearchProps = (): TableColumnType<InviteGroup> => ({
-        filterDropdown: ({setSelectedKeys, selectedKeys, confirm, clearFilters, close}) => (
+        filterDropdown: ({setSelectedKeys, selectedKeys, confirm, clearFilters}) => (
             <div style={{padding: 8}} onKeyDown={(e) => e.stopPropagation()}>
                 <Input
                     ref={searchInput}
@@ -76,7 +78,9 @@ export const CustomInviteGroupTable = ({inviteGroups, setSelectedInviteGroup, se
         setTableOpen(tableOpenAction);
     }
 
-    const inviteGroupColumns = InviteGroupColumns(handleSelectActionInviteGroup, getColumnSearchProps);
+    const copyIntoBuffer = createCopyIntoBuffer(publicUrl, notificationMessage);
+
+    const inviteGroupColumns = InviteGroupColumns(handleSelectActionInviteGroup, getColumnSearchProps, copyIntoBuffer);
 
     return (
         <Table bordered

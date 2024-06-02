@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {Button, Form, FormProps} from "antd";
 import Radio from 'antd/lib/radio';
 import {SelectProps} from "antd/lib";

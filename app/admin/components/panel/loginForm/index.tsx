@@ -6,7 +6,6 @@ import {LockOutlined, MailOutlined} from "@ant-design/icons";
 import Link from "next/link";
 import styles from './login.module.scss';
 import {signIn} from "next-auth/react";
-import React from "react";
 import {useRouter} from "next/navigation";
 
 const schema = yup.object().shape({

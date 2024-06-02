@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {MENU_HEADER_LIST} from "@/app/constant/constant";
 import s from './header-component.module.scss'
 
@@ -6,7 +6,7 @@ import {CloseOutlined} from "@ant-design/icons";
 import {Link} from "react-scroll";
 
 export const HeaderComponent = () => {
-    const [width, setWidth] = React.useState<number>();
+    const [width, setWidth] = useState<number>(0);
     const [open, setOpen] = useState(false);
 
     useEffect(() => {

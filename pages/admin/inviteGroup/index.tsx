@@ -20,11 +20,15 @@ export async function getServerSideProps(context: any) {
     const inviteGroups = await getAllInviteGroupsOnServer(accessToken);
 
     return {
-        props: {serverInviteGroups: inviteGroups || [], session: session || null}
+        props: {
+            serverInviteGroups: inviteGroups || [],
+            publicUrl: process.env.NEXT_PRODUTION_URL,
+            session: session || null
+        }
     }
 }
 
-export default function InviteGroup({serverInviteGroups}: any) {
+export default function InviteGroup({serverInviteGroups, publicUrl}: any) {
     const [inviteGroups, setInviteGroups] = useState<InviteGroup[]>(serverInviteGroups || []); // [1
     const [notificationApi, contextHolder] = notification.useNotification();
     const contextValue = useMemo(() => ({} as any), []);
@@ -33,7 +37,7 @@ export default function InviteGroup({serverInviteGroups}: any) {
         <Context.Provider value={contextValue}>
             {contextHolder}
             <PanelMenu>
-                <InviteGroupTable inviteGroups={inviteGroups} setInviteGroups={setInviteGroups}
+                <InviteGroupTable publicUrl={publicUrl} inviteGroups={inviteGroups} setInviteGroups={setInviteGroups}
                                   notificationApi={notificationApi}/>
             </PanelMenu>
         </Context.Provider>

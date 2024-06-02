@@ -1,12 +1,11 @@
 import {Guest} from "@types";
 import {Space, TableProps} from "antd/lib";
 import {CheckCircleOutlined, CloseCircleOutlined, CopyOutlined, DeleteOutlined, EditOutlined} from "@ant-design/icons";
-import React from "react";
 import {LastChangeCell, TableOpen} from "@admin-components";
 import {TableColumnType} from "antd";
 
-export const GuestColumns: (handleSelectActionGuest: (guest: Guest, tableOpenAction: TableOpen) => void, copyIntoBuffer: (guest: Guest) => void, getColumnSearchProps: () => TableColumnType<Guest>) => TableProps<Guest>["columns"] =
-    (handleSelectActionGuest: (guest: Guest, tableOpenAction: TableOpen) => void, copyIntoBuffer: (guest: Guest) => void, getColumnSearchProps: () => TableColumnType<Guest>): TableProps<Guest>['columns'] =>
+export const GuestColumns: (handleSelectActionGuest: (guest: Guest, tableOpenAction: TableOpen) => void, copyIntoBuffer: (guest: Guest) => Promise<void>, getColumnSearchProps: () => TableColumnType<Guest>) => TableProps<Guest>["columns"] =
+    (handleSelectActionGuest: (guest: Guest, tableOpenAction: TableOpen) => void, copyIntoBuffer: (guest: Guest) => Promise<void>, getColumnSearchProps: () => TableColumnType<Guest>): TableProps<Guest>['columns'] =>
         ([
             {
                 title: 'Adult',

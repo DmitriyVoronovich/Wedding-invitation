@@ -1,11 +1,10 @@
-import React from 'react';
 import s from './invite-component.module.scss';
 import {InvitePreload} from "@types";
 import {inviteText} from "@/app/admin/components/panel/utils";
 // @ts-ignore
 import {Fade} from "react-awesome-reveal";
 
-const InviteComponent = ({inviteInfo, singleGuest = false}: { inviteInfo?: InvitePreload, singleGuest?: boolean }) => {
+export const InviteComponent = ({inviteInfo, singleGuest = false}: { inviteInfo?: InvitePreload, singleGuest?: boolean }) => {
     const inviteTextValue = inviteText(inviteInfo);
 
     return (
@@ -38,5 +37,3 @@ const InviteComponent = ({inviteInfo, singleGuest = false}: { inviteInfo?: Invit
         </section>
     );
 };
-
-export default InviteComponent;

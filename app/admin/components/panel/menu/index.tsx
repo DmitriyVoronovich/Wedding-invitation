@@ -1,9 +1,9 @@
 import {Col, Menu, MenuProps, Row} from "antd";
 import styles from "./index.module.scss";
 import {ScheduleOutlined, TeamOutlined, UserOutlined} from "@ant-design/icons";
-import React from "react";
 import {useRouter} from "next/navigation";
 import {AppRouterInstance} from "next/dist/shared/lib/app-router-context.shared-runtime";
+import React from "react";
 
 const redirectToAdminPageByKey = (router: AppRouterInstance) => {
     return ({key}: { key: string }) => router.push(key);

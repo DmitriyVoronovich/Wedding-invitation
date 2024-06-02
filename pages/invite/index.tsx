@@ -1,12 +1,17 @@
 import s from './index.module.scss';
 import {Layout} from 'antd';
 import '../../app/components/second-version/style_ant.css'
-import {MainSectionComponent} from "app/components/second-version/content/main-component";
-import {FooterComponent} from "app/components/second-version/footer/footer-component";
 import './style.css'
 import '../../app/globals.css'
-import {HeaderComponent, ScheduleSectionComponent, SectionOneComponent, SectionTwoComponent} from "@components";
-import InviteComponent from "@components/second-version/content/invite-component";
+import {
+    FooterComponent,
+    HeaderComponent,
+    InviteComponent,
+    MainSectionComponent,
+    ScheduleSectionComponent,
+    SectionOneComponent,
+    SectionTwoComponent
+} from "@components";
 
 const {Header, Footer, Content} = Layout;
 
