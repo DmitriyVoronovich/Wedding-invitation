@@ -5,18 +5,22 @@ import useSound from "use-sound";
 import {FormComponentContainerProps} from "./types";
 import {InterrogationForm, RespMessage, SectionTwoComponent} from "@components";
 
+const SHOW_MESSAGE_TIMEOUT = 13000;
 
-export const FormComponentContent = ({inviteInfo, inviteId, onInviteInfoUpdate, singleGuest}: FormComponentContainerProps) => {
+export const FormComponentContent = ({
+                                         inviteInfo,
+                                         inviteId,
+                                         onInviteInfoUpdate,
+                                         singleGuest
+                                     }: FormComponentContainerProps) => {
     const [success, setSuccess] = useState(true);
     const [willBePresent, setWillBePresent] = useState<boolean>(!!inviteInfo?.surveyResponses && !!inviteInfo.surveyResponses?.presentGuests?.length);
     const [showMessage, setShowMessage] = useState(false);
     const [willBeThere, setWillBeThere] = useState(true);
-    const [playFailure, { stop: stopFailure }] = useSound('/sound/grust.mp3');
-    const [playSuccess, { stop: stopSuccess }] = useSound('/sound/pedro.mp3');
+    const [playFailure, {stop: stopFailure}] = useSound('/sound/grust.mp3');
+    const [playSuccess, {stop: stopSuccess}] = useSound('/sound/pedro.mp3');
 
-    const onBePresent = (willBe: boolean) => setWillBePresent(willBe);
-
-    const onChangeWillThereBe = (willBe: boolean) => {
+    const playMusic = (willBe: boolean) => {
         if (willBe) {
             playSuccess();
         } else {
@@ -25,26 +29,29 @@ export const FormComponentContent = ({inviteInfo, inviteId, onInviteInfoUpdate, 
         setTimeout(() => {
             stopFailure();
             stopSuccess();
-            setShowMessage(false);
-        }, 13000);
+        }, SHOW_MESSAGE_TIMEOUT);
     };
 
-    const onRespForm = (res: boolean, willBe: boolean) => {
+    const onRespForm = (isResOk: boolean, willBe: boolean) => {
         setShowMessage(true);
-        setSuccess(res);
+        setSuccess(isResOk);
         onInviteInfoUpdate();
         setWillBeThere(willBe);
-        onChangeWillThereBe(willBe);
+        if (isResOk) {
+            playMusic(willBe);
+        }
+        setTimeout(() => setShowMessage(false), SHOW_MESSAGE_TIMEOUT);
     };
 
     return (
         <>
-            <Fade triggerOnce={true} cascade={true} damping={0.3} direction={'up'} >
+            <Fade triggerOnce={true} cascade={true} damping={0.3} direction={'up'}>
                 {showMessage
                     ? <RespMessage ans={success} willBeThere={willBeThere}/>
-                    : <InterrogationForm inviteInfo={inviteInfo} inviteId={inviteId} onRespForm={onRespForm} singleGuest={singleGuest} onBePresent={onBePresent}/>}
+                    : <InterrogationForm inviteInfo={inviteInfo} inviteId={inviteId} onRespForm={onRespForm}
+                                         singleGuest={singleGuest}/>}
             </Fade>
-            <SectionTwoComponent willBePresent={willBePresent}/>
+            {willBePresent && <SectionTwoComponent/>}
         </>
 
     );

@@ -44,5 +44,4 @@ export type InterrogationFormProps = {
     inviteId: string
     onRespForm: (res: boolean, willBe: boolean) => void
     singleGuest: boolean
-    onBePresent: (willBe: boolean) => void
 };

@@ -9,13 +9,13 @@ export const RespMessage = ({ans, willBeThere}: any) => (
             {ans && <>
                 <p className={s.message_text}>
                     {willBeThere
-                        ? 'Все успешно отправлено, спасибо за ответ'
-                        : 'Нам искренне жаль это слышать, спасибо за ответ'}
+                        ? 'Спасибо за ваш ответ, С нетерпением ждём нашей встречи!'
+                        : 'Нам жаль это слышать, спасибо за ответ.'}
                 </p>
                 <Image unoptimized={true} src={willBeThere ? pedro : sad} alt={willBeThere ? 'pedro gif' : 'rain gif'}
                        className={s.gif}/>
             </>}
-            {!ans && <p className={s.message_text}>Произошла ошибка, свяжитесь с нами</p>}
+            {!ans && <p className={s.message_text}>Произошла ошибка, пожалуйста свяжитесь с нами.</p>}
         </div>
     </div>
 );
