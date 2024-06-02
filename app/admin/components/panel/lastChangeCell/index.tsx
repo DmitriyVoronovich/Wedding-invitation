@@ -1,9 +1,5 @@
 import {BaseType} from "@types";
-
-const padL = (nr: number, len = 2, chr = `0`) => `${nr}`.padStart(2, chr);
-
-const transformDate = (dt: Date) =>
-    `${padL(dt.getMonth() + 1)}.${padL(dt.getDate())}.${dt.getFullYear()} ${padL(dt.getHours())}:${padL(dt.getMinutes())}:${padL(dt.getSeconds())}`;
+import {transformDate} from "@/app/admin/components";
 
 export const LastChangeCell = ({objectData}: { objectData: BaseType }) =>
     (objectData.modifyBy && objectData.updatedAt)
