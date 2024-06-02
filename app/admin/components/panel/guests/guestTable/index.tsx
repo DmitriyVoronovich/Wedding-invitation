@@ -1,5 +1,5 @@
 import {Space} from "antd/lib";
-import React, {Dispatch, SetStateAction, useMemo, useState} from "react";
+import {Dispatch, SetStateAction, useMemo, useState} from "react";
 import {CreateOrEditGuest, Guest} from "@types";
 import {DataDrawer, DrawerTitle} from "app/admin/components/panel/dataDrawer";
 import {NotificationInstance} from "antd/es/notification/interface";

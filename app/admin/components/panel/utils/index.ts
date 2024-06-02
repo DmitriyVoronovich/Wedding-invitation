@@ -1,19 +1,26 @@
 import {NotificationInstance} from "antd/es/notification/interface";
-import {GuestGender, InviteGroup, InvitePreload} from "@types";
+import {Guest, GuestGender, InviteGroup, InvitePreload} from "@types";
 
-export const prepareNotificationMessage = (notificationApi: NotificationInstance) => (success: boolean,
-                                                                                      message: {
-                                                                                          success: string,
-                                                                                          error: string
-                                                                                      },
-                                                                                      callback: {
-                                                                                          success?: Function,
-                                                                                          error?: Function
-                                                                                      }) => {
-    const fieldName = success ? 'success' : 'error';
-    notificationApi[fieldName]({message: message[fieldName], placement: 'topRight'});
-    callback?.[fieldName]?.();
-}
+const COPY_MESSAGE = {
+    success: 'Copy to clipboard',
+    error: 'Could not copy to clipboard'
+};
+
+
+export const prepareNotificationMessage = (notificationApi: NotificationInstance) =>
+    (success: boolean,
+     message: {
+         success: string,
+         error: string
+     },
+     callback: {
+         success?: Function,
+         error?: Function
+     }) => {
+        const fieldName = success ? 'success' : 'error';
+        notificationApi[fieldName]({message: message[fieldName], placement: 'topRight'});
+        callback?.[fieldName]?.();
+    }
 
 export const inviteText = (inviteGroup?: InviteGroup | InvitePreload) => {
     if (!inviteGroup?.guests?.length) {
@@ -29,3 +36,19 @@ export const inviteText = (inviteGroup?: InviteGroup | InvitePreload) => {
 
 export const isOneGuest = (inviteGroup?: InviteGroup | InvitePreload) =>
     inviteGroup?.guests?.length === 1;
+
+export const createCopyIntoBuffer = (publicUrl: string, notificationMessage: (success: boolean, message: {
+    success: string,
+    error: string
+}, callback: {
+    success?: Function | undefined,
+    error?: Function | undefined
+}) => void,) => async (guest: Guest) => {
+    const copyInviteUrl = `${publicUrl}/invite/${guest.inviteId}`;
+
+    navigator.clipboard.writeText(copyInviteUrl).then(function () {
+        notificationMessage(true, COPY_MESSAGE, {});
+    }, function () {
+        notificationMessage(false, COPY_MESSAGE, {});
+    });
+}

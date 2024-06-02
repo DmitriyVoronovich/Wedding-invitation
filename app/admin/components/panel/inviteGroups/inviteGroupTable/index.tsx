@@ -1,5 +1,5 @@
 import {Space} from "antd/lib";
-import React, {Dispatch, SetStateAction, useState} from "react";
+import {Dispatch, SetStateAction, useState} from "react";
 import {DataDrawer, DrawerTitle} from "app/admin/components/panel/dataDrawer";
 import {NotificationInstance} from "antd/es/notification/interface";
 import {Button, Modal} from "antd";
@@ -20,11 +20,14 @@ export enum TableGroupOpen {
 
 }
 
-export const InviteGroupTable = ({inviteGroups, setInviteGroups, notificationApi}: {
-        inviteGroups: InviteGroup[],
-        setInviteGroups: Dispatch<SetStateAction<InviteGroup[]>>,
-        notificationApi: NotificationInstance
-    }) => {
+type TableProp = {
+    publicUrl: string,
+    inviteGroups: InviteGroup[],
+    setInviteGroups: Dispatch<SetStateAction<InviteGroup[]>>,
+    notificationApi: NotificationInstance
+}
+
+export const InviteGroupTable = ({publicUrl, inviteGroups, setInviteGroups, notificationApi}: TableProp) => {
         const accessToken = useAdminAccessToken();
         const [tableOpen, setTableOpen] = useState<TableGroupOpen>(TableGroupOpen.nothing);
         const [confirmLoading, setConfirmLoading] = useState<boolean>(false);
@@ -90,8 +93,9 @@ export const InviteGroupTable = ({inviteGroups, setInviteGroups, notificationApi
                         {DrawerTitle.CREATE_INVITE_GROUP}
                     </Button>
                 </Space>
-                <CustomInviteGroupTable inviteGroups={inviteGroups} setSelectedInviteGroup={setSelectedInviteGroup}
-                                        setTableOpen={setTableOpen}/>
+                <CustomInviteGroupTable publicUrl={publicUrl} inviteGroups={inviteGroups}
+                                        setSelectedInviteGroup={setSelectedInviteGroup}
+                                        setTableOpen={setTableOpen} notificationMessage={notificationMessage}/>
                 <DataDrawer open={drawerOpen} drawerTitle={drawerTitle} onClose={closeAll}>
                     {tableOpen === TableGroupOpen.editDrawer && selectedInviteGroup &&
                         <CreateOrEditInviteGroupForm key={DrawerTitle.EDIT_GUEST} editInviteGroup={selectedInviteGroup}

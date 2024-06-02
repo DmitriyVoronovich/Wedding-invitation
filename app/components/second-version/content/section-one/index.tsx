@@ -1,4 +1,3 @@
-import React from 'react';
 import s from './section-one.module.scss';
 import Image from "next/image";
 import fon1 from "@accets/images/CHEM7843_resized.jpg";

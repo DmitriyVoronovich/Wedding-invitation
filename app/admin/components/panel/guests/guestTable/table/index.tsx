@@ -1,16 +1,11 @@
 import {GuestColumns} from "@/app/admin/components/panel/guests/guestTable/guestColumns";
 import React, {useRef, useState} from "react";
 import {Guest} from "@types";
-import {TableOpen} from "@admin-components";
+import {createCopyIntoBuffer, TableOpen} from "@admin-components";
 import {Space, Table} from "antd/lib";
 import {Button, Input, InputRef, TableColumnType} from "antd";
 import {FilterDropdownProps} from "antd/es/table/interface";
 import {SearchOutlined} from "@ant-design/icons";
-
-const COPY_MESSAGE = {
-    success: 'Copy to clipboard',
-    error: 'Could not copy to clipboard'
-};
 
 type TableProps = {
     publicUrl: string,
@@ -91,15 +86,7 @@ export const CustomGuestTable = ({
         setTableOpen(tableOpenAction);
     }
 
-    const copyIntoBuffer = async (guest: Guest) => {
-        const copyInviteUrl = `${publicUrl}/invite/${guest.inviteId}`;
-
-        navigator.clipboard.writeText(copyInviteUrl).then(function () {
-            notificationMessage(true, COPY_MESSAGE, {});
-        }, function () {
-            notificationMessage(false, COPY_MESSAGE, {});
-        });
-    }
+    const copyIntoBuffer = createCopyIntoBuffer(publicUrl, notificationMessage);
 
     const guestsColumns = GuestColumns(handleSelectActionGuest, copyIntoBuffer, getColumnSearchProps);
 

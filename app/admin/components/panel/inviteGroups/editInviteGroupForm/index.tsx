@@ -1,5 +1,5 @@
 import {Button, Checkbox, Form, FormProps, Input, Select} from 'antd';
-import {ChangedGuests, CreateOrEditInviteGroup, InviteGroup} from "@types";
+import {ChangedGuests, CreateOrEditInviteGroup, GuestSide, InviteGroup} from "@types";
 import {useEffect, useState} from "react";
 import {getAllGuestsWithoutInviteGroup} from "@api";
 import {useAdminAccessToken} from "@hooks";
@@ -8,6 +8,11 @@ import {useAdminAccessToken} from "@hooks";
 const onFinishFailed: FormProps<CreateOrEditInviteGroup>['onFinishFailed'] = (errorInfo) => {
     console.log('Failed:', errorInfo);
 };
+
+enum TransportsFromValues {
+    MOSTY = 'mosty',
+    SHCHUCHYN = 'shchuchyn'
+}
 
 const TransportsFrom = [
     {label: 'Mosty', value: 'mosty'},
@@ -19,8 +24,8 @@ export const CreateOrEditInviteGroupForm = ({editInviteGroup, handleSubmitForm}:
     handleSubmitForm: (editedInviteGroup: CreateOrEditInviteGroup) => void
 }) => {
     const [form] = Form.useForm();
-    const accessToken = useAdminAccessToken();
     const [guestsWithoutInviteGroup, setGuestsWithoutInviteGroup] = useState([...(editInviteGroup?.guests || [])])
+    const accessToken = useAdminAccessToken();
 
     useEffect(() => {
         const getGuestsWithoutInviteGroup = async () => {
@@ -29,6 +34,7 @@ export const CreateOrEditInviteGroupForm = ({editInviteGroup, handleSubmitForm}:
         };
         getGuestsWithoutInviteGroup();
     }, [])
+
     const onFinish: FormProps<CreateOrEditInviteGroup>['onFinish'] = (values) => {
         values.updateGuests = {
             ...values.guests.reduce((acum, item) => {
@@ -43,12 +49,22 @@ export const CreateOrEditInviteGroupForm = ({editInviteGroup, handleSubmitForm}:
         handleSubmitForm(values);
     }
 
-    let handleGuestsChange = (values: string[], options: { value: string; label: string; } | {
+    const handleGuestsChange = (values: string[], options: { value: string; label: string; } | {
         value: string;
         label: string;
     }[]) => {
+        [].length
+        const transportFrom = guestsWithoutInviteGroup
+            .find(({id}) => Array.isArray(options) && options[0]?.value === id)
+            ?.side === GuestSide.wife ? TransportsFromValues.MOSTY : TransportsFromValues.SHCHUCHYN;
+
         if (!editInviteGroup && values.length === 1 && !form.getFieldValue('groupName') && Array.isArray(options)) {
-            form.setFieldsValue({groupName: options[0]?.label})
+            form.setFieldsValue({
+                groupName: options[0]?.label,
+                invitation: {
+                    transportFrom
+                }
+            })
         }
     };
 
@@ -99,7 +115,7 @@ export const CreateOrEditInviteGroupForm = ({editInviteGroup, handleSubmitForm}:
             <Form.Item<CreateOrEditInviteGroup>
                 name={['invitation', 'checkSlip']}
                 wrapperCol={{offset: 8, span: 16}}
-                initialValue={editInviteGroup?.invitation.checkSlip}
+                initialValue={editInviteGroup?.invitation.checkSlip || false}
                 valuePropName="checked"
             >
                 <Checkbox>Guest need a place to sleep</Checkbox>
@@ -107,7 +123,7 @@ export const CreateOrEditInviteGroupForm = ({editInviteGroup, handleSubmitForm}:
             <Form.Item<CreateOrEditInviteGroup>
                 name={['invitation', 'checkTransport']}
                 wrapperCol={{offset: 8, span: 16}}
-                initialValue={editInviteGroup?.invitation.checkTransport}
+                initialValue={editInviteGroup?.invitation.checkTransport || false}
                 valuePropName="checked"
             >
                 <Checkbox>Guest need a transport</Checkbox>

@@ -1,4 +1,3 @@
-import React from 'react';
 import s from './main-section.module.scss';
 import image from '@accets/images/CHEM7630_resized.jpeg'
 import Image from "next/image";
@@ -14,7 +13,7 @@ export const MainSectionComponent = ({inviteId}: { inviteId?: string }) => (
                     <p className={s.section_description}>Суббота, 27 Июля, 2024<br/> Костел Святой Терезы, Щучин
                     </p>
                     <Link to={inviteId ? 'survey' : 'schedule'} smooth={true} spy={true}>
-                        <button className={s.description_button}>{inviteId ? `Детали и Опрос` : `Расписание`}</button>
+                        <button className={s.description_button}>{inviteId ? `Опрос` : `Расписание`}</button>
                     </Link>
                 </div>
                 <div className={s.image_wrapper}>

@@ -7,15 +7,16 @@ import {getInvitePreloadOn} from "@/app/service/api/invitePreload.api";
 import {useState} from "react";
 import {isOneGuest} from "@admin-components";
 import {
-    AboutEventComponent, FormComponentContent,
+    AboutEventComponent,
+    FooterComponent,
+    FormComponentContent,
     HeaderComponent,
+    InviteComponent,
+    MainSectionComponent,
     ScheduleHeaderComponent,
     ScheduleSectionComponent,
-    SectionOneComponent,
-    MainSectionComponent,
-    FooterComponent
+    SectionOneComponent
 } from "@components";
-import InviteComponent from "@/app/components/second-version/content/invite-component";
 
 const {Header, Footer, Content} = Layout;
 
@@ -54,7 +55,8 @@ export default function Invite({serverInviteInfo, inviteId}: any) {
                     <AboutEventComponent singleGuest={singleGuest}/>
                     <ScheduleSectionComponent/>
                     <ScheduleHeaderComponent/>
-                    <FormComponentContent inviteInfo={inviteInfo} inviteId={inviteId} onInviteInfoUpdate={onInviteInfoUpdate} singleGuest={singleGuest}/>
+                    <FormComponentContent inviteInfo={inviteInfo} inviteId={inviteId}
+                                          onInviteInfoUpdate={onInviteInfoUpdate} singleGuest={singleGuest}/>
                 </Content>
                 <Footer className={s.footer_style}><FooterComponent/></Footer>
             </Layout>

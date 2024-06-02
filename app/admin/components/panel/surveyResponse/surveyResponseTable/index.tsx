@@ -1,7 +1,7 @@
 import {
     SurveyResponseColumns
 } from "./surveyResponseColumns";
-import React, {useRef, useState} from "react";
+import {useRef, useState} from "react";
 import {Button, Input, InputRef, TableColumnType} from "antd";
 import {FilterDropdownProps} from "antd/es/table/interface";
 import {Space, Table} from "antd/lib";

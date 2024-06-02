@@ -1,4 +1,3 @@
-import React from 'react';
 import {Col, Row} from 'antd';
 import styles from './login.module.scss';
 import AdminLogin from "@/app/admin/components/panel/loginForm";

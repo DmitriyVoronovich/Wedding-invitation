@@ -1,4 +1,3 @@
-import React from 'react';
 import s from './footer-component.module.scss';
 import '@pages/invite/style.css'
 import {MENU_HEADER_LIST} from "@/app/constant/constant";

@@ -1,5 +1,4 @@
 import {TableProps} from "antd/lib";
-import React from "react";
 import {LastChangeCell} from "@admin-components";
 import {Guest, InviteGroup} from "@types";
 import {TableColumnType} from "antd";
