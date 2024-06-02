@@ -49,7 +49,7 @@ export const GuestTable = ({publicUrl, guests, setGuests, notificationApi}: {
                 success: 'Guest removed',
                 error: 'Guest not removed'
             }, {
-                success: () => setGuests(guests.filter(guest => guest.id !== selectedGuest?.id)),
+                success: () => setGuests(prevState => prevState.filter(guest => guest.id !== selectedGuest?.id)),
             });
         }
 
@@ -57,13 +57,12 @@ export const GuestTable = ({publicUrl, guests, setGuests, notificationApi}: {
             const editGuestResp = await editGuest(accessToken, {id: selectedGuest?.id, ...editedGuest});
             closeAll();
 
-
             notificationMessage(!!editGuestResp, {
                 success: 'Guest edited',
                 error: 'Guest not edited'
             }, {
                 success: () => editGuestResp &&
-                    setGuests(guests.map(guest => guest.id === selectedGuest?.id ? editGuestResp : guest)),
+                    setGuests(prevState => prevState.map(guest => guest.id === selectedGuest?.id ? editGuestResp : guest)),
             });
         }
 
@@ -75,7 +74,7 @@ export const GuestTable = ({publicUrl, guests, setGuests, notificationApi}: {
                 success: 'Guest created',
                 error: 'Guest not created'
             }, {
-                success: () => createdGuestResp && setGuests([...guests, createdGuestResp]),
+                success: () => createdGuestResp && setGuests(prevState => [...prevState, createdGuestResp]),
             });
         }
 

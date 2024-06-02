@@ -45,13 +45,12 @@ export const InviteGroupTable = ({publicUrl, inviteGroups, setInviteGroups, noti
             const editInviteGroupResp = await editInviteGroup(accessToken, {id: selectedInviteGroup?.id, ...editedInviteGroup});
             closeAll();
 
-
             notificationMessage(!!editInviteGroupResp, {
                 success: 'Invite group edited',
                 error: 'Invite group not edited'
             }, {
                 success: () => editInviteGroupResp &&
-                    setInviteGroups(inviteGroups.map(item => item.id === selectedInviteGroup?.id ? {...selectedInviteGroup, ...editInviteGroupResp} : item)),
+                    setInviteGroups(prevState => prevState.map(item => item.id === selectedInviteGroup?.id ? {...selectedInviteGroup, ...editInviteGroupResp} : item)),
             });
         }
 
@@ -63,7 +62,7 @@ export const InviteGroupTable = ({publicUrl, inviteGroups, setInviteGroups, noti
                 success: 'Invite group created',
                 error: 'Invite group not created'
             }, {
-                success: () => editInviteGroupResp && setInviteGroups([...inviteGroups, editInviteGroupResp]),
+                success: () => editInviteGroupResp && setInviteGroups(prevState => [...prevState, editInviteGroupResp]),
             });
         }
 
@@ -78,7 +77,7 @@ export const InviteGroupTable = ({publicUrl, inviteGroups, setInviteGroups, noti
                 success: 'Invite group removed',
                 error: 'Invite group not removed'
             }, {
-                success: () => setInviteGroups(inviteGroups.filter(item => item.id !== selectedInviteGroup?.id)),
+                success: () => setInviteGroups(prevState => prevState.filter(item => item.id !== selectedInviteGroup?.id)),
             });
         }
 

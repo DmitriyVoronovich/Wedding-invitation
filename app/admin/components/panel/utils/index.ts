@@ -23,7 +23,7 @@ export const prepareNotificationMessage = (notificationApi: NotificationInstance
          error?: Function
      }) => {
         const fieldName = success ? 'success' : 'error';
-        notificationApi[fieldName]({message: message[fieldName], placement: 'topRight', duration: 5});
+        notificationApi[fieldName]({message: message[fieldName], placement: 'topRight', duration: 1});
         callback?.[fieldName]?.();
     }
 
