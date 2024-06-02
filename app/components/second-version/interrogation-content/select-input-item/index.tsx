@@ -18,7 +18,7 @@ export const SelectInputItem = ({
         <Select
             maxCount={maxCountValue}
             style={{width: '450px'}}
-            mode="multiple"
+            mode={(maxCountValue || 0) > 1 ? 'multiple' : undefined}
             showSearch={false}
             allowClear
             className={s.item_selector}
