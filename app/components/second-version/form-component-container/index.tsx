@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import {Fade} from "react-awesome-reveal";
 // @ts-ignore
 import useSound from "use-sound";

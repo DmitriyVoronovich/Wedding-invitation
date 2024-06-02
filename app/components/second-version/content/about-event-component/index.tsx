@@ -1,5 +1,4 @@
-import React from 'react';
-import s from "@components/second-version/content/invite-component/invite-component.module.scss";
+import s from "../invite-component/invite-component.module.scss";
 import e from './about-event-component.module.scss';
 import {Fade} from "react-awesome-reveal";
 

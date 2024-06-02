@@ -1,13 +1,12 @@
 import {Space, TableProps} from "antd/lib";
-import {DeleteOutlined, EditOutlined} from "@ant-design/icons";
-import React from "react";
-import {LastChangeCell} from "@admin-components";
-import {InviteGroup} from "@types";
-import {TableGroupOpen} from "@/app/admin/components/panel/inviteGroups";
+import {CopyOutlined, DeleteOutlined, EditOutlined} from "@ant-design/icons";
+import {LastChangeCell, TableGroupOpen} from "@admin-components";
+import {Guest, InviteGroup} from "@types";
 import {TableColumnType} from "antd";
+import {ColumnType} from "antd/lib/table";
 
-export const InviteGroupColumns: (handleSelectActionInviteGroup: (inviteGroup: InviteGroup, tableOpenAction: TableGroupOpen) => void, getColumnSearchProps: () => TableColumnType<InviteGroup>) => TableProps<InviteGroup>["columns"] =
-    (handleSelectActionInviteGroup: (inviteGroup: InviteGroup, tableOpenAction: TableGroupOpen) => void, getColumnSearchProps: () => TableColumnType<InviteGroup>): TableProps<InviteGroup>['columns'] =>
+export const InviteGroupColumns: (handleSelectActionInviteGroup: (inviteGroup: InviteGroup, tableOpenAction: TableGroupOpen) => void, getColumnSearchProps: () => ColumnType<InviteGroup>, copyIntoBuffer: (guest: Guest) => Promise<void>) => TableProps<InviteGroup>["columns"] =
+    (handleSelectActionInviteGroup: (inviteGroup: InviteGroup, tableOpenAction: TableGroupOpen) => void, getColumnSearchProps: () => TableColumnType<InviteGroup>, copyIntoBuffer: (guest: Guest) => Promise<void>): TableProps<InviteGroup>['columns'] =>
         ([
             {
                 title: 'Survey',
@@ -36,6 +35,7 @@ export const InviteGroupColumns: (handleSelectActionInviteGroup: (inviteGroup: I
                 title: 'Guests',
                 dataIndex: 'guests',
                 key: 'guests',
+                width: 300,
                 filters: [
                     {
                         text: 'Husband',
@@ -49,7 +49,7 @@ export const InviteGroupColumns: (handleSelectActionInviteGroup: (inviteGroup: I
                 onFilter: (value, {guests}) => guests?.[0]?.side && guests?.[0]?.side === value,
                 render: (_, {guests}: InviteGroup) => (
                     <ul>
-                        {guests.map(({firstName, lastName}) => <li key={firstName}>{firstName} {lastName}</li>)}
+                        {guests.map((guest) => <li key={guest.firstName}>{guest.firstName} {guest.lastName} <CopyOutlined onClick={() => copyIntoBuffer(guest)}/></li>)}
                     </ul>
                 ),
             },

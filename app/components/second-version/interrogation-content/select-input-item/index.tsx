@@ -1,7 +1,6 @@
-import React from 'react';
 import s from "../interrogation-form/interrogation-form.module.scss";
 import {Form, Select} from "antd";
-import {SelectInputItemProps} from "@components/second-version-version/interrogation-content/types";
+import {SelectInputItemProps} from "@components";
 
 export const SelectInputItem = ({
                                     requiredValue,
@@ -12,17 +11,17 @@ export const SelectInputItem = ({
                                     initialValue,
                                     requiredMessage
                                 }: SelectInputItemProps) => (
-        <Form.Item name={itemName} className={s.form_item_select}
-                   rules={[{required: requiredValue, message: requiredMessage}]}
-                   initialValue={initialValue}>
-            <Select
-                maxCount={maxCountValue}
-                style={{width: '450px'}}
-                mode="multiple"
-                allowClear
-                className={s.item_selector}
-                placeholder={placeholderValue}
-                options={optionsValue}
-            />
-        </Form.Item>
-    );
+    <Form.Item name={itemName} className={s.form_item_select}
+               rules={[{required: requiredValue, message: requiredMessage}]}
+               initialValue={initialValue}>
+        <Select
+            maxCount={maxCountValue}
+            style={{width: '450px'}}
+            mode="multiple"
+            allowClear
+            className={s.item_selector}
+            placeholder={placeholderValue}
+            options={optionsValue}
+        />
+    </Form.Item>
+);

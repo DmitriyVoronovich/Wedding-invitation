@@ -1,10 +1,7 @@
-import React, {useState} from 'react';
 import s from './section_two.module.scss';
 import {Fade} from "react-awesome-reveal";
 
-export const SectionTwoComponent = ({willBePresent, inviteId}: any) => {
-
-
+export const SectionTwoComponent = ({willBePresent}: any) => {
     return (
         <section className={s.section_container}>
             <div className={s.container}>
