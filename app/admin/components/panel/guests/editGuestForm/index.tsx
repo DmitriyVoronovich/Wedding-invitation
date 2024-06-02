@@ -6,6 +6,8 @@ const onFinishFailed: FormProps<CreateOrEditGuest>['onFinishFailed'] = (errorInf
     console.log('Failed:', errorInfo);
 };
 
+const DEFAULT_GUEST = {isAdult: false} as Guest;
+
 export const EditGuestForm = ({editGuest, handleSubmitForm}: {
     editGuest?: Guest,
     handleSubmitForm: (editedGuest: CreateOrEditGuest) => void
@@ -20,7 +22,7 @@ export const EditGuestForm = ({editGuest, handleSubmitForm}: {
             labelCol={{span: 8}}
             wrapperCol={{span: 16}}
             style={{maxWidth: 600}}
-            initialValues={editGuest || {} as Guest}
+            initialValues={editGuest || DEFAULT_GUEST}
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
             autoComplete="off"
