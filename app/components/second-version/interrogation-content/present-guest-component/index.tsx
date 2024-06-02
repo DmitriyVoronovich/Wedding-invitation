@@ -39,6 +39,7 @@ export const PresentGuestComponent = ({
                                          initialValue={inviteInfo?.surveyResponses?.presentGuests}
                                          requiredValue={show}
                                          optionsValue={options}
+                                         maxCountValue={inviteInfo.guests.length}
                                          placeholderValue={"Пожалуйста, выберете кто будет присутствовать"}
                         />
                     }

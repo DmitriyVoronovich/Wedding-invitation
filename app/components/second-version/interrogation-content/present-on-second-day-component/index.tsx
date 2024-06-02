@@ -2,6 +2,7 @@ import s from "../interrogation-form/interrogation-form.module.scss";
 import Radio from "antd/lib/radio";
 import {PresentOnSecondDayComponentProps} from "../types";
 import {RadioInput, SelectInputItem} from "@components";
+
 export const PresentOnSecondDayComponent = ({
                                                 secondDayList,
                                                 onSecondDayListChange,
@@ -43,6 +44,7 @@ export const PresentOnSecondDayComponent = ({
                                          initialValue={inviteInfo?.surveyResponses?.presentOnSecondDay}
                                          requiredValue={show}
                                          optionsValue={options}
+                                         maxCountValue={inviteInfo.guests.length}
                                          placeholderValue={"Пожалуйста, выберете кто будет присутствовать"}
                         />
                     }

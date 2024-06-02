@@ -10,7 +10,12 @@ import {presentInitialValue} from "./utils";
 import {PresentGuestComponent, PresentOnSecondDayComponent, RadioInput, SelectInputItem} from "@components";
 import {InterrogationFormProps} from '../types';
 
-export const InterrogationForm = ({inviteInfo, inviteId, onRespForm, singleGuest, onBePresent}: InterrogationFormProps) => {
+export const InterrogationForm = ({
+                                      inviteInfo,
+                                      inviteId,
+                                      onRespForm,
+                                      singleGuest
+                                  }: InterrogationFormProps) => {
     const [firstDayList, setFirstDayList] = useState('');
     const [secondDayList, setSecondDayList] = useState('');
     const [show, setShow] = useState<boolean>(!!inviteInfo.surveyResponses && !!inviteInfo.surveyResponses?.presentGuests.length);
@@ -53,7 +58,6 @@ export const InterrogationForm = ({inviteInfo, inviteId, onRespForm, singleGuest
                 presentGuests: [],
             }
             const surveyResp = await surveyResponse(answer);
-            onBePresent(false);
             onRespForm(!surveyResp.error, false);
 
         } else {
@@ -64,10 +68,9 @@ export const InterrogationForm = ({inviteInfo, inviteId, onRespForm, singleGuest
                 isPrivateTransport: value.isPrivateTransport,
                 presentOnSecondDay: value.presentOnSecondDay === 'yes' ? options?.map(({value}) => value) : value.presentOnSecondDay === 'no' ? [] : value.presentOnSecondDaySelect,
                 needSleepPlace: value.needSleepPlace,
-                likeDrinks: value.likeDrinks
+                likeDrinks: Array.isArray(value.likeDrinks) ? value.likeDrinks : [value.likeDrinks]
             }
             const surveyResp = await surveyResponse(answer);
-            onBePresent(true);
             onRespForm(!surveyResp.error, true);
         }
 
@@ -103,7 +106,7 @@ export const InterrogationForm = ({inviteInfo, inviteId, onRespForm, singleGuest
                 {surveyCompleted
                     ? <h2 className={s.section_title}>Ответьте на несколько вопросов</h2>
                     : <div className={s.completed_content_wrapper}>
-                        <h2 className={s.section_title}>Вы уже ответили на вопросы, но если желаете, можете
+                        <h2 className={s.section_title}>Вы уже ответили на вопросы, но можете
                             изменить свой ответ</h2>
                         <Button className={s.description_button} onClick={onChangeCompletedSurvey}>Изменить
                             ответ</Button>
@@ -153,9 +156,7 @@ export const InterrogationForm = ({inviteInfo, inviteId, onRespForm, singleGuest
                                 <h3 className={s.item_title}>{singleGuest ? 'Какой напиток' : 'Какие напитки'} Вы
                                     предпочитаете?</h3>
                                 <SelectInputItem itemName={"likeDrinks"}
-                                                 maxCountValue={inviteInfo?.surveyResponses?.presentGuests.length === 1
-                                                     ? 1
-                                                     : inviteInfo?.guests.length}
+                                                 maxCountValue={inviteInfo?.guests.length}
                                                  initialValue={inviteInfo?.surveyResponses?.likeDrinks}
                                                  requiredValue={true}
                                                  optionsValue={alcoholicDrinks}
