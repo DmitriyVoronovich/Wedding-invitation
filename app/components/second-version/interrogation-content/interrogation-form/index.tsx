@@ -61,13 +61,23 @@ export const InterrogationForm = ({
             onRespForm(!surveyResp.error, false);
 
         } else {
+            const allGuests = options?.map(({value}) => value);
             const answer = {
                 inviteId: inviteId,
-                presentGuests: ['yes', 'noAlone'].includes(value.presentGuests) ? options?.map(({value}) => value) : value.presentGuestsSelect,
+                presentGuests: ['yes', 'noAlone'].includes(value.presentGuests)
+                    ? allGuests
+                    : Array.isArray(value.presentGuestsSelect)
+                        ? value.presentGuestsSelect
+                        : [value.presentGuestsSelect],
                 noAlonePresent: 'noAlone' === value.presentOnSecondDay,
                 startPlace: value.startPlace,
                 isPrivateTransport: value.isPrivateTransport,
-                presentOnSecondDay: ['yes', 'noAlone'].includes(value.presentOnSecondDay) ? options?.map(({value}) => value) : value.presentOnSecondDay === 'no' ? [] : value.presentOnSecondDaySelect,
+                presentOnSecondDay: ['yes', 'noAlone'].includes(value.presentOnSecondDay)
+                    ? allGuests
+                    : value.presentOnSecondDay === 'no' ? []
+                        : Array.isArray(value.presentOnSecondDaySelect)
+                            ? value.presentOnSecondDaySelect
+                            : [value.presentOnSecondDaySelect],
                 noAloneOnSecondDay: 'noAlone' === value.presentOnSecondDay,
                 needSleepPlace: value.needSleepPlace,
                 likeDrinks: Array.isArray(value.likeDrinks) ? value.likeDrinks : [value.likeDrinks]
