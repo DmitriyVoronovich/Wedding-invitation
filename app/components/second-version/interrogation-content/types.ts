@@ -6,6 +6,7 @@ export type SelectInputItemProps = {
     optionsValue: any
     maxCountValue?: number
     itemName: string
+    onFormValueChange: () => void
 };
 
 export type RadioInputItemProps = {
@@ -22,21 +23,25 @@ export type PresentOnSecondDayComponentProps = {
     singleGuest: boolean
     presentOnSecondDayInit: any
     show: boolean
+    needOneMorePlace: boolean
     onSecondDayListChange: (e: any) => void
     secondDayList: string
     inviteInfo: any
     options: any
+    onFormValueChange: () => void
 };
 
 export type PresentGuestComponentProps = {
     singleGuest: boolean
     presentGuestInit: string
     show: boolean
+    needOneMorePlace: boolean
     onShowAllQuestion: (e: any) => void
     onFirstDayList: (e: any) => void
     firstDayList: string
     inviteInfo: any
     options: any
+    onFormValueChange: () => void
 };
 
 export type InterrogationFormProps = {

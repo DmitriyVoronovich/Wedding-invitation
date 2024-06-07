@@ -63,10 +63,12 @@ export const InterrogationForm = ({
         } else {
             const answer = {
                 inviteId: inviteId,
-                presentGuests: value.presentGuests === 'yes' ? options?.map(({value}) => value) : value.presentGuestsSelect,
+                presentGuests: ['yes', 'noAlone'].includes(value.presentGuests) ? options?.map(({value}) => value) : value.presentGuestsSelect,
+                noAlonePresent: 'noAlone' === value.presentOnSecondDay,
                 startPlace: value.startPlace,
                 isPrivateTransport: value.isPrivateTransport,
-                presentOnSecondDay: value.presentOnSecondDay === 'yes' ? options?.map(({value}) => value) : value.presentOnSecondDay === 'no' ? [] : value.presentOnSecondDaySelect,
+                presentOnSecondDay: ['yes', 'noAlone'].includes(value.presentOnSecondDay) ? options?.map(({value}) => value) : value.presentOnSecondDay === 'no' ? [] : value.presentOnSecondDaySelect,
+                noAloneOnSecondDay: 'noAlone' === value.presentOnSecondDay,
                 needSleepPlace: value.needSleepPlace,
                 likeDrinks: Array.isArray(value.likeDrinks) ? value.likeDrinks : [value.likeDrinks]
             }
@@ -93,12 +95,12 @@ export const InterrogationForm = ({
     };
 
     useEffect(() => {
-        setFirstDayList(presentInitialValue(inviteInfo, 'presentGuests'))
-        setSecondDayList(presentInitialValue(inviteInfo, 'presentOnSecondDay'))
+        setFirstDayList(presentInitialValue(inviteInfo, 'presentGuests', 'noAlonePresent'))
+        setSecondDayList(presentInitialValue(inviteInfo, 'presentOnSecondDay', 'noAloneOnSecondDay'))
     }, []);
 
-    const presentGuestInit = presentInitialValue(inviteInfo, 'presentGuests');
-    const presentOnSecondDayInit = presentInitialValue(inviteInfo, 'presentOnSecondDay');
+    const presentGuestInit = presentInitialValue(inviteInfo, 'presentGuests', 'noAlonePresent');
+    const presentOnSecondDayInit = presentInitialValue(inviteInfo, 'presentOnSecondDay', 'noAloneOnSecondDay');
 
     return (
         <section className={s.section_container} id={'survey'}>
@@ -120,6 +122,8 @@ export const InterrogationForm = ({
                                                onShowAllQuestion={onShowAllQuestion}
                                                inviteInfo={inviteInfo}
                                                onFirstDayList={onFirstDayList}
+                                               onFormValueChange={onFormValueChange}
+                                               needOneMorePlace={inviteInfo.invitation?.needOneMorePlace}
                                                firstDayList={firstDayList}/>
                         {show &&
                             <>
@@ -134,7 +138,7 @@ export const InterrogationForm = ({
                                     <Radio.Button value="manor">Сразу {singleGuest ? 'отправлюсь' : 'отправимся'} на
                                         банкет</Radio.Button>
                                 </RadioInput>
-                                {inviteInfo.invitation.checkTransport &&
+                                {inviteInfo?.invitation?.checkTransport &&
                                     <>
                                         <h3 className={s.item_title}>Как Вы планируете добираться?</h3>
                                         <RadioInput initialValue={inviteInfo?.surveyResponses?.isPrivateTransport}
@@ -150,8 +154,11 @@ export const InterrogationForm = ({
                                                              presentOnSecondDayInit={presentOnSecondDayInit}
                                                              secondDayList={secondDayList}
                                                              options={options}
+                                                             needOneMorePlace={inviteInfo.invitation?.needOneMorePlace}
                                                              onSecondDayListChange={onSecondDayListChange}
+                                                             onFormValueChange={onFormValueChange}
                                                              show={show}
+
                                                              singleGuest={singleGuest}/>
                                 <h3 className={s.item_title}>{singleGuest ? 'Какой напиток' : 'Какие напитки'} Вы
                                     предпочитаете?</h3>
@@ -160,10 +167,11 @@ export const InterrogationForm = ({
                                                  initialValue={inviteInfo?.surveyResponses?.likeDrinks}
                                                  requiredValue={true}
                                                  optionsValue={alcoholicDrinks}
+                                                 onFormValueChange={onFormValueChange}
                                                  requiredMessage={'Пожалуйста, выберете вариант'}
                                                  placeholderValue={`Пожалуйста выберете ${singleGuest ? 'напиток' : 'напитки'}`}
                                 />
-                                {inviteInfo.invitation.checkSlip &&
+                                {inviteInfo.invitation?.checkSlip &&
                                     <>
                                         <h3 className={s.item_title}>Нужен ли ночлег?</h3>
                                         <RadioInput initialValue={inviteInfo?.surveyResponses?.needSleepPlace}
@@ -179,7 +187,7 @@ export const InterrogationForm = ({
                         <div className={s.button_wrapper}>
                             <Form.Item>
                                 <Button className={s.description_button} htmlType="submit"
-                                        disabled={disabled}> Сохранить</Button>
+                                        disabled={disabled}>Сохранить</Button>
                             </Form.Item>
                         </div>
                     </Form>}

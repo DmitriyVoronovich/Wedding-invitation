@@ -25,6 +25,15 @@ export async function getServerSideProps(context: any) {
     if (inviteId) {
         const inviteInfo = await getInvitePreloadOn(inviteId, true);
 
+        if (!inviteInfo) {
+            return {
+                redirect: {
+                    destination: '/invite',
+                    permanent: false,
+                }
+            }
+        }
+
         return {
             props: {serverInviteInfo: inviteInfo || {}, inviteId}
         }
