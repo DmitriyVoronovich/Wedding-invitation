@@ -12,7 +12,7 @@ export const HeaderComponent = () => {
     useEffect(() => {
         const handleWindowResize = () => setWidth(window.innerWidth);
         window.addEventListener('resize', handleWindowResize);
-        handleWindowResize();
+        setTimeout(handleWindowResize, 100);
 
         return () => window.removeEventListener('resize', handleWindowResize);
     });

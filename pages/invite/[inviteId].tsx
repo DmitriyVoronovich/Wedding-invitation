@@ -62,7 +62,7 @@ export default function Invite({serverInviteInfo, inviteId}: any) {
                     <InviteComponent inviteInfo={inviteInfo} singleGuest={singleGuest}/>
                     <SectionOneComponent/>
                     <AboutEventComponent singleGuest={singleGuest}/>
-                    <ScheduleSectionComponent/>
+                    <ScheduleSectionComponent singleGuest={singleGuest}/>
                     <ScheduleHeaderComponent/>
                     <FormComponentContent inviteInfo={inviteInfo} inviteId={inviteId}
                                           onInviteInfoUpdate={onInviteInfoUpdate} singleGuest={singleGuest}/>
