@@ -22,15 +22,17 @@ export const SurveyResponseColumns: (getColumnSearchProps: () => TableColumnType
                         return 'No'
                     }
 
-                    return <div>
-                        {inviteGroup.guests
-                            .filter(({id}: Guest) => inviteGroup.surveyResponses?.presentGuests.includes(id))
+                    const presentOnSecondDay = inviteGroup.guests
+                        .filter(({id}: Guest) => inviteGroup.surveyResponses.presentGuests?.includes(id));
+
+                    return <>
+                        {presentOnSecondDay
                             .map(({
                                       firstName,
                                       lastName
-                                  }: Guest) =>
-                                <div key={firstName}>{firstName} {lastName}</div>)}
-                    </div>
+                                  }: Guest) => (
+                                <p key={firstName}>{firstName} {lastName}</p>))}
+                    </>
                 },
                 filters: [
                     {
@@ -64,18 +66,20 @@ export const SurveyResponseColumns: (getColumnSearchProps: () => TableColumnType
                 width: 200,
                 render: (_, inviteGroup: InviteGroup) => {
                     if (!inviteGroup.surveyResponses?.presentOnSecondDay?.length) {
-                        return 'No ('
+                        return `Won't be`
                     }
 
-                    return <div>
-                        {inviteGroup.guests
-                            .filter(({id}: Guest) => inviteGroup.surveyResponses?.presentOnSecondDay?.includes(id))
+                    const presentOnSecondDay = inviteGroup.guests
+                        .filter(({id}: Guest) => inviteGroup.surveyResponses.presentOnSecondDay?.includes(id));
+
+                    return <>
+                        {presentOnSecondDay
                             .map(({
                                       firstName,
                                       lastName
-                                  }: Guest) =>
-                                <p key={firstName}>{firstName} {lastName}</p>)}
-                    </div>
+                                  }: Guest) => (
+                                <p key={firstName}>{firstName} {lastName}</p>))}
+                    </>
                 },
                 filters: [
                     {

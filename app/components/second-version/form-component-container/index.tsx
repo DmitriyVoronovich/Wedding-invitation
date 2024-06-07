@@ -5,7 +5,7 @@ import useSound from "use-sound";
 import {FormComponentContainerProps} from "./types";
 import {InterrogationForm, RespMessage, SectionTwoComponent} from "@components";
 
-const SHOW_MESSAGE_TIMEOUT = 13000;
+const SHOW_MESSAGE_TIMEOUT = 13500;
 
 export const FormComponentContent = ({
                                          inviteInfo,
@@ -14,7 +14,7 @@ export const FormComponentContent = ({
                                          singleGuest
                                      }: FormComponentContainerProps) => {
     const [success, setSuccess] = useState(true);
-    const [willBePresent, setWillBePresent] = useState<boolean>(!!inviteInfo?.surveyResponses && !!inviteInfo.surveyResponses?.presentGuests?.length);
+    const [willBePresent, _setWillBePresent] = useState<boolean>(!!inviteInfo?.surveyResponses && !!inviteInfo.surveyResponses?.presentGuests?.length);
     const [showMessage, setShowMessage] = useState(false);
     const [willBeThere, setWillBeThere] = useState(true);
     const [playFailure, {stop: stopFailure}] = useSound('/sound/grust.mp3');

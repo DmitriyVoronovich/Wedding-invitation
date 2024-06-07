@@ -28,7 +28,6 @@ export default function Invite() {
                     <SectionTwoComponent/>
                 </Content>
                 <Footer className={s.footer_style}><FooterComponent/></Footer>
-                <audio src='../../public/sound/pedro.mp3'/>
             </Layout>
         </>
     )

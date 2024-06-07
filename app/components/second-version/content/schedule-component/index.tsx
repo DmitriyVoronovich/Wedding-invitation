@@ -7,7 +7,7 @@ import {Button} from "antd";
 import {Fade} from "react-awesome-reveal";
 import {ScheduleMapComponent} from "@components";
 
-export const ScheduleSectionComponent = () => {
+export const ScheduleSectionComponent = ({singleGuest = false}: { singleGuest?: boolean }) => {
     const [showMap, setShowMap] = useState(false);
 
     const onShowMap = () => setShowMap(!showMap);
@@ -17,7 +17,7 @@ export const ScheduleSectionComponent = () => {
             <div className={s.container}>
                <Fade triggerOnce={true} cascade={true} damping={0.4} >
                 <h2 className={s.section_title}>
-                    Приглашаем вас разделить с нами <br/>Радость нашей любви
+                    Приглашаем {singleGuest ? `тебя` : 'вас'} разделить с нами <br/>Радость нашей любви
                 </h2>
                 </Fade>
                 <div className={s.section_wrapper}>
