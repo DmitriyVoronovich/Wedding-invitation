@@ -74,6 +74,10 @@
     border-inline-end-width: 1px;
 }
 
+.ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):first-child {
+    border-color: white;
+}
+
 .ant-radio-button-wrapper:first-child {
     border-radius: 20px;
     padding: 5px 15px;

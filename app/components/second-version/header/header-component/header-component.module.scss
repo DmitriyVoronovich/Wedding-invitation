@@ -58,11 +58,12 @@
   color: #0a0a0a;
   text-decoration: none;
   font-weight: normal;
-  font-size: 24px;
+  font-size: 18px;
   line-height: 130%;
   font-family: 'Avenir Light', sans-serif;
 
   @media screen and (max-width: 450px) {
+    font-size: 24px;
     &:hover {
       color: #ffffff;
     }
