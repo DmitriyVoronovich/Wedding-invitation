@@ -6,7 +6,12 @@ import {TableColumnType} from "antd";
 
 export const GuestColumns: (handleSelectActionGuest: (guest: Guest, tableOpenAction: TableOpen) => void, copyIntoBuffer: (guest: Guest) => Promise<void>, getColumnSearchProps: () => TableColumnType<Guest>) => TableProps<Guest>["columns"] =
     (handleSelectActionGuest: (guest: Guest, tableOpenAction: TableOpen) => void, copyIntoBuffer: (guest: Guest) => Promise<void>, getColumnSearchProps: () => TableColumnType<Guest>): TableProps<Guest>['columns'] =>
-        ([
+        ([  {
+                title: 'Num',
+                key: 'id',
+                render: (_, _guest, index) => (index + 1),
+                width: 75
+            },
             {
                 title: 'Adult',
                 dataIndex: 'isAdult',
