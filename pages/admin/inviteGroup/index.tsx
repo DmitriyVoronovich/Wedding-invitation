@@ -16,6 +16,17 @@ export const isLoggedInInServerSide = (session: any) => {
 
 export async function getServerSideProps(context: any) {
     const session = await getServerSession(context.req, context.res, authConfig);
+    const isAdmin = (session?.user as AuthUser)?.role === 'admin'
+
+    if (!isAdmin) {
+        return {
+            redirect: {
+                destination: '/invite',
+                permanent: false,
+            },
+        }
+    }
+
     const accessToken = getAccessToken(session?.user as AuthUser);
     const inviteGroups = await getAllInviteGroupsOnServer(accessToken);
 
