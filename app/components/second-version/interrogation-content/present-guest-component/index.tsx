@@ -11,7 +11,9 @@ export const PresentGuestComponent = ({
                                           onFirstDayList,
                                           firstDayList,
                                           show,
-                                          onShowAllQuestion
+                                          needOneMorePlace,
+                                          onShowAllQuestion,
+                                          onFormValueChange
                                       }: PresentGuestComponentProps) => (
     <>
         <h3 className={s.item_title}>Будете ли вы присутствовать на нашем торжестве?</h3>
@@ -21,6 +23,9 @@ export const PresentGuestComponent = ({
                           callback={onShowAllQuestion}
                           itemName={'presentGuests'}>
                 <Radio.Button value="yes">Буду</Radio.Button>
+                {needOneMorePlace &&
+                    <Radio.Button value="noAlone">Буду со второй половинкой</Radio.Button>
+                }
                 <Radio.Button value="no">Не буду</Radio.Button>
             </RadioInput>
             : <>
@@ -39,7 +44,9 @@ export const PresentGuestComponent = ({
                                          initialValue={inviteInfo?.surveyResponses?.presentGuests}
                                          requiredValue={show}
                                          optionsValue={options}
-                                         maxCountValue={inviteInfo.guests.length}
+                                         onFormValueChange={onFormValueChange}
+                                         maxCountValue={inviteInfo.guests.length - 1}
+                                         requiredMessage={'Пожалуйста, выберете вариант'}
                                          placeholderValue={"Пожалуйста, выберете кто будет присутствовать"}
                         />
                     }

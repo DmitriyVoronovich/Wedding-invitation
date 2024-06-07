@@ -128,6 +128,14 @@ export const CreateOrEditInviteGroupForm = ({editInviteGroup, handleSubmitForm}:
             >
                 <Checkbox>Guest need a transport</Checkbox>
             </Form.Item>
+            <Form.Item<CreateOrEditInviteGroup>
+                name={['invitation', 'needOneMorePlace']}
+                wrapperCol={{offset: 8, span: 16}}
+                initialValue={editInviteGroup?.invitation.needOneMorePlace || false}
+                valuePropName="checked"
+            >
+                <Checkbox>Guest need a transport</Checkbox>
+            </Form.Item>
             <Form.Item wrapperCol={{offset: 8, span: 16}}>
                 <Button type="primary" htmlType="submit">
                     Submit

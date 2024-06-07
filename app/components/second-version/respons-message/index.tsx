@@ -9,7 +9,7 @@ export const RespMessage = ({ans, willBeThere}: any) => (
             {ans && <>
                 <p className={s.message_text}>
                     {willBeThere
-                        ? 'Спасибо за ваш ответ, С нетерпением ждём нашей встречи!'
+                        ? 'Спасибо за ваш ответ! С нетерпением ждём нашей встречи!'
                         : 'Нам жаль это слышать, спасибо за ответ.'}
                 </p>
                 <Image unoptimized={true} src={willBeThere ? pedro : sad} alt={willBeThere ? 'pedro gif' : 'rain gif'}

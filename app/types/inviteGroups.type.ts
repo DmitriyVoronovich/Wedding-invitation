@@ -5,6 +5,7 @@ export type Invitation = {
     checkSlip: boolean;
     transportFrom: string;
     checkTransport: boolean;
+    needOneMorePlace: boolean;
 };
 
 type ChangedGuests = {

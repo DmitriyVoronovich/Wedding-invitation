@@ -10,7 +10,9 @@ export const PresentOnSecondDayComponent = ({
                                                 singleGuest,
                                                 options,
                                                 show,
-                                                inviteInfo
+                                                needOneMorePlace,
+                                                inviteInfo,
+                                                onFormValueChange
                                             }: PresentOnSecondDayComponentProps) => (
     <>
         {singleGuest
@@ -22,6 +24,9 @@ export const PresentOnSecondDayComponent = ({
                             requiredMessage={'Пожалуйста, выберете вариант'}
                             itemName={'presentOnSecondDay'}>
                     <Radio.Button value={"yes"}>Буду</Radio.Button>
+                    {needOneMorePlace &&
+                        <Radio.Button value="noAlone">Буду со второй половинкой</Radio.Button>
+                    }
                     <Radio.Button value={'no'}>Не буду</Radio.Button>
                 </RadioInput>
             </>
@@ -44,7 +49,9 @@ export const PresentOnSecondDayComponent = ({
                                          initialValue={inviteInfo?.surveyResponses?.presentOnSecondDay}
                                          requiredValue={show}
                                          optionsValue={options}
-                                         maxCountValue={inviteInfo.guests.length}
+                                         onFormValueChange={onFormValueChange}
+                                         maxCountValue={inviteInfo.guests.length - 1}
+                                         requiredMessage={'Пожалуйста, выберете вариант'}
                                          placeholderValue={"Пожалуйста, выберете кто будет присутствовать"}
                         />
                     }
