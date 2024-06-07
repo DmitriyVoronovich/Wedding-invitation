@@ -69,7 +69,7 @@ export const EVENTS_LIST = [
         id: 4,
         name: '2-й день свадьбы',
         place: 'Усадьба Долина Заречная',
-        time: '10:00',
+        time: '11:00',
         image: second,
     }
 ];

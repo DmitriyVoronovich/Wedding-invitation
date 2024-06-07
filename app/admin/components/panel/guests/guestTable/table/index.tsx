@@ -91,7 +91,7 @@ export const CustomGuestTable = ({
     const guestsColumns = GuestColumns(handleSelectActionGuest, copyIntoBuffer, getColumnSearchProps);
 
     return (
-        <Table bordered rowKey="id" columns={guestsColumns} pagination={false}
+        <Table bordered sticky={true} size={'small'} rowKey="id" columns={guestsColumns} pagination={false}
                dataSource={guests}/>
     )
 }
