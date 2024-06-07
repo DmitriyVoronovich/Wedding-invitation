@@ -27,7 +27,7 @@ export const InterrogationForm = ({
 
     const options: SelectProps['options'] = guestGroup?.map((item: any) => {
         return {
-            label: `${item.lastName} ${item.firstName}`,
+            label: item.firstName,
             value: item.inviteId,
         }
     });
