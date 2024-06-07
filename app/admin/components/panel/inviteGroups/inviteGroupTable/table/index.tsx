@@ -84,6 +84,7 @@ export const CustomInviteGroupTable = ({publicUrl, inviteGroups, setSelectedInvi
 
     return (
         <Table bordered
+               sticky={true}
                rowKey="id"
                columns={inviteGroupColumns}
                expandable={{
