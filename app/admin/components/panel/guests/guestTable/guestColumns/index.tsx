@@ -4,7 +4,7 @@ import {CheckCircleOutlined, CloseCircleOutlined, CopyOutlined, DeleteOutlined, 
 import {LastChangeCell, TableOpen, transformDate} from "@admin-components";
 import {TableColumnType} from "antd";
 
-export const GuestColumns: (handleSelectActionGuest: (guest: Guest, tableOpenAction: TableOpen) => void, copyIntoBuffer: (guest: Guest) => Promise<void>, getColumnSearchProps: () => TableColumnType<Guest>) => TableProps<Guest>["columns"] =
+export const GuestColumns =
     (handleSelectActionGuest: (guest: Guest, tableOpenAction: TableOpen) => void, copyIntoBuffer: (guest: Guest) => Promise<void>, getColumnSearchProps: () => TableColumnType<Guest>): TableProps<Guest>['columns'] =>
         ([  {
                 title: 'Num',
@@ -96,12 +96,6 @@ export const GuestColumns: (handleSelectActionGuest: (guest: Guest, tableOpenAct
                     }
                 ],
                 onFilter: (value, {gender}) => value !== '' && gender === value,
-            },
-            {
-                title: 'Last changes',
-                key: 'lastChanges',
-                dataIndex: 'lastChanges',
-                render: (_, guest: Guest) => <LastChangeCell objectData={guest}/>
             },
             {
                 title: 'Action',

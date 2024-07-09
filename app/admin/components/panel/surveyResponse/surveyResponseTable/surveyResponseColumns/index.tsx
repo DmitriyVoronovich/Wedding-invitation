@@ -1,7 +1,7 @@
 import {TableProps} from "antd/lib";
-import {LastChangeCell} from "@admin-components";
 import {Guest, InviteGroup} from "@types";
 import {TableColumnType} from "antd";
+import {LastChangeCell} from "@admin-components";
 
 export const SurveyResponseColumns: (getColumnSearchProps: () => TableColumnType<InviteGroup>) => TableProps<InviteGroup>["columns"] =
     (getColumnSearchProps: () => TableColumnType<InviteGroup>): TableProps<InviteGroup>['columns'] =>
@@ -60,6 +60,11 @@ export const SurveyResponseColumns: (getColumnSearchProps: () => TableColumnType
                 },
             },
             {
+                title: 'no alone',
+                key: 'noAlone',
+                render: (_, inviteGroup: InviteGroup) => inviteGroup.surveyResponses?.noAlonePresent ? 'yes' : `no`
+            },
+            {
                 title: 'Present on second day',
                 dataIndex: ['surveyResponses', 'presentOnSecondDay'],
                 key: 'inviteGroup',
@@ -105,6 +110,11 @@ export const SurveyResponseColumns: (getColumnSearchProps: () => TableColumnType
                         : (inviteGroup.surveyResponses?.presentOnSecondDay?.length || 0) < inviteGroup.guests.length;
 
                 },
+            },
+            {
+                title: 'no alone on second day',
+                key: 'noAloneOnSecondDay',
+                render: (_, inviteGroup: InviteGroup) => inviteGroup.surveyResponses?.noAloneOnSecondDay  ? 'yes' : `no`
             },
             {
                 title: 'Start place',
@@ -154,11 +164,11 @@ export const SurveyResponseColumns: (getColumnSearchProps: () => TableColumnType
                     </div>
                     : `Don't filled`
             },
-            {
-                title: 'Last changed survey',
-                key: 'lastSeen',
-                render: (_, inviteGroup: InviteGroup) => inviteGroup.surveyResponses
-                    ? <LastChangeCell objectData={inviteGroup.surveyResponses}/>
-                    : `Don't filled`
-            }
+            // {
+            //     title: 'Last changed survey',
+            //     key: 'lastSeen',
+            //     render: (_, inviteGroup: InviteGroup) => inviteGroup?.surveyResponses
+            //         ? <LastChangeCell objectData={inviteGroup.surveyResponses}/>
+            //         : `Don't filled`
+            // }
         ]);

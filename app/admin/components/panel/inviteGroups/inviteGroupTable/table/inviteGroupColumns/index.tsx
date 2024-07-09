@@ -71,12 +71,6 @@ export const InviteGroupColumns: (handleSelectActionInviteGroup: (inviteGroup: I
                 render: (_, {invitation}: InviteGroup) => (invitation && invitation.transportFrom) || 'Not set'
             },
             {
-                title: 'Last changes',
-                key: 'lastChanges',
-                dataIndex: 'lastChanges',
-                render: (_, inviteGroup: InviteGroup) => <LastChangeCell objectData={inviteGroup}/>
-            },
-            {
                 title: 'Action',
                 key: 'action',
                 render: (_, inviteGroup: InviteGroup) => (

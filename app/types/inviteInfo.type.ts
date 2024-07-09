@@ -12,9 +12,11 @@ type InvitePreload = {
 
 type SurveyResponses = BaseType & {
     presentGuests: string[];
+    noAlonePresent: boolean | null;
     startPlace: string;
     isPrivateTransport: boolean | null;
     presentOnSecondDay: string[] | null;
+    noAloneOnSecondDay: boolean | null;
     needSleepPlace: boolean | null;
     likeDrinks: string[] | null;
 };

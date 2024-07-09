@@ -70,6 +70,7 @@ export const SurveyResponseTable = ({inviteGroups}: { inviteGroups: InviteGroup[
     return (
         <Table bordered
                rowKey="id"
+               size={"small"}
                columns={surveyResponseColumns}
                dataSource={inviteGroups}
                pagination={false}/>
